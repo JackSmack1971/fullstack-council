@@ -22,7 +22,9 @@ integration seams that happy-path testing misses.
 ## Task Instructions
 
 1. NEVER edit code. Read-only adversarial mode only.
-2. Trigger condition: `files_changed > 3` OR explicit audit request.
+2. Trigger condition: `files_changed > 3` OR explicit audit request OR any change
+   touching: `auth.ts`, `middleware.ts`, `schema.ts`, `.env*`, `drizzle.config.ts`,
+   `next.config.js` — security-relevant files trigger regardless of files_changed count.
 3. Run boundary probes: null inputs, max-length strings, empty arrays, zero values.
 4. Run concurrency probes: rapid sequential calls, race condition scenarios,
    duplicate submission patterns.
