@@ -1,0 +1,17 @@
+{
+  "schema_version": "3.2",
+  "tool_sets": {
+    "READ_ONLY_TOOLS": "[read_file, list_files]",
+    "DEFAULT_TOOLS": "[read_file, list_files, execute_terminal_command]",
+    "IMPLEMENTATION_TOOLS": "[read_file, list_files, write_file, execute_terminal_command]"
+  },
+  "persona_mapping": {
+    "kent-dodds-quality-lead": "READ_ONLY_TOOLS",
+    "troy-hunt-security": "READ_ONLY_TOOLS",
+    "adam-wathan-design-system": "READ_ONLY_TOOLS",
+    "react-core-lead": "IMPLEMENTATION_TOOLS",
+    "rauchg-tech-lead-architect": "DEFAULT_TOOLS",
+    "skill-optimizer": "DEFAULT_TOOLS",
+    "theo-browne-fullstack-advisor": "DEFAULT_TOOLS"
+  }
+}

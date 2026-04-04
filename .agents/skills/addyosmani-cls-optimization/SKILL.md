@@ -4,6 +4,7 @@ description: >
   Optimizes Cumulative Layout Shift (CLS) by managing component aspect ratios,
   reserved layout slots, and dynamic content insertion. Targets the
   ≤ 0.1 "Good" threshold.
+allowed-tools: [read_file, list_files]
 ---
 
 # CLS Optimization (Cumulative Layout Shift)

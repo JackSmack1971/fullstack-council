@@ -5,6 +5,7 @@ github:     https://github.com/bobmatnyc/claude-mpm-skills
 install:    npx skills add bobmatnyc/claude-mpm-skills --skill drizzle-orm
 installs:   3.1K
 scraped_at: 2026-04-04T15:06:48Z
+allowed-tools: [read_file, list_files]
 ---
 description: Designs and queries PostgreSQL schemas using Drizzle ORM with type-safe migrations.
 

@@ -5,6 +5,7 @@ github:     https://github.com/bobmatnyc/claude-mpm-skills
 install:    npx skills add bobmatnyc/claude-mpm-skills --skill trpc-type-safety
 installs:   
 scraped_at: 2026-04-04T15:07:58Z
+allowed-tools: [read_file, list_files]
 ---
 description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 

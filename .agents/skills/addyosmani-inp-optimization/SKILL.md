@@ -4,6 +4,7 @@ description: >
   Optimizes Interaction to Next Paint (INP) by identifying main-thread blocking,
   unoptimized event handlers, and heavy JS execution context. Targets the
   ≤ 200 ms threshold.
+allowed-tools: [read_file, list_files]
 ---
 
 # INP Optimization (Interaction to Next Paint)

@@ -12,6 +12,7 @@ kernel_schema:
   Format: string (N)
   Verify: string (E_V)
   Call to Action: string (L)
+allowed-tools: [read_file, list_files]
 ---
 
 # Lenny Rachitsky — Product Strategy & Growth Skill

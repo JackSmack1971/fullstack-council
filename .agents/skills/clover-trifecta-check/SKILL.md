@@ -6,6 +6,7 @@ kernel_schema:
   Phantom_Report: string (Detection of suspicious imports/methods)
   Correction_Plan: string (Remediation steps for drift)
   Verify: string (Command to confirm sync)
+allowed-tools: [read_file, list_files]
 ---
 
 # Clover Verification Lead — Trifecta Check

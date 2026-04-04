@@ -5,6 +5,7 @@ github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill accessibility
 installs:   7.7K
 scraped_at: 2026-04-04T15:06:21Z
+allowed-tools: [read_file, list_files]
 ---
 description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 

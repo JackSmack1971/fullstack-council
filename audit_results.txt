@@ -1,0 +1,41 @@
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\adam-wathan-design-system\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\addyosmani-cls-optimization\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\addyosmani-inp-optimization\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\addyosmani-lcp-optimization\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\backend-runtime-excellence\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\clover-trifecta-check\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\doc-rot-audit\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\harrison-chase-ai-orchestration\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\kelsey-hightower-sre\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\kent-dodds-quality-lead\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\lenny-rachitsky-product\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\martin-kleppmann-data-systems\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\optimizing-web-performance\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\pragmatic-engineer-em\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\rauchg-tech-lead-architect\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\react-core-lead\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\sarah-drasner-interaction\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[PASS] C:\workspaces\fullstack-council\.agents\skills\skill-optimizer\SKILL.md is K.E.R.N.E.L. compliant.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\theo-browne-fullstack-advisor\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\troy-hunt-security\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.
+[FAIL] C:\workspaces\fullstack-council\.agents\skills\wes-bos-fullstack-educator\SKILL.md requires optimization:
+ - WARNING: Missing 'allowed-tools' boundary.

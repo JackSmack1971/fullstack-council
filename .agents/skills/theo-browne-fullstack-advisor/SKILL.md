@@ -7,6 +7,7 @@ kernel_schema:
   Constraints: string
   Format: string
   Verify: string
+allowed-tools: [read_file, list_files, execute_terminal_command]
 ---
 
 # Theo Browne — Fullstack Advisor

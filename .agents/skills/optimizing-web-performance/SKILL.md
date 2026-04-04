@@ -1,6 +1,7 @@
 ---
 name: optimizing-web-performance
 description: Diagnoses and fixes web performance problems — Core Web Vitals (LCP, INP, CLS), JavaScript bundle bloat, image optimization, render-blocking resources, and edge/mobile delivery. Activates when a user mentions slow pages, bad Lighthouse scores, CWV failures, bundle size issues, Time to Interactive, layout shift, or asks for performance audits, DevTools traces, or speed improvements. Use this skill for any performance review, CWV remediation, Lighthouse analysis, image pipeline work, or AI-assisted optimization workflow. Always produces narrow, single-goal advice with before/after metric targets and exact verification steps.
+allowed-tools: [read_file, list_files]
 ---
 
 # Web Performance Optimization

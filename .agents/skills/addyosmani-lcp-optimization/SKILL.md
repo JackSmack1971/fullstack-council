@@ -4,6 +4,7 @@ description: >
   Optimizes Largest Contentful Paint (LCP) by managing image preloading,
   fetchpriority, server response times (TTFB), and render-blocking resources.
   Targets the ≤ 2.5s "Good" threshold.
+allowed-tools: [read_file, list_files]
 ---
 
 # LCP Optimization (Largest Contentful Paint)

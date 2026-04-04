@@ -8,6 +8,7 @@ kernel_schema:
   Health_Report: string (DOC_HEALTH_REPORT.md)
   Remediation_Plan: string (REMEDIATION_PLAN.md)
   Verify: string (command to check doc/code sync)
+allowed-tools: [read_file, list_files]
 ---
 
 # Pragmatic Librarian — Doc Rot & Semantic Drift Audit

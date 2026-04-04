@@ -5,6 +5,7 @@ github:     https://github.com/getsentry/sentry-for-ai
 install:    npx skills add getsentry/sentry-for-ai --skill sentry-nextjs-sdk
 installs:   
 scraped_at: 2026-04-04T15:09:25Z
+allowed-tools: [read_file, list_files]
 ---
 description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 

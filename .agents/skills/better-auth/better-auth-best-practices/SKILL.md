@@ -5,6 +5,7 @@ github:     https://github.com/better-auth/skills
 install:    npx skills add better-auth/skills --skill better-auth-best-practices
 installs:   32.2K
 scraped_at: 2026-04-04T15:05:26Z
+allowed-tools: [read_file, list_files]
 ---
 description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 

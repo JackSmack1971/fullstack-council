@@ -5,6 +5,7 @@ github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill performance
 installs:   8.9K
 scraped_at: 2026-04-04T15:06:06Z
+allowed-tools: [read_file, list_files]
 ---
 description: Diagnoses web performance bottlenecks, Core Web Vitals regressions, and Lighthouse score failures.
 

@@ -5,6 +5,7 @@ github:     https://github.com/github/awesome-copilot
 install:    npx skills add github/awesome-copilot --skill git-commit
 installs:   20.7K
 scraped_at: 2026-04-04T15:05:29Z
+allowed-tools: [read_file, list_files]
 ---
 description: Generates conventional commit messages and formats Git history.
 

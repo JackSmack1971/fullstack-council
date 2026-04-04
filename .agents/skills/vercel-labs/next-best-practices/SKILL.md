@@ -5,6 +5,7 @@ github:     https://github.com/vercel-labs/next-skills
 install:    npx skills add vercel-labs/next-skills --skill next-best-practices
 installs:   53.1K
 scraped_at: 2026-04-04T15:05:24Z
+allowed-tools: [read_file, list_files]
 ---
 description: Enforces Next.js App Router best practices, performance, and deployment patterns.
 

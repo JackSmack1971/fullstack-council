@@ -11,6 +11,7 @@ description: >
   production backend servers from first principles. Always invoke this skill for
   Deno vs Node.js comparisons, permission model design, and high-level backend
   architecture decisions.
+allowed-tools: [read_file, list_files]
 ---
 
 # Backend Runtime Excellence — Ryan Dahl Advisor

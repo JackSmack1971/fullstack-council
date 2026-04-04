@@ -5,6 +5,7 @@ github:     https://github.com/currents-dev/playwright-best-practices-skill
 install:    npx skills add currents-dev/playwright-best-practices-skill --skill playwright-best-practices
 installs:   20.9K
 scraped_at: 2026-04-04T15:05:30Z
+allowed-tools: [read_file, list_files]
 ---
 description: Writes Playwright end-to-end tests with best-practice selectors and assertions.
 

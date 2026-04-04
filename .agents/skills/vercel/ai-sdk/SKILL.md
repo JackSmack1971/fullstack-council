@@ -5,6 +5,7 @@ github:     https://github.com/vercel/ai
 install:    npx skills add vercel/ai --skill ai-sdk
 installs:   15.8K
 scraped_at: 2026-04-04T15:05:31Z
+allowed-tools: [read_file, list_files]
 ---
 description: Builds AI-powered applications using the Vercel AI SDK with streaming and tool use.
 

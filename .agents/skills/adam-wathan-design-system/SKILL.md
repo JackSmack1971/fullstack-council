@@ -10,6 +10,7 @@ kernel_schema:
   Violations Found: string
   Constraints Forward: string[]
   Verify: string
+allowed-tools: [read_file, list_files]
 ---
 
 # Adam Wathan — Design System Mastery

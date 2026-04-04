@@ -5,6 +5,7 @@ github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill core-web-vitals
 installs:   4.1K
 scraped_at: 2026-04-04T15:06:25Z
+allowed-tools: [read_file, list_files]
 ---
 description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 

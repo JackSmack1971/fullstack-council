@@ -5,6 +5,7 @@ github:     https://github.com/affaan-m/everything-claude-code
 install:    npx skills add affaan-m/everything-claude-code --skill postgres-patterns
 installs:   2.8K
 scraped_at: 2026-04-04T15:06:51Z
+allowed-tools: [read_file, list_files]
 ---
 description: Implements PostgreSQL best practices, query optimization, and connection pooling.
 
