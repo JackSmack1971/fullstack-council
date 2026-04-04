@@ -4,7 +4,7 @@ description: >
   Master router for the Full-Stack Advisory Council. Primary interface is
   explicit slash commands. Natural language classification is a fallback only.
   Invoke directly: /chain-a-feature, /chain-b-review, /chain-c-architecture,
-  /chain-d-performance, /chain-e-teaching.
+  /chain-d-performance, /chain-e-teaching, /chain-f-security.
 ---
 
 # Full-Stack Advisory Council — Router
@@ -15,7 +15,8 @@ Call the chain directly. No classification step. No ambiguity.
 
 | Command | Chain | When |
 |---------|-------|------|
-| `/resume` or `/resume [a-e]` | `Call /chain-resume` | Returning after a mid-chain session close |
+| `/resume` or `/resume [a-f]` | `Call /chain-resume` | Returning after a mid-chain session close |
+| `/observe` | Read `session-log` Artifact + emit summary | Inspect what ran, what fired, what halted |
 | `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
 | `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
 | `/chain-c-architecture` | `Call /chain-c-architecture` | Making a stack or architecture decision |
