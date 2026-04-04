@@ -22,10 +22,10 @@ schema.ts, or .env files trigger boundary/concurrency probes regardless of files
 ---
 
 ## F0 — Threat Model
-**Skill:** `pragmatic-engineer-em`
+**Skill:** `troy-hunt-security`
 **Idempotency:** Artifact `f0-threat-model` Complete → skip + read, advance to F1.
 
-**Constraint:** Advisory only. Zero code output. No implementation details.
+**Constraint:** Lead Auditor. Focus on "Have I Been Pwned" principles and OWASP Top 10.
 
 Map every trust boundary in the active stack using STRIDE per boundary:
 (Spoofing/Tampering/Repudiation/Info Disclosure/DoS/Elevation)
@@ -36,10 +36,11 @@ Trust boundaries to enumerate:
 - Server Components → Drizzle/Postgres (injection, info disclosure)
 - Client Components → tRPC procedures (elevation, tampering)
 - Client Components → Server Actions (CSRF, tampering, elevation)
-- CI/CD pipeline → Vercel deploy (secrets, supply chain)
+- CI/CD pipeline → Vercel deploy (secrets, supply chain, "Have I Been Pwned" history)
 
 Produce:
 - STRIDE table per boundary: threat actor, attack vector, control, risk rating (High/Med/Low)
+- **Breach History Check**: Assessment of potential historical data exposure (HIBP philosophy)
 - Priority order: rank boundaries by residual risk after current controls
 - Step routing recommendation: which of F1–F4 addresses each High/Med finding
 - `[Verify]`: every boundary named, no theoretical threat without a concrete attack vector

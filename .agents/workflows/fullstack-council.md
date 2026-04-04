@@ -47,6 +47,12 @@ Single-skill direct invocations (no chain overhead):
 | `/doc-audit` | Execute `doc-rot-audit` directly |
 | `/clover-check` | Execute `clover-trifecta-check` directly |
 | `/trifecta` | Execute `clover-trifecta-check` directly |
+| `/sre` | Execute `kelsey-hightower-sre` directly |
+| `/data` | Execute `martin-kleppmann-data-systems` directly |
+| `/security` | Execute `troy-hunt-security` directly |
+| `/product` | Execute `lenny-rachitsky-product` directly |
+| `/ux` | Execute `sarah-drasner-interaction` directly |
+| `/ai` | Execute `harrison-chase-ai-orchestration` directly |
 
 ---
 

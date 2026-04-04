@@ -99,11 +99,67 @@
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\github\\git-commit"
     },
     {
+      "id": "harrison-chase-ai-orchestration",
+      "name": "harrison-chase-ai-orchestration",
+      "description": "Activates the Harrison Chase persona for AI/Machine Learning integration, LangChain orchestration, and LLM-powered application design. Use when embedding AI capabilities directly into the application layer, managing context windows, prompt architectures, and vector database retrievals (RAG). Focuses on agentic workflows and reliable AI pipelines.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\harrison-chase-ai-orchestration"
+    },
+    {
+      "id": "kelsey-hightower-sre",
+      "name": "kelsey-hightower-sre",
+      "description": "Activates the Kelsey Hightower persona for infrastructure, systems architecture, Kubernetes, and site reliability engineering (SRE). Use when designing deployment pipelines, orchestrating containerized workloads, planning multi-region failovers, or simplifying infrastructure-as-code (IaC). Focuses on simplicity, observability, and \"the hard way\" vs \"the right way.\"",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\kelsey-hightower-sre"
+    },
+    {
       "id": "kent-dodds-quality-lead",
       "name": "kent-dodds-quality-lead",
       "description": "Activates Kent C. Dodds as Quality, Testing & Accessibility Lead. Use for any testing review, React Testing Library (RTL) guidance, a11y/accessibility audits, component API design, Testing Trophy strategy, integration test authoring, RTL query selection, confidence-driven test coverage analysis, and DX/UX code quality feedback. Triggers on: \"review my tests\", \"write tests for\", \"a11y audit\", \"accessibility check\", \"RTL\", \"React Testing Library\", \"testing strategy\", \"component API review\", \"test coverage\", \"integration test\", \"unit test\", \"Testing Trophy\", or any request to improve test quality, code confidence, or software quality. Applies K.E.R.N.E.L. framework — one focused goal per response with copy-pasteable examples.",
       "kernel_schema": null,
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\kent-dodds-quality-lead"
+    },
+    {
+      "id": "lenny-rachitsky-product",
+      "name": "lenny-rachitsky-product",
+      "description": "Activates the Lenny Rachitsky persona for product management, growth strategy, and roadmap alignment. Use when defining application objectives, identifying growth loops, or prioritizing features based on user acquisition and retention metrics. Focuses on MVP, feedback loops, and business-centric engineering.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\lenny-rachitsky-product"
+    },
+    {
+      "id": "martin-kleppmann-data-systems",
+      "name": "martin-kleppmann-data-systems",
+      "description": "Activates the Martin Kleppmann persona for distributed systems architecture, data-intensive application design, and consensus protocols. Use when designing database schemas for massive concurrency, ensuring data consistency across microservices, or implementing event-driven architectures (Kafka/RabbitMQ). Focuses on correctness, idempotency, and the \"Designing Data-Intensive Applications\" (DDIA) principles.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\martin-kleppmann-data-systems"
     },
     {
       "id": "optimizing-web-performance",
@@ -148,6 +204,20 @@
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\react-core-lead"
     },
     {
+      "id": "sarah-drasner-interaction",
+      "name": "sarah-drasner-interaction",
+      "description": "Activates the Sarah Drasner persona for UI/UX, interaction engineering, SVG/CSS animations, and design system polish. Use when designing complex, state-driven UI transitions, refining micro-interactions, or building performant, accessible animations. Focuses on the \"visceral\" feel of the UI.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\sarah-drasner-interaction"
+    },
+    {
       "id": "sentry-for-ai/sentry-nextjs-sdk",
       "name": "Sentry Next.js SDK",
       "description": "Opinionated wizard that scans your Next.js project and guides you through complete Sentry setup across all three runtimes: browser, Node.js server, and Edge.",
@@ -166,6 +236,20 @@
         "Verify": "string"
       },
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\theo-browne-fullstack-advisor"
+    },
+    {
+      "id": "troy-hunt-security",
+      "name": "troy-hunt-security",
+      "description": "Activates the Troy Hunt persona for information security, threat modeling, and application hardening. Use when auditing data handling, securing API perimeters, and ensuring cryptographic compliance. Focuses on the OWASP Top 10, data breach prevention, and the \"Have I Been Pwned?\" principles.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\troy-hunt-security"
     },
     {
       "id": "vercel-labs/next-best-practices",

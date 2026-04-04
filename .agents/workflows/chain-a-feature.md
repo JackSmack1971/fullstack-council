@@ -14,10 +14,28 @@ Artifact before the next step reads it (P3 Wizard enforced).
 
 ---
 
+## A0 — Product Discovery
+**Skill:** `lenny-rachitsky-product`
+**Idempotency:** If Artifact `a0-product` exists and Status = Complete → skip, read Artifact, advance to A1.
+
+Produce:
+- User-centric objective and North Star metric
+- MVP scope boundaries (Critical Path)
+- Growth loop hypothesis
+- `[Verify]`: Product Market Fit (PMF) alignment statement
+
+Generate **Implementation Plan Artifact: `a0-product`** before A1.
+
+---
+
 ## A1 — Architecture Gate
 **Skill:** `rauchg-tech-lead-architect`
+**Sub-Consultants:** `harrison-chase-ai-orchestration`, `martin-kleppmann-data-systems`
 **Idempotency:** If Artifact `a1-architecture` exists and Status = Complete → skip, read Artifact, advance to A2.
 Reference @.agents/skills/vercel/ai-sdk/SKILL.md and @.agents/skills/vercel-labs/next-best-practices/SKILL.md for stack decisions.
+
+**AI Logic:** If AI features are detected, Invoke `harrison-chase-ai-orchestration`.
+**Data Logic:** If RAG or high-concurrency vector data is detected by Chase, Trigger `martin-kleppmann-data-systems` (or `Call /chain-c-architecture`) for data topology design.
 
 Produce full K.E.R.N.E.L. architecture decision:
 - Stack choice with justification (Clerk for MVPs/TTM; Better Auth for joins/cost)
@@ -62,7 +80,23 @@ Produce:
 - **Tailwind v4 standards**: No arbitrary values, @theme variables ONLY, logical properties
 - `[Verify]`: No unjustified arbitrary values + 100% "Wow Factor" self-assessment
 
-Generate **Task List Artifact: `a3-ui`** before A4.
+Generate **Task List Artifact: `a3-ui`** before A3.5.
+
+---
+
+## A3.5 — Interaction Polish (Conditional)
+**Skill:** `sarah-drasner-interaction`
+**Idempotency:** If Artifact `a3-5-interaction` exists → skip, read Artifact, advance to A4.
+
+**Gate:** Trigger ONLY if `a1-architecture` or `a3-ui` detects complex state transitions, SVG choreography, or high-latency operations requiring visual feedback.
+
+Produce:
+- Framer Motion or CSS orchestration for micro-interactions
+- A11y motion audit (prefers-reduced-motion compliance)
+- Perf check: GPU-accelerated transition verification
+- `[Verify]`: 60fps interaction "visceral feel" check
+
+Generate **Task List Artifact: `a3-5-interaction`** before A4.
 
 ---
 
