@@ -1,7 +1,7 @@
-# 🏛️ Full-Stack Advisory Council v3.0
+# 🏛️ Full-Stack Advisory Council v3.2 — Ecosystem Bound
 
 - **Welcome!**  
-- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **28 specialized AI personas** that work together like a real engineering crew.
+- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **specialized AI personas** that work together like a real engineering crew.
 - 
 - ## What Is This Project?
 - **Project Name:** Full-Stack Advisory Council  
@@ -11,39 +11,32 @@
 - 
 
 ## 🌌 Powered by Google Antigravity
-This council only works inside **Google Antigravity** — a special AI-first development environment.
+This council is deeply integrated with the **Google Antigravity** native metaprogramming ecosystem.
 
-### What is Google Antigravity?
-Normal code editors (like VS Code) make *you* type every line.  
-Google Antigravity flips that: **AI agents** do the heavy lifting — they manage files, run terminal commands, search the web, and build features while you watch.
+### Native Metaprogramming
+Unlike generic wrappers, the Council leverages Antigravity's core routing engine:
+- **Native Routing**: No central manifest. Routing is driven by strictly-typed YAML frontmatter in localized `SKILL.md` files.
+- **Deterministic Activation**: Keyword-dense, third-person capability descriptions mathematically guarantee that the right expert is called at the right time.
+- **Progressive Disclosure**: Detailed persona instructions are only loaded when the skill is active, optimizing token efficiency.
 
-Here’s how it powers the Council:
+## 🪑 The Council – Atomic & Specialized Skills
+The system uses **Atomic Splitting** to ensure each skill does one thing perfectly. Monolithic domains are broken into granular capabilities:
 
-- **🤖 Agent Manager (Mission Control)**: Spawns and coordinates the expert personas so they can actually edit your code and run commands.
-- **🛡️ Secure Sandbox**: Uses kernel-level protection (Seatbelt, nsjail) so even if an AI makes a mistake, your real computer stays 100% safe.
-- **🧠 Custom Brains**: Each persona is taught its exact job using simple Markdown rules and YAML files.
+### Core Personnel
+- **Guillermo Rauch (Architecture)** — Next.js/Vercel edge architecture and AI patterns.
+- **Dan Abramov (React)** — RSC, Concurrent rendering, and modern Hooks.
+- **Adam Wathan (Design Systems)** — Utility-first CSS and Tailwind v4 token hierarchy.
+- **Kent C. Dodds (Quality)** — Integration testing and A11y verification.
 
-## 🪑 Meet the Council – 28 Specialized Skills
-The system automatically indexes and updates its own skill manifest using standard metadata. The council includes:
+### Atomic Optimization (Addy Osmani Series)
+- **LCP-Optimization** — Image preloading, fetchpriority, and server response.
+- **INP-Optimization** — Main-thread blocking and interaction latency.
+- **CLS-Optimization** — Aspect ratios and reserved layout slots.
 
-1. **Guillermo Rauch (Architecture)** — Plans the overall app structure and makes big technical decisions.
-2. **Dan Abramov (React)** — Writes clean, modern React components and hooks.
-3. **Adam Wathan (Tailwind CSS)** — Creates beautiful, responsive styling with Tailwind v4.
-4. **Kent C. Dodds (Testing)** — Writes tests and checks accessibility (A11y).
-5. **Addy Osmani (Performance)** — Fixes slow loading times and improves Core Web Vitals.
-6. **Theo Browne (T3 Stack)** — Guides full-stack architecture and best practices.
-7. **Gergely Orosz (Engineering Management)** — Helps with scaling, team decisions, and engineering excellence.
-8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
-9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
-10. **Lenny Rachitsky (Product)** — Bridges the gap between engineering and growth strategy.
-11. **Troy Hunt (Security Auditing)** — Performs deep threat modeling and zero-trust hardening.
-12. **Kelsey Hightower (Infrastructure/SRE)** — Orchestrates containerized deployments and CI/CD pipelines.
-13. **Martin Kleppmann (Data Systems)** — Ensures consistency and reliability in distributed data architectures.
-14. **Harrison Chase (AI Orchestration)** — Designs LangChain agentic workflows and RAG pipelines.
-15. **Sarah Drasner (Interaction)** — Refines UI/UX with high-fidelity animations and interaction polish.
-16. **Pragmatic Librarian (Doc Audit)** — Audits code/doc sync and identifies semantic drift.
-17. **Clover Verification Lead (Trifecta)** — Verifies functional correctness via Code vs Docstring vs Spec.
-... and 11+ more specialized personas (Clerk, Stripe, Better Auth, Sentry) integrated into the master registry.
+### Meta & Security
+- **Troy Hunt (Security)** — Threat modeling and zero-trust hardening.
+- **Kelsey Hightower (SRE)** — Infrastructure, systems architecture, and Kubernetes.
+- **Harrison Chase (AI)** — LangChain orchestration and agentic workflows.
 
 🚀 Slash Commands
 
@@ -108,76 +101,19 @@ Any layer can be overridden — just specify in your command.
 
 * * *
 
-## 🧠 How It Works (Architecture Overview)
+### 1. Skill Discovery & Routing
+Skill discovery is **stateless**. The Antigravity engine parses `.agents/skills/**/SKILL.md` at runtime. 
+- **Requirement**: Must contain YAML frontmatter with `description:`.
+- **Validation**: `node .agents/scripts/registry-tool.js --lint` ensures all skills are "Antigravity-native".
 
-The Full-Stack Advisory Council 3.0 operates on a **Source of Truth** principle — where the "Map" (documentation/artifacts) must always match the "Territory" (code).
-
-### 1. Dual-Lane Orchestration
-
-We support two distinct "Speeds" of development, ensuring high velocity for standard patterns while maintaining strict governance for complex architectural changes.
-
-```mermaid
-graph TD
-    User["/user request"] --> Router{"Council Router"}
-    Router -- "/hot-take" --> Fast["Fast Path (Lane H)"]
-    Router -- "/chain-a-feature" --> Strict["Strict Path (Lane A)"]
-    Router -- "/ship" --> Commit["Ship Path (Validated Commit)"]
-    
-    Fast --> Theo["Theo Review & Plan"]
-    Theo --> Impl["Rapid Implementation"]
-    Impl --> Final["Done"]
-    
-    Strict --> A0["Product Genesis (Lenny)"]
-    A0 --> A1["Architecture Gate (Rauchg)"]
-    A1 --> AI["AI/Data Nexus (Chase/Kleppmann)"]
-    AI --> A1
-    A1 --> A2["Component Design (Dan)"]
-    A2 --> A3["UI Composition (Adam)"]
-    A3 --> A35["Interaction Polish (Sarah) [Conditional]"]
-    A35 --> A4["Quality Gate (Kent)"]
-    A3 --> A4
-    A4 --> A5["Perf Verification (Addy)"]
-    A5 --> Final
-    
-    Commit --> Val["Strict Kernel Validation"]
-    Val -- Success --> GC["Git Commit (Conventional)"]
-    GC --> Pulse["Update Pulse Dashboard"]
-    Pulse --> Final
-```
-
-- **Strict Path (`/chain-a-feature`)**: The 8-node cascaded committee for complex architectural shifts.
-- **Fast Path (`/hot-take`)**: 2-step pipeline for rapid-firing standard T3 stack features.
-- **Ship Path (`/ship`)**: Atomic meta-workflow for validation and deployment.
-
-### 2. Artifact Protocol 3.0 (Strictly Typed)
-
-In v3.0, every handoff is now **strictly typed** to ensure zero tech debt:
-- **`kernel_schema` Enforcement**: Every skill has a YAML contract defining which K.E.R.N.E.L. sections it *must* produce.
-- **Strict Validation**: The framework runs `validate-kernel.js` on every step. If an artifact misses a `Verify` code block or a `Constraints Forward` section, the chain halts.
-- **Soft Failures**: Experimental skills (no schema) are permitted an observational pass without halting.
-- **Idempotency**: If a step's validated Artifact already exists and is complete, the step is skipped during `/resume`.
+### 2. Artifact Protocol 3.2 (Strictly Typed)
+Every handoff uses **strictly typed Markdown**:
+- **`kernel_schema` Enforcement**: Every skill defines a contract of required `## [Section]` headers.
+- **Regex Validation**: `validate-kernel.js` parses Artifacts as rich Markdown/XML to ensure zero technical debt.
+- **Soft Failures**: Experimental skills or those in "Lane H" (Hot Take) are granted observational passes.
 
 ### 3. Real-Time Observability (The Pulse Dashboard)
-
-Observability in v3.0 uses the **Pulse Dashboard** (`council-pulse.md`) to maintain a rolling history of the last 5 sessions.
-
-```mermaid
-sequenceDiagram
-    participant S as Skill
-    participant O as Observability Rule (P0.1)
-    participant V as Validation Gate (P1.1)
-    participant P as Pulse Dashboard
-    
-    S->>O: ARTIFACT_WRITE Event
-    O->>V: Trigger Validation
-    V->>V: validate-kernel.js
-    alt Success
-        V-->>O: Pass
-        O->>P: Append Telemetry
-    else Failure
-        V-->>S: Chain Halt (Soft-Fail optional)
-    end
-```
+Observability uses a **Passive Interceptor Pattern** (`observability.rule.md`) to update the Pulse Dashboard (`council-pulse.md`) on every session close.
 
 ### 4. Governance: The Authority Stack
 
@@ -270,9 +206,15 @@ When **Strict Mode** is enabled, network access is denied by default. The counci
 
 * * *
 
+## 🔁 Firebase Migration (Native Pathways)
+The council includes a first-class workflow for migrating from legacy Firebase Studio environments.
+- **GUI**: Click "Move now" in Firebase Studio -> "Zip and Download" -> Extract -> call `@fbs-to-agy-export`.
+- **CLI**: Run `npx firebase-tools@latest studio:export <path>` before launching Antigravity.
+
+* * *
+
 ## ⚠️ Known Limitations
 
-* Requires **Google Antigravity** — does not run in VS Code, Cursor, or standard terminals
-* The `wes-bos-fullstack-educator` persona (`/chain-e-teaching`) will not activate for implementation tasks — it is scoped to Chain E only by the router
-* `pragmatic-engineer-em` (`/em-advice`) produces advisory output only — it will not write code under any circumstances
-* Under Strict Mode, `/chain-d-performance` requires `pagespeed.web.dev` in the network allowlist to run D0 baseline audit
+* Requires **Google Antigravity** — does not run in VS Code or Cursor.
+* `manifest.json` has been deprecated and removed to prevent "The Map is not the Territory" divergence.
+* Rules are pure Markdown and must not contain YAML frontmatter.

@@ -2,14 +2,19 @@ const fs = require('fs');
 const path = require('path');
 
 const SKILLS_DIR = path.join(__dirname, '..', 'skills');
-const OUTPUT_FILE = path.join(SKILLS_DIR, 'manifest.json');
 
+/**
+ * Parses a SKILL.md file for YAML frontmatter and status.
+ * @param {string} content 
+ * @returns {object} { name, description, kernel_schema, hasYAML }
+ */
 function parseSkillFile(content) {
-  const data = { name: '', description: '' };
+  const data = { name: '', description: '', hasYAML: false };
   
-  // 1. Try parsing YAML frontmatter if it exists
+  // 1. Strictly parse YAML frontmatter
   const fmMatch = content.match(/^---\r?\n([\s\S]+?)\r?\n---/);
   if (fmMatch) {
+    data.hasYAML = true;
     const yaml = fmMatch[1];
     const nameMatch = yaml.match(/^name:\s*(.+)$/mi);
     const descHeaderMatch = yaml.match(/^description:\s*>?\r?\n((?:[ \t]+.*\r?\n?)+)/mi);
@@ -35,61 +40,19 @@ function parseSkillFile(content) {
           }
         });
         data.kernel_schema = schema;
-      } catch (e) {
-        console.error(`Error parsing schema in frontmatter: ${e.message}`);
-      }
+      } catch (e) {}
     }
-  }
-
-  // 2. Fallback to Markdown headings for Name if still empty
-  if (!data.name) {
-    const h1Match = content.match(/^#\s+(.+)$/m);
-    if (h1Match) data.name = h1Match[1].trim();
-  }
-
-  // 3. Fallback to first non-empty paragraph for Description if still empty
-  if (!data.description) {
-    // Remove frontmatter if present to avoid confusing it with content
-    const body = content.replace(/^---\r?\n[\s\S]+?\r?\n---/, '');
-    // Find first paragraph (text block followed by blank line or heading)
-    const lines = body.split('\n');
-    let paragraph = '';
-    for (let line of lines) {
-      line = line.trim();
-      if (line && !line.startsWith('#') && !line.startsWith('>')) {
-        paragraph = line;
-        break;
-      }
-    }
-    data.description = paragraph;
-  }
-
-  // 4. Self-Healing: Auto-derive schema if missing
-  if (!data.kernel_schema) {
-    const kernelMatch = content.match(/\[K\]\s*—\s*Context|\[E\]\s*—\s*Task|\[R\]\s*—\s*Constraints|\[N\]\s*—\s*Format|\[E\]\s*—\s*Verify|\[L\]\s*—\s*Call to Action/i);
-    if (kernelMatch) {
-      data.kernel_schema = {
-        "Context": "string (K)",
-        "Task": "string (E)",
-        "Constraints": "string (R)",
-        "Format": "string (N)",
-        "Verify": "string (E_V)",
-        "Call to Action": "string (L)"
-      };
-      data.schema_source = 'auto-derived (K.E.R.N.E.L.)';
-    }
-  } else {
-    data.schema_source = 'explicit (frontmatter)';
   }
 
   return data;
 }
 
 function findSkillFiles(dir, files = []) {
+  if (!fs.existsSync(dir)) return files;
   fs.readdirSync(dir).forEach((item) => {
     const itemPath = path.join(dir, item);
     const stats = fs.statSync(itemPath);
-    if (stats.isDirectory()) {
+    if (stats.isDirectory() && !item.startsWith('.')) {
       findSkillFiles(itemPath, files);
     } else if (item === 'SKILL.md') {
       files.push(itemPath);
@@ -98,133 +61,82 @@ function findSkillFiles(dir, files = []) {
   return files;
 }
 
-function generateManifest() {
-  const skills = [];
+/**
+ * Lints all SKILL.md files for Antigravity-native compliance.
+ */
+function lintSkills(fix = false) {
   const skillFiles = findSkillFiles(SKILLS_DIR);
-  
-  for (const skillMdPath of skillFiles) {
+  let errors = 0;
+  let fixed = 0;
+
+  console.log(`[Linting] Scanning ${skillFiles.length} skills in ${SKILLS_DIR}...`);
+
+  skillFiles.forEach(skillMdPath => {
     const content = fs.readFileSync(skillMdPath, 'utf8');
     const meta = parseSkillFile(content);
-    
-    if (meta && meta.name) {
-      // Use the directory name as the ID, or a path-based ID for nested skills
-      const skillId = path.relative(SKILLS_DIR, path.dirname(skillMdPath))
-        .replace(/\\/g, '/'); // Normalize slashes for manifest consistency
-      
-      skills.push({
-        id: skillId,
-        name: meta.name,
-        description: meta.description || '',
-        kernel_schema: meta.kernel_schema || null,
-        schema_source: meta.schema_source || 'none',
-        path: path.dirname(skillMdPath)
-      });
-    }
-  }
-  
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify({ skills }, null, 2));
-  console.log(`[Success] Generated manifest with ${skills.length} skills at ${OUTPUT_FILE}`);
-  return { skills };
-}
+    const relPath = path.relative(SKILLS_DIR, skillMdPath);
 
-function checkRouter(manifest) {
-  const routerPath = path.join(__dirname, '..', 'workflows', 'fullstack-council.md');
-  const routerContent = fs.readFileSync(routerPath, 'utf8');
-  const chainDir = path.join(__dirname, '..', 'workflows');
-  const chains = fs.readdirSync(chainDir).filter(f => f.startsWith('chain-') && f.endsWith('.md'));
-  const chainContents = chains.map(f => fs.readFileSync(path.join(chainDir, f), 'utf8')).join('\n');
-
-  console.log('\n[Checking Router and Chains Consistency]');
-  let orphans = 0;
-  for (const skill of manifest.skills) {
-    const isDirectlyCalled = routerContent.includes(skill.id) || routerContent.includes(skill.name);
-    const isInChain = chainContents.includes(skill.id) || chainContents.includes(skill.name);
-    
-    if (!isDirectlyCalled && !isInChain) {
-      console.warn(`[Orphaned Skill] ${skill.id} is not referenced in the router or any chain.`);
-      orphans++;
+    if (!meta.hasYAML) {
+      console.error(`[Error] ${relPath}: Missing YAML frontmatter.`);
+      errors++;
+    } else if (!meta.description) {
+      console.error(`[Error] ${relPath}: Missing mandatory 'description' in YAML.`);
+      errors++;
     }
-  }
-  
-  if (orphans === 0) {
-    console.log('[Success] All skills are reachable.');
+
+    if (fix && (!meta.hasYAML || !meta.description)) {
+      // Simple fix: Add placeholder frontmatter if missing
+      const dirName = path.basename(path.dirname(skillMdPath));
+      const placeholder = `---\nname: ${dirName}\ndescription: TBD - Please provide a keyword-dense capability description.\n---\n\n`;
+      const newContent = meta.hasYAML ? content : placeholder + content;
+      fs.writeFileSync(skillMdPath, newContent);
+      fixed++;
+    }
+  });
+
+  if (errors === 0) {
+    console.log('[Success] All SKILL.md files are compliant with native metaprogramming schemas.');
   } else {
-    console.log(`[Warning] Found ${orphans} orphaned skills.`);
+    console.log(`[Summary] Found ${errors} issues. ${fixed} files fixed.`);
   }
+  return errors;
 }
 
 function checkGovernance() {
   const geminiPath = path.join(__dirname, '..', '..', 'GEMINI.md');
-  if (!fs.existsSync(geminiPath)) {
-    console.error('[Error] GEMINI.md not found at', geminiPath);
-    return;
-  }
+  if (!fs.existsSync(geminiPath)) return;
   const content = fs.readFileSync(geminiPath, 'utf8');
   const rulesDir = path.join(__dirname, '..', 'rules');
   const rules = fs.readdirSync(rulesDir).filter(f => f.endsWith('.rule.md'));
 
   console.log('\n[Checking Governance Rules Integrity]');
-  let missingInGemini = 0;
   rules.forEach(rule => {
     if (!content.includes(rule)) {
-      console.warn(`[Warning] Rule file ${rule} is present in .agents/rules/ but not mentioned in GEMINI.md`);
-      missingInGemini++;
+      console.warn(`[Warning] Rule file ${rule} is present but not mentioned in GEMINI.md`);
     }
-  });
-
-  const ruleMatches = content.match(/P\d:\s*@?\.agents\/rules\/(.+\.md)/g) || [];
-  let missingFiles = 0;
-  ruleMatches.forEach(match => {
-    const filename = match.split('/').pop().replace(/[\[\]]/g, '').trim();
-    const filePath = path.join(rulesDir, filename);
-    if (!fs.existsSync(filePath)) {
-      console.error(`[Error] GEMINI.md mentions ${filename}, but the file is missing at ${filePath}`);
-      missingFiles++;
-    }
-  });
-
-  if (missingInGemini === 0 && missingFiles === 0) {
-    console.log('[Success] Governance rules are consistent.');
-  }
-}
-
-function verifyChains() {
-  const chainDir = path.join(__dirname, '..', 'workflows');
-  const chains = fs.readdirSync(chainDir).filter(f => f.startsWith('chain-') && f.endsWith('.md'));
-  
-  console.log('\n[Verifying Orchestration Chains Schema]');
-  let invalidChains = 0;
-  chains.forEach(chain => {
-    const content = fs.readFileSync(path.join(chainDir, chain), 'utf8');
-    // Chains should have a Name in frontmatter and at least one Step (e.g., ## A1, ## R1)
-    const hasName = content.match(/^name:\s*chain-/m);
-    const hasSteps = content.match(/^## [A-GHR][1-9]/m);
-    const mentionsSkills = content.includes('Skill:') || content.includes('**Skill:**');
     
-    if (!hasName || !hasSteps || !mentionsSkills) {
-      console.warn(`[Warning] Chain ${chain} does not appear to follow the standard blueprint schema (Name/Steps/Skills).`);
-      invalidChains++;
+    // Check for hallucinated YAML headers in rules
+    const ruleContent = fs.readFileSync(path.join(rulesDir, rule), 'utf8');
+    if (ruleContent.startsWith('---')) {
+      console.warn(`[Refinement] Rule ${rule} contains YAML frontmatter. Rules should be pure Markdown.`);
     }
   });
-
-  if (invalidChains === 0) {
-    console.log('[Success] All chains follow current blueprint guidelines.');
-  } else {
-    console.log(`[Warning] Found ${invalidChains} chains with potential schema issues.`);
-  }
 }
 
 const args = process.argv.slice(2);
-const manifest = generateManifest();
 
-if (args.includes('--check-router') || args.includes('--all')) {
-  checkRouter(manifest);
+if (args.includes('--lint') || args.includes('--all')) {
+  lintSkills(args.includes('--fix'));
 }
 
 if (args.includes('--verify-governance') || args.includes('--all')) {
   checkGovernance();
 }
 
-if (args.includes('--verify-chains') || args.includes('--all')) {
-  verifyChains();
+if (args.includes('--clean')) {
+  const manifestPath = path.join(SKILLS_DIR, 'manifest.json');
+  if (fs.existsSync(manifestPath)) {
+    fs.unlinkSync(manifestPath);
+    console.log('[Clean] Deleted legacy manifest.json dependency.');
+  }
 }

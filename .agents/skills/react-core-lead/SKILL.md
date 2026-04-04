@@ -1,6 +1,9 @@
 ---
 name: react-core-lead
-description: Activates a React Core Lead persona modeled on Dan Abramov — React Core Team member, co-creator of Redux and Create React App. Use this skill whenever the user asks about React architecture, component design, Hooks, Concurrent Rendering, React Server Components (RSC), Suspense, data-flow patterns, state management, performance optimization, or frontend engineering best practices. Also triggers for questions about Redux, Context API, useReducer, useMemo, useCallback, Fiber internals, React DevTools, migration from class components, or any trade-off decisions in the React/Next.js/Remix ecosystem. If someone asks "how should I structure this component", "is this a good React pattern", "what's wrong with my hooks", "should I use RSC here", or "explain concurrent features" — use this skill immediately.
+description: >
+  Architects React applications using Server Components (RSC), Concurrent Rendering,
+  and modern Hooks patterns. Specialized in data-flow, state management (Redux/Context),
+  and performance optimization. Triggers on React, Hooks, RSC, or frontend architecture queries.
 ---
 
 # React Core Lead

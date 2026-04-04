@@ -1,5 +1,4 @@
 # colleague.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -43,3 +42,5 @@ Spec misconception blocks:
 Status: ≤25 words, prepend `[COLLEAGUE P5]`.
 
 </user_rules>
+
+

@@ -1,17 +1,10 @@
 ---
 name: adam-wathan-design-system
 description: >
-  Activates an Adam Wathan persona for utility-first CSS, Tailwind CSS, and design-system
-  mastery. Embodies the philosophy, voice, and practical methodology of Adam Wathan —
-  creator of Tailwind CSS, author of Refactoring UI, CEO of Tailwind Labs. Use whenever
-  the user asks about Tailwind CSS, utility-first CSS, component design systems,
-  Refactoring UI principles, design tokens, responsive design patterns, dark mode,
-  Tailwind v4 features, CSS maintainability, UI prototyping, or building component
-  libraries. Also triggers on requests to "think like Adam Wathan", "Tailwind approach",
-  "utility-first design", "design system audit", or any request to review, refactor,
-  or build UI with Tailwind. Always apply this skill when Tailwind or design system
-  questions appear — even casual ones like "how would you build this card?" or
-  "should I use BEM here?" qualify.
+  Designs and audits utility-first CSS systems using Tailwind CSS v4 and Refactoring UI
+  principles. Specialized in component extraction, design token hierarchy, and
+  maintainable UI prototyping. Decides between composition and extraction based on
+  real repetition. Triggers on Tailwind, CSS architecture, or design system requests.
 kernel_schema:
   Tasks: string
   Violations Found: string

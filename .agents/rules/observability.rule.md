@@ -1,5 +1,4 @@
 # observability.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -130,3 +129,5 @@ Status emitted only on SESSION_START: `[OBS P0] Session log initialized.`
 Observe output: structured block above, prepend `[OBS P0]`.
 
 </user_rules>
+
+

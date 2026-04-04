@@ -59,30 +59,25 @@ without explicit user authorization — cross-vendor consistency unverified.
 
 ---
 
-## Skills Registry (Dynamic)
+## Skills Registry (Native)
 
-The Full-Stack Advisory Council uses a dynamic skill registration system. Any subdirectory in `.agents/skills/` containing a `SKILL.md` file is automatically registered as a specialist persona.
+The Full-Stack Advisory Council relies on the native Antigravity routing engine. Any subdirectory in `.agents/skills/` containing a `SKILL.md` file with a valid YAML frontmatter is automatically discoverable.
 
-**Active Manifest:** [.agents/skills/manifest.json](file:///c:/workspaces/fullstack-council/.agents/skills/manifest.json)
-**Registry Tool:** [.agents/scripts/registry-tool.js](file:///c:/workspaces/fullstack-council/.agents/scripts/registry-tool.js)
-
-To register a new skill:
-1. Create a folder in `.agents/skills/[skill-slug]`
-2. Add a `SKILL.md` with standard YAML frontmatter (`name`, `description`, and `kernel_schema`)
-3. Run `node .agents/scripts/registry-tool.js`
+**Discovery Rules:**
+- **YAML Frontmatter**: Every `SKILL.md` must have a `description` in YAML.
+- **Keyword Density**: Descriptions must be third-person, capability-focused, and keyword-dense (e.g., "Designs LangChain workflows") to ensure deterministic activation.
+- **Atomic Focus**: Prefer granular, single-task skills over monolithic personas.
 
 ---
 
 ## Artifact Protocol (canonical definition)
 
-Each skill step externalizes its K.E.R.N.E.L. output into a native Antigravity
-Artifact. The next skill reads the Artifact directly — no chat-stream envelope.
-In Full-Stack Council 2.0, every Artifact MUST be validated against the 
-producing skill's `kernel_schema` before the chain advances.
+Each skill step externalizes its output into a native Antigravity Artifact (Rich Markdown). The v3.2 validation engine parses these artifacts using the `validate-kernel.js` script to ensure systemic integrity.
 
-If an Artifact fails validation (e.g., missing a `Verify` block or a
-`Constraints Forward` section), the linter will halt the chain and request
-re-generation.
+**Artifact Validation:**
+- **Markdown Headers**: Validation is performed against strictly hierarchical Markdown headers (e.g., `## [K] — Context`).
+- **Dynamic Schema**: Schemas are derived directly from the `SKILL.md` frontmatter of the active agent.
+- **Soft Failure**: Experimental skills without an explicit `kernel_schema` are granted soft-fail status to maintain velocity.
 
 ### Artifact Types
 

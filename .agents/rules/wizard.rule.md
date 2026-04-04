@@ -1,5 +1,4 @@
 # wizard.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -48,3 +47,5 @@ Cold restart: `[WIZARD P3] Cold restart detected. Use /resume to continue.`
 Status: <=25 words, prepend [WIZARD P3].
 
 </user_rules>
+
+

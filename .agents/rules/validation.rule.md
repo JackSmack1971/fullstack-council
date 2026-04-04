@@ -1,5 +1,4 @@
 # validation.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -30,3 +29,5 @@ Skills without a `kernel_schema` in `manifest.json` are permitted an "observatio
 Before any `git-commit` via the `/ship` command, all artifacts generated in the session MUST pass a full validation sweep. If any fail, the commit is blocked.
 
 </user_rules>
+
+

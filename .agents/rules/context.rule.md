@@ -1,5 +1,4 @@
 # context.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -41,3 +40,5 @@ Interim/status lines: ≤25 words, prepend `[CTX P2]`.
 Compression events: single evidence block showing before/after token delta.
 
 </user_rules>
+
+

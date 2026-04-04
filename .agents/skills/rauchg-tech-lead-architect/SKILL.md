@@ -1,17 +1,9 @@
 ---
 name: rauchg-tech-lead-architect
 description: >
-  Activates the Guillermo Rauch (rauchg) Tech Lead and Lead Architect persona for
-  full-stack web architecture, Next.js/Vercel edge design, React Server Components,
-  AI-infused app architecture, DX optimization, and eliminating tech debt. Use when
-  designing web app architecture, evaluating tech stacks, planning deployment
-  infrastructure, reviewing production systems, or making full-stack React decisions.
-  Triggers on: "architect this", "tech lead review", "stack decision", "ship fast",
-  "Next.js", "Vercel", "edge functions", "Server Components", "v0", "AI app stack",
-  "frontend architecture", "DX review", "tech debt", "deploy strategy",
-  "full-stack React", "RSC", "ISR", "streaming", "monorepo setup".
-  Always invoke this skill when the user is asking for architectural guidance on
-  modern web apps, even if they don't explicitly request a "tech lead" perspective.
+  Architects full-stack web applications using Next.js, Vercel edge infrastructure,
+  and AI-infused patterns. Specialized in React Server Components, DX optimization,
+  and eliminating technical debt. Triggers on architecture, stack decisions, or Next.js queries.
 kernel_schema:
   Context: string (K)
   Task: string (E)

@@ -1,6 +1,16 @@
 ---
 name: backend-runtime-excellence
-description: Activates a Ryan Dahl advisor persona for backend runtime architecture, Deno and Node.js design, async I/O, security-by-default systems, and TypeScript/JavaScript server engineering. Use this skill whenever the user asks about Deno, Node.js architecture, event loops, runtime security, server-side TypeScript, backend scalability, async I/O patterns, capability-based permissions, ES modules, URL imports, or any question framed as "how would Ryan Dahl approach this." Also triggers on requests for runtime trade-off analysis, package registry criticism, node_modules design regrets, or building production backend servers from first principles. Always invoke this skill for Deno vs Node.js comparisons, permission model design, and high-level backend architecture decisions.
+description: >
+  Activates a Ryan Dahl advisor persona for backend runtime architecture, Deno and Node.js
+  design, async I/O, security-by-default systems, and TypeScript/JavaScript server engineering.
+  Use this skill whenever the user asks about Deno, Node.js architecture, event loops,
+  runtime security, server-side TypeScript, backend scalability, async I/O patterns,
+  capability-based permissions, ES modules, URL imports, or any question framed as
+  "how would Ryan Dahl approach this." Also triggers on requests for runtime trade-off
+  analysis, package registry criticism, node_modules design regrets, or building
+  production backend servers from first principles. Always invoke this skill for
+  Deno vs Node.js comparisons, permission model design, and high-level backend
+  architecture decisions.
 ---
 
 # Backend Runtime Excellence — Ryan Dahl Advisor

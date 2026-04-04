@@ -1,5 +1,4 @@
 # anchors.rule.md
-activation: always-on
 
 <user_rules>
 
@@ -38,3 +37,5 @@ Violations self-reported as: `[ANCHORS P4] Over limit: [type]. Trimming.`
 No other meta-commentary on this rule.
 
 </user_rules>
+
+

@@ -1,42 +1,54 @@
 const fs = require('fs');
 const path = require('path');
 
-const MANIFEST_PATH = path.join(__dirname, '..', 'skills', 'manifest.json');
-
+/**
+ * Validates a K.E.R.N.E.L. Artifact against its Skill's schema.
+ * Re-aligned for Council v3.2 (Native Metaprogramming).
+ */
 function validate() {
   const args = process.argv.slice(2);
   const artifactPathFlagIndex = args.indexOf('--artifact');
-  const skillIdFlagIndex = args.indexOf('--skill');
+  const skillPathFlagIndex = args.indexOf('--skill-path');
   const fixFlag = args.includes('--fix');
 
-  if (artifactPathFlagIndex === -1 || skillIdFlagIndex === -1) {
-    console.error('Usage: node validate-kernel.js --artifact <path> --skill <id> [--fix]');
+  if (artifactPathFlagIndex === -1 || skillPathFlagIndex === -1) {
+    console.error('Usage: node validate-kernel.js --artifact <file.md> --skill-path <dir> [--fix]');
     process.exit(1);
   }
 
   const artifactPath = args[artifactPathFlagIndex + 1];
-  const skillId = args[skillIdFlagIndex + 1];
+  const skillPath = args[skillPathFlagIndex + 1];
+  const skillMdPath = path.join(skillPath, 'SKILL.md');
 
-  if (!fs.existsSync(MANIFEST_PATH)) {
-    console.error(`Manifest not found at ${MANIFEST_PATH}. Run registry-tool.js first.`);
+  if (!fs.existsSync(skillMdPath)) {
+    console.error(`Skill definition not found at ${skillMdPath}`);
     process.exit(1);
   }
 
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
-  const skill = manifest.skills.find(s => s.id === skillId);
+  const skillContent = fs.readFileSync(skillMdPath, 'utf8');
+  let schema = null;
 
-  if (!skill) {
-    console.error(`Skill ${skillId} not found in manifest.`);
-    process.exit(1);
+  // Parse YAML frontmatter for kernel_schema
+  const fmMatch = skillContent.match(/^---\r?\n([\s\S]+?)\r?\n---/);
+  if (fmMatch) {
+    const yaml = fmMatch[1];
+    const schemaMatch = yaml.match(/^kernel_schema:\s*>?\r?\n((?:[ \t]+.*\r?\n?)+)/mi);
+    if (schemaMatch) {
+      const schemaLines = schemaMatch[1].split('\n').filter(l => l.trim());
+      schema = {};
+      schemaLines.forEach(line => {
+        const colonIdx = line.indexOf(':');
+        if (colonIdx !== -1) {
+          const key = line.substring(0, colonIdx).trim();
+          const val = line.substring(colonIdx + 1).trim();
+          schema[key] = val;
+        }
+      });
+    }
   }
 
-  console.log(`\n[Validating Kernel Artifact]`);
-  console.log(`Skill:    ${skill.name} (${skillId})`);
-  console.log(`Artifact: ${path.basename(artifactPath)}`);
-
-  // Soft Failure logic - User choice: Allow soft failures for experimental skills
-  if (!skill.kernel_schema) {
-    console.log(`[Soft Fail] Skill ${skillId} has no schema. Allowing execution with warning.`);
+  if (!schema) {
+    console.log(`[Soft Fail] Skill at ${skillPath} has no schema. Allowing execution.`);
     process.exit(0);
   }
 
@@ -49,8 +61,11 @@ function validate() {
   const sections = content.split(/^##\s+/gm).filter(s => s.trim() !== '');
   const foundSections = sections.map(s => s.split('\n')[0].trim());
 
-  const requiredSections = Object.keys(skill.kernel_schema);
+  const requiredSections = Object.keys(schema);
   let errors = 0;
+
+  console.log(`\n[Validating Kernel Artifact — v3.2 Strict Mode]`);
+  console.log(`Artifact: ${path.basename(artifactPath)}`);
 
   requiredSections.forEach(req => {
     const sectionIndex = foundSections.findIndex(s => s.toLowerCase().includes(req.toLowerCase()));
@@ -66,7 +81,6 @@ function validate() {
     } else {
       const sectionContent = sections[sectionIndex].split('\n').slice(1).join('\n').trim();
       
-      // Content Validation logic
       if (sectionContent.length < 5) {
         console.warn(`[FAIL] Section ${req} is too short or empty.`);
         errors++;
@@ -85,10 +99,10 @@ function validate() {
   }
 
   if (errors === 0) {
-    console.log(`\n[Success] Artifact is K.E.R.N.E.L. compliant.`);
+    console.log(`\n[Success] Artifact is compliant.`);
     process.exit(0);
   } else {
-    console.error(`\n[Error] Artifact failed K.E.R.N.E.L. validation (${errors} errors).`);
+    console.error(`\n[Error] Artifact failed validation (${errors} errors).`);
     process.exit(1);
   }
 }
