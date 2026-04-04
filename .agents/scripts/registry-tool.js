@@ -64,6 +64,24 @@ function parseSkillFile(content) {
     data.description = paragraph;
   }
 
+  // 4. Self-Healing: Auto-derive schema if missing
+  if (!data.kernel_schema) {
+    const kernelMatch = content.match(/\[K\]\s*—\s*Context|\[E\]\s*—\s*Task|\[R\]\s*—\s*Constraints|\[N\]\s*—\s*Format|\[E\]\s*—\s*Verify|\[L\]\s*—\s*Call to Action/i);
+    if (kernelMatch) {
+      data.kernel_schema = {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      };
+      data.schema_source = 'auto-derived (K.E.R.N.E.L.)';
+    }
+  } else {
+    data.schema_source = 'explicit (frontmatter)';
+  }
+
   return data;
 }
 
@@ -98,6 +116,7 @@ function generateManifest() {
         name: meta.name,
         description: meta.description || '',
         kernel_schema: meta.kernel_schema || null,
+        schema_source: meta.schema_source || 'none',
         path: path.dirname(skillMdPath)
       });
     }

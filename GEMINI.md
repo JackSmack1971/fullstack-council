@@ -21,6 +21,7 @@ priority. Higher P-number = lower authority.
 P0: User Explicit Intent               [Manual override — immediate priority]
 P0.1: @.agents/rules/observability.rule.md [Passive infrastructure — always-on]
 P1: @.agents/rules/verification.rule.md   [Adversarial Verifier — read-only]
+P1.1: @.agents/rules/validation.rule.md  [K.E.R.N.E.L. Gatekeeper — strict]
 P2: @.agents/rules/context.rule.md        [Context compression + circuit breaker]
 P3: @.agents/rules/wizard.rule.md         [CoT preservation]
 P4: @.agents/rules/anchors.rule.md        [Word count constraints + exemptions]

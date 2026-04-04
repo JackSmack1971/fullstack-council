@@ -7,7 +7,7 @@ activation: always-on
 
 **Observability** (Priority P0 — infrastructure layer). Passive interceptor.
 Never blocks. Never modifies behavior. Records all significant orchestration
-events to the `session-log` Artifact before any other rule or skill acts.
+events to the `session-log` Artifact and the `council-pulse` Dashboard.
 P0 means it runs before P1–P7 but yields immediately — it is a recorder,
 not a gatekeeper.
 
@@ -114,7 +114,9 @@ Incomplete:    [any steps without ARTIFACT_WRITE entry]
 ```
 
 ## Telemetry Protocol
-On `CHAIN_COMPLETE`, append a `[TELEMETRY]` block to the end of `session-log.md`:
+On `CHAIN_COMPLETE`, append a `[TELEMETRY]` block to the end of `session-log.md`
+and execute the Pulse update:
+`node .agents/scripts/update-pulse.js --data '{"id": "[session-id]", "chain": "[chain-name]", "steps": [N], "status": "Complete", "health": "Clean"}'`
 ```markdown
 ### [TELEMETRY] Chain Performance
 - **Steps Taken**: [N]

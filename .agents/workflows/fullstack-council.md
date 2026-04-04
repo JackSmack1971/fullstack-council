@@ -29,6 +29,7 @@ Call the chain directly. No classification step. No ambiguity.
 | `/doc-audit` or `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
 | `/clover-check` or `/trifecta` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
 | `/chain-meta` | `node .agents/scripts/registry-tool.js --all` | Self-Audit: check for orphaned skills or broken router links |
+| `/ship` | `node .agents/scripts/validate-kernel.js --all` | Atomic Ship: Validate all session artifacts + commit |
 
 Single-skill direct invocations (no chain overhead):
 
