@@ -71,6 +71,14 @@ An Artifact is **Missing** if it does not appear in the Artifact panel.
 - [ ] `e2-tests` — Task List
 - [ ] `e3-styled` — Task List
 
+**Chain F manifest:**
+- [ ] `f0-threat-model` — Implementation Plan (always)
+- [ ] `f1-secrets-audit` — Task List (always)
+- [ ] `f2-auth-hardening` — Implementation Plan (always)
+- [ ] `f3-data-boundary` — Implementation Plan (always)
+- [ ] `f4-security-tests` — Task List (always)
+- [ ] `f5-hardening-gate` — Task List (exit gate — blocks on unresolved Highs)
+
 ---
 
 ## Step 3 — Determine Resume Point

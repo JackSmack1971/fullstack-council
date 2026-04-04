@@ -21,6 +21,7 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-c-architecture` | `Call /chain-c-architecture` | Making a stack or architecture decision |
 | `/chain-d-performance` | `Call /chain-d-performance` | Fixing CWV or performance regressions |
 | `/chain-e-teaching` | `Call /chain-e-teaching` | Learning, tutorials, or walkthroughs |
+| `/chain-f-security` | `Call /chain-f-security` | Security audit, auth review, pre-deploy hardening |
 
 Single-skill direct invocations (no chain overhead):
 
