@@ -1,0 +1,142 @@
+**MASTER ARCHITECTURE & INDEX**
+
+1. **Master Architecture & Index**
+2. **Comprehensive Entity Database**
+   * Table 2.1: Core Platforms & Ecosystems
+   * Table 2.2: Artificial Intelligence Models
+   * Table 2.3: Architectural Components & Tooling
+   * Table 2.4: Metaprogramming, Governance & Extensibility
+   * Table 2.5: Security Vectors & Vulnerabilities
+   * Table 2.6: Custom Implementations (Full-Stack Advisory Council)
+3. **Relationship Map / Knowledge Graph**
+   * Execution & Sandboxing Architecture
+   * Metaprogramming & Agent Orchestration
+   * Threat & Vulnerability Vectors
+4. **Contradictions, Gaps & Actionables**
+5. **Next Best Structured Outputs**
+
+***
+
+### 2. COMPREHENSIVE ENTITY DATABASE
+
+#### Table 2.1: Core Platforms & Ecosystems
+| Entity Name | Entity Type | Description | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Google Antigravity** | Development Platform | Agent-first IDE for code-first, autonomous development operating across editor, terminal, and browser. Forked from VS Code. | |
+| **Firebase Studio** | Legacy Platform | Cloud-based web editor sunsetting March 22, 2027. Projects migrate to Antigravity via ZIP export or CLI. | |
+| **Google Workspace / GCP** | Enterprise Ecosystem | Provides data privacy and model training exemptions not available to consumer Antigravity plans. | |
+| **Vertex Model Garden** | AI Infrastructure | Google Cloud backend providing the foundation models (Gemini series) that power Antigravity. Bills overages for premium plans. | |
+| **Open VSX Registry** | Extension Marketplace | Sourced for traditional IDE extensions; vulnerable to slopsquatting. | |
+
+#### Table 2.2: Artificial Intelligence Models
+| Entity Name | Entity Type | Description | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Gemini 3.1 Pro** | Reasoning Model | Flagship model with 1M-2M token context window, deep reasoning (<rrthought> XML), and standard/high priority queues. | |
+| **Gemini 3 Flash** | Reasoning Model | Optimized for speed and file conversion (e.g., Firebase migration). | |
+| **Claude Sonnet 4.6 / Opus 4.6** | Reasoning Model | Anthropic thinking models available as core reasoning engines in Antigravity. | |
+| **GPT-OSS-120b** | Reasoning Model | Alternative reasoning model option available in the Antigravity selector. | |
+| **Nano Banana Pro 2** | Sub-Model | Specialized model used internally by Antigravity (not user-customizable). | |
+| **Gemini 2.5 Pro UI / Flash / Flash Lite** | Sub-Models | Internal models driving various non-customizable parts of the Antigravity stack. | |
+
+#### Table 2.3: Architectural Components & Tooling
+| Entity Name | Entity Type | Description | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Agent Manager (Mission Control)** | Orchestration Layer | UI (Cmd/Ctrl + E) for managing multiple parallel agents, workspaces, and viewing artifacts asynchronously. | |
+| **Browser Subagent** | Execution Agent | Autonomous Chrome instance running on an isolated profile; bypasses host network rules but is paused by CAPTCHAs/MFA. | |
+| **Model Context Protocol (MCP)** | Transport Layer | "Universal serial bus for AI." Connects agents to local DBs/APIs. Configured via `~/.gemini/antigravity/mcp_config.json`. | |
+| **Tree-sitter** | Parsing Engine | Creates a "Lossless Semantic Tree" for deep AST-level code comprehension across Python, JS, Rust, Go, Java, C++, Ruby. | |
+| **macOS Seatbelt (`sandbox-exec`)** | Sandboxing Protocol | Kernel-level terminal isolation for macOS (deprecated by Apple). | |
+| **Linux `nsjail`** | Sandboxing Protocol | Process isolation mechanism for Linux terminal execution. | |
+| **Windows Subsystem for Linux 2 (WSL2)** | Sandboxing Substrate | The required virtualized Linux kernel for sandboxing terminal execution on Windows. | |
+| **Firecracker** | Virtualization Tool | Hardware-level micro-VMs spinning up in 100-150ms. Highly secure "software for one" environment (not native to Antigravity yet). | |
+
+#### Table 2.4: Metaprogramming, Governance & Extensibility
+| Entity Name | Entity Type | Description | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Rules** | Passive Constraints | Markdown files (≤12,000 chars) defining global (`GEMINI.md`) or workspace (`.agents/rules/`) behaviors, styles, and safety rules. | |
+| **Skills** | Procedural Knowledge | Dynamic, directory-based tasks (`SKILL.md`) utilizing YAML frontmatter (name, description) for semantic routing and progressive disclosure. | |
+| **Workflows** | Automated Sequences | Repeatable slash-command sequences (`/workflow-name`) stored in `.agent/workflows/` (e.g., `// turbo`, `// parallel`). | |
+| **Artifacts** | Communication Output | Markdown files, diff views, browser recordings, task lists, and implementation plans generated during Planning Mode. | |
+| **Strict Mode** | Security Setting | Forces maximum sandbox restriction (no network access), restricts file access to workspace, disables terminal auto-execution. | |
+| **Knowledge Items (KIs)** | Memory System | Persistent memory that automatically extracts conversation patterns/code into artifacts for future context retrieval. | |
+
+#### Table 2.5: Security Vectors & Vulnerabilities
+| Entity Name | Entity Type | Description | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Dependency Side-Loading** | Attack Vector | Obfuscated instructions inject malicious packages (e.g., `azure-telemetry-fix`) into the manifest, stealing tokens during CI/CD. | |
+| **Browser Subagent Hijacking** | Attack Vector | "Data Exfiltration as a Service". Poisoned HTML forces trusted browser subagent to submit workspace data to external forms. | |
+| **Slopsquatting** | Attack Vector | Agent autonomously installs malicious fake extensions from the Open VSX Registry due to unclaimed namespaces. | |
+| **DEV#POPPER Exploitation** | Attack Vector | Hidden script isolates cryptographic credentials and transmits them via base64 encoding to `/snv` endpoints. | |
+| **Clinejection & RoguePilot** | Attack Vectors | Prompt injections using hidden HTML/Markdown in external files that trick the LLM into executing unauthorized commands. | |
+
+#### Table 2.6: Custom Implementations (Full-Stack Advisory Council v3.0)
+| Entity Name | Persona/Role | Specific Function in Pipeline | Source(s) |
+| :--- | :--- | :--- | :--- |
+| **Guillermo Rauch** | Architecture | Plans overall app structure, makes high-level technical decisions. (Strict Path Gatekeeper). | |
+| **Dan Abramov** | React | Component design, Hooks, modern React patterns. | |
+| **Adam Wathan** | Tailwind CSS | Responsive styling with Tailwind v4, UI composition. | |
+| **Kent C. Dodds** | Testing | Testing implementation and accessibility (A11y) quality gates. | |
+| **Addy Osmani** | Performance | Performance verification, Core Web Vitals (LCP/INP/CLS). | |
+| **Theo Browne** | T3 Stack / Critique | DX critique, provides rapid-fire implementation via `/hot-take`. | |
+| **Lenny Rachitsky** | Product | Product genesis, growth strategy bridging engineering and product. | |
+| **Sarah Drasner** | Interaction/UX | Refines UI/UX with high-fidelity animations (Conditional step). | |
+| **Troy Hunt** | Security | Threat modeling, zero-trust hardening, secrets audit. | |
+| **Clover Verification Lead** | Audit | "Trifecta" functional correctness audit (Code vs Docstring vs Spec). | |
+| **Pulse Dashboard** | Observability | Telemetry system maintaining a rolling history of the last 5 sessions (`council-pulse.md`). Enforces P0.1. | |
+| **Artifact Protocol 3.0** | Governance | Enforces strict typing (`kernel_schema`), requiring specific K.E.R.N.E.L. sections. Validated via `validate-kernel.js`. | |
+
+***
+
+### 3. RELATIONSHIP MAP / KNOWLEDGE GRAPH
+
+#### Execution & Sandboxing Architecture
+* **Google Antigravity** → execution sandboxed via → **macOS Seatbelt**
+* **Google Antigravity** → execution sandboxed via → **Linux `nsjail`**
+* **Google Antigravity** → execution sandboxed via → **WSL2 Virtualization** (on Windows)
+* **Strict Mode** → automatically enforces → **Terminal Sandboxing** (with network access explicitly denied)
+* **Browser Subagent** → bypasses → **WSL2 localhost restrictions** (requires `socat` tunnels / portproxy on Windows 10)
+* **Browser Subagent** → halted by → **CAPTCHA & MFA** (triggers human-in-the-loop artifact request)
+
+#### Metaprogramming & Agent Orchestration
+* **Agent Manager** → orchestrates multiple instances of → **Primary Agents** (running in parallel)
+* **Primary Agent** → delegates tasks to → **Browser Subagent** (for DOM, Screenshots, Navigation)
+* **Primary Agent** → connects to external tools via → **Model Context Protocol (MCP)**
+* **Tree-Sitter** → enables → **Semantic Code Comprehension** (prevents context collapse in refactoring)
+* **Rules (`GEMINI.md`)** → passively constraints → **Agent Reasoning** (always injected)
+* **Skills (`SKILL.md`)** → dynamically loaded by → **Semantic Routing Engine** (based on YAML frontmatter descriptions)
+
+#### Threat & Vulnerability Vectors
+* **Automated Context Gathering** → vulnerable to → **Clinejection / RoguePilot** (hidden markdown payloads)
+* **Model Context Protocol (MCP)** → requires → **Reverse Proxies (Envoy/nginx)** (for mTLS termination, as native mTLS is undocumented/unsupported)
+* **Browser Subagent** → vulnerable to → **Subagent Hijacking** (submitting secrets to external web forms)
+* **Open VSX Registry** → introduces risk of → **Slopsquatting** (malicious binaries injected via unclaimed namespaces)
+
+***
+
+### 4. CONTRADICTIONS, GAPS & ACTIONABLES
+
+#### Undocumented / Vague Areas (Gaps)
+1. **Docker & Containerization:** Native Docker / DevContainer orchestration is completely absent from the Antigravity IDE. Enterprise deployments rely on terminal commands executed by the agent, or external micro-VM orchestrators like Firecracker.
+2. **Telemetry Payload Specifics:** The distinction between standard diagnostic telemetry and raw proprietary source code ingestion for training is highly ambiguous. Opt-out UI mechanisms conflate crash reports with intellectual property protection.
+3. **Quota Mathematical Modeling:** Precise numerical limits for "compute units" and tokens are hidden. "Tokens Per Minute" is obfuscated by a "Hidden Marathon Cap" which triggers a 7-day ghost lockout if breached, rendering capacity planning nearly impossible for enterprise.
+4. **Custom Subagent Creation:** While Antigravity natively delegates to built-in subagents (Browser/Terminal), creating distinct, long-running custom subagents through the IDE UI is not possible. Developers must use the underlying Google Agent Dev Kit.
+5. **mTLS for MCP Servers:** No native fields exist for `clientCert`, `clientKey`, or `caCert` in `mcp_config.json`, forcing architectural workarounds (reverse proxies) for zero-trust environments.
+
+#### Contradictions
+* **Apple Sandboxing:** Antigravity utilizes macOS `Seatbelt` (`sandbox-exec`) for its kernel-level terminal isolation. However, Apple deprecated this standard years ago in favor of App Sandbox, meaning Antigravity's core macOS security architecture relies on a legacy API vulnerable to future OS updates.
+* **Windows Browser Networking:** Antigravity terminal actions run inside WSL2, but the Chrome Browser subagent runs natively on Windows. This breaks `localhost` communication natively, requiring mirrored networking or manual `socat` port forwarding, contradicting the "seamless local development" marketing.
+
+#### Enterprise Actionables
+1. **Secrets Management:** Do not rely on native Antigravity protections. Implement third-party tooling (e.g., OpenClaw) to scrub `.env` files before automated AI network requests.
+2. **Terminal Auto-Execution:** Mandate "Request Review" across the organization to prevent DEV#POPPER and dependency side-loading attacks.
+3. **Data Governance:** Upgrade to Google Workspace / Vertex AI integrations rather than using the standard IDE tiers to secure legally binding data privacy and opt-out rights.
+
+***
+
+### 5. SCALABILITY & NEXT BEST STRUCTURED OUTPUTS
+
+*As a Master Data Extraction Architect, I have extracted the granular parameters of this dataset. Given the complexity of the custom metaprogramming schemas and the Full-Stack Advisory Council framework detailed in the sources, I recommend the following modular outputs if you wish to dive deeper:*
+
+1. **Schema Extraction (JSON/YAML):** Would you like me to generate the exact programmatic schemas for `SKILL.md`, `GEMINI.md`, and `mcp_config.json` based on the strict architectural rules extracted from the sources?
+2. **Workflow Pipeline Diagram:** I can output a detailed Mermaid.js flowchart mapping the Full-Stack Advisory Council's exact "Dual-Lane Orchestration" (Strict Path vs. Fast Path).
+3. **Threat Matrix Deep Dive:** A dedicated CSV-style threat model mapping each Agentic vulnerability (RoguePilot, DEV#POPPER) to exact Antigravity mitigation settings (Strict Mode, Allow-lists, OpenClaw).
