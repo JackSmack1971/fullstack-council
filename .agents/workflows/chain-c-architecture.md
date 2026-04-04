@@ -1,86 +1,82 @@
 ---
 name: chain-c-architecture
 description: >
-  Architecture decision chain. 3-step cascade: EM trade-off analysis →
-  technical architecture → DX sanity check. Triggers via fullstack-council
+  Architecture decision chain. 3-step cascade: EM trade-off analysis ->
+  technical architecture -> DX sanity check. Triggers via fullstack-council
   router on "architect this", "stack decision", "tech lead review", "should
   we use X", or explicit Call /chain-c-architecture. Also receives re-routes
-  from chain-a-feature when tech debt is detected by rauchg-tech-lead-architect.
+  from chain-a-feature when tech debt is detected.
 ---
 
 # Chain C — Architecture Decision
 
-Advisory-first pipeline. C1 is non-negotiable — no architecture without
-trade-off analysis. C1 produces no code. C2 produces the architecture.
-C3 issues the ship/revise/scrap verdict.
+Advisory-first. C1 produces no code and writes the constraint Artifact
+that C2 and C3 are bound to. C3 issues the final ship/revise/scrap verdict.
 
 ---
 
 ## C1 — Trade-off Analysis
 **Skill:** `pragmatic-engineer-em`
 
-**Constraint:** Advisory only. Zero code output. No implementation details.
+**Constraint:** Advisory only. Zero code output.
 
-Produce (K.E.R.N.E.L. + REFLECT framework):
-- Org-level trade-offs: delivery risk, team scaling implications, maintenance cost
-- Pros/cons table for each viable approach
-- Reference concrete experience patterns (Uber/Skype/Skyscanner analogues)
-- Explicit failure modes for the recommended path
-- `[Verify]`: REFLECT self-check — grounded in delivery experience, hype-free,
-  actionable by a working EM tomorrow
+Produce (K.E.R.N.E.L. + REFLECT):
+- Org-level trade-offs: delivery risk, team scaling, maintenance cost
+- Pros/cons table per viable approach
+- Concrete experience analogues (Uber/Skype/Skyscanner patterns)
+- Explicit failure modes for recommended path
+- `[Verify]`: REFLECT self-check passed — grounded, hype-free, actionable
 
-**Boxed Actionable Recommendation required before C2 proceeds.**
+Boxed Actionable Recommendation required.
 
-Emit HANDOFF envelope with `CONSTRAINTS_FORWARD` — C2 must honor all constraints
-established here (budget, team capability, delivery timeline, org risk tolerance).
+Generate **Implementation Plan Artifact: `c1-tradeoffs`** before C2.
+C2 MUST read this Artifact — do not proceed to architecture without it.
 
 ---
 
 ## C2 — Technical Architecture
 **Skill:** `rauchg-tech-lead-architect`
 
-Input: C1 HANDOFF `CONSTRAINTS_FORWARD` (mandatory — do not architect without it).
+Read Artifact `c1-tradeoffs` — all Constraints Forward are binding.
 
-Run Architecture Review SOP checklist (all 8 steps):
-- [ ] Read problem statement (K — Context)
-- [ ] Restate goal in one sentence (E — Task)
-- [ ] List constraints from C1 forward (R — Constraints)
-- [ ] Draft architecture diagram — Mermaid (N — Format)
-- [ ] Define success criteria + test command (E — Verify)
-- [ ] Issue call to action (L — Call to Action)
-- [ ] Check for tech debt introduction — **halt chain if found**
-- [ ] Confirm edge runtime used where latency matters
+Run Architecture Review SOP checklist:
+- [ ] Problem statement absorbed from c1-tradeoffs (K)
+- [ ] Goal restated in one sentence (E)
+- [ ] Constraints from c1-tradeoffs listed explicitly (R)
+- [ ] Mermaid architecture diagram drafted (N)
+- [ ] Success criteria + test command defined (E)
+- [ ] Call to Action issued (L)
+- [ ] Tech debt check — halt chain if found
+- [ ] Edge runtime confirmed where latency matters
 
-Default stack: Next.js + Vercel unless C1 constraints prohibit.
-`[Verify]`: `vercel deploy --prod` or equivalent CLI command provided.
+Tech debt halt: `[TECH DEBT HALT] Detected: [description].
+Restarting at C1 with revised constraints. Do not proceed to C3.`
 
-**Tech debt halt protocol:** If step 7 fails, emit:
-`[TECH DEBT HALT] Detected: [description]. Chain C re-starts at C1 with
-revised constraints. Do not proceed to C3.`
-
-Emit HANDOFF envelope before C3.
+Generate **Implementation Plan Artifact: `c2-architecture`** before C3.
 
 ---
 
 ## C3 — DX Sanity Check
 **Skill:** `theo-browne-fullstack-advisor`
 
-Input: C2 HANDOFF architecture artifacts.
+Read Artifact `c2-architecture` — honor Constraints Forward.
 
-Produce ReAct loop audit:
+ReAct audit loop:
 ```
-Thought: "What problem does each abstraction layer solve?"
-Action:  Enumerate layers. Justify each against a concrete user/dev need.
+Thought: What problem does each abstraction layer solve?
+Action:  Enumerate layers. Justify each against a concrete need.
 Observe: Flag any layer that cannot be justified in one sentence.
-Answer:  Verdict — Ship / Revise / Scrap
+Answer:  Verdict — Ship / Revise / Scrap (no "it depends")
 ```
 
-Check T3 axioms:
-- Does it solve specific problems or create puzzles?
-- Is type safety end-to-end (DB → API → UI)?
-- Is each abstraction modular and composable?
+Check T3 axioms against `c2-architecture`:
+- Solves specific problems, not creates puzzles?
+- End-to-end type safety: DB -> API -> UI?
+- Each abstraction modular and composable?
 
-`[Verify]`: Single verdict with evidence. No ambiguous "it depends" conclusions.
+`[Verify]`: single verdict with evidence.
 
-**Chain complete.** Final output: C1 trade-off table + C2 architecture diagram +
-C3 verdict, consolidated into one deliverable block.
+Generate **Task List Artifact: `c3-verdict`**.
+
+Chain complete. Final deliverable: c1-tradeoffs + c2-architecture +
+c3-verdict consolidated in one output block.

@@ -1,17 +1,17 @@
 ---
 name: chain-b-review
 description: >
-  Code review and PR audit chain. 4-step cascade: React pattern audit →
-  TypeScript/DX critique → test and a11y audit → CSS/Tailwind audit.
+  Code review and PR audit chain. 4-step cascade: React pattern audit ->
+  TypeScript/DX critique -> test and a11y audit -> CSS/Tailwind audit.
   Triggers via fullstack-council router on "review my code", "PR review",
   "audit this", or explicit Call /chain-b-review.
 ---
 
 # Chain B — Code Review / PR Audit
 
-Submit the code, PR diff, or file path before invoking. Each step audits
-independently — findings do not block the next step unless a P1 Verifier
-halt is triggered (files_changed > 3 auto-activates `verification.rule.md`).
+Submit code, PR diff, or file path before invoking. Each step audits
+independently and writes an Artifact. files_changed > 3 auto-activates
+the P1 Verifier (verification.rule.md).
 
 ---
 
@@ -19,70 +19,72 @@ halt is triggered (files_changed > 3 auto-activates `verification.rule.md`).
 **Skill:** `react-core-lead`
 
 Produce:
-- Numbered issue list with rationale per issue
-- Refactored snippet for each violation
-- Explicit check: Hooks rules, unnecessary re-renders, missing Suspense,
-  class components in greenfield code, `useEffect` for data fetching
-- `[Verify]`: local reasoning preservation confirmed for each refactor
+- Numbered issue list with rationale
+- Refactored snippet per violation
+- Check: Hooks rules, unnecessary re-renders, missing Suspense,
+  useEffect for data fetching, class components in greenfield
+- `[Verify]`: local reasoning preservation confirmed per refactor
 
-Emit HANDOFF envelope before B2.
+Generate **Implementation Plan Artifact: `b1-react-audit`** before B2.
 
 ---
 
 ## B2 — TypeScript + DX Critique
 **Skill:** `theo-browne-fullstack-advisor`
 
-Input: B1 HANDOFF artifacts + original code.
+Read Artifact `b1-react-audit` — honor all Constraints Forward.
 
-Run Pattern Flags table against all files:
+Run Pattern Flags against all files:
 
 | Pattern | Verdict |
 |---------|---------|
 | `any` type | Flag — type it or justify |
-| Manual API types (no tRPC/codegen) | Flag — drift risk |
-| REST + no Zod validation | Flag — add Zod |
-| 5+ abstraction layers on CRUD | Flag — justify each layer |
-| `useEffect` for data fetching | Flag — RSC or TanStack Query |
-| Barrel `index.ts` re-exports | Flag — TS perf regression |
+| Manual API types | Flag — drift risk |
+| REST + no Zod | Flag — add Zod |
+| 5+ layers on CRUD | Flag — justify each |
+| useEffect for data | Flag — RSC or TanStack |
+| Barrel index.ts | Flag — TS perf regression |
 | Class components | Flag |
 
-Emit per-pattern verdict. `[Verify]`: all flags resolved or documented.
+`[Verify]`: all flags resolved or explicitly documented.
 
-Emit HANDOFF envelope before B3.
+Generate **Task List Artifact: `b2-ts-audit`** before B3.
 
 ---
 
 ## B3 — Test + A11y Audit
 **Skill:** `kent-dodds-quality-lead`
 
-Input: B1 + B2 HANDOFF artifacts.
+Read Artifacts `b1-react-audit` + `b2-ts-audit` — honor all Constraints Forward.
 
 Produce:
-- RTL query priority audit (enforce `getByRole` first hierarchy)
+- RTL query priority audit (getByRole hierarchy enforced)
 - Flag implementation detail tests and over-mocking
-- A11y violations: missing `aria-label`, `<div onClick>`, unlabelled inputs
-- Copy-pasteable fixes for each violation
-- `[Verify]`: single `[Next Step]` + confirmation method
+- A11y violations: missing aria-label, div onClick, unlabelled inputs
+- Copy-pasteable fix per violation
+- `[Verify]`: single Next Step + confirmation method
 
-Emit HANDOFF envelope before B4.
+Generate **Task List Artifact: `b3-quality-audit`** before B4.
 
 ---
 
 ## B4 — CSS / Tailwind Audit
 **Skill:** `adam-wathan-design-system`
 
-Input: UI code from B1 scope.
+Read Artifact `b1-react-audit` (UI code scope) — honor Constraints Forward.
 
 Run 5-point Audit Heuristic:
 1. Whitespace — spacing scale consistency
-2. Color — palette constrained to 50/500/900 per hue
-3. Typography — clear hierarchy in type scale
+2. Color — palette constrained to 50/500/900
+3. Typography — clear type hierarchy
 4. Alignment — grid adherence
-5. Visual weight — primary CTA receives first eye fixation
+5. Visual weight — primary CTA first fixation
 
-Flag: arbitrary values without justification, premature component extraction,
-BEM or custom CSS where utilities suffice.
+Flag: arbitrary values without justification, premature extraction, BEM
+where utilities suffice.
 `[Verify]`: Tailwind v4 compatibility confirmed.
 
-**Chain complete.** Consolidated findings summary across B1–B4 emitted as
-final output block.
+Generate **Task List Artifact: `b4-ui-audit`**.
+
+Chain complete. Consolidated findings from b1 through b4 emitted as
+final output referencing all four Artifacts.

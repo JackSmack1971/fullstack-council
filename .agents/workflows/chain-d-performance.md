@@ -4,90 +4,86 @@ description: >
   Performance remediation chain with loop mechanism and conditional branches.
   Diagnoses and fixes CWV failures iteratively. Branches to react-core-lead
   for INP and rauchg-tech-lead-architect for LCP. Triggers via fullstack-council
-  router on "slow page", "bad Lighthouse score", "CWV failure", "LCP", "INP",
-  "CLS", "bundle size", or explicit Call /chain-d-performance. Also receives
-  automatic re-routes from chain-a-feature A5 when CWV thresholds fail.
+  router on "slow page", "CWV failure", "LCP", "INP", "CLS", "bundle size",
+  or explicit Call /chain-d-performance. Also receives re-routes from
+  chain-a-feature A5 (reads Artifact a5-performance as entry input).
 ---
 
 # Chain D — Performance Remediation
 
-Single-fix enforced throughout. Never batch multiple CWV fixes in one pass.
-Loop D1 until all three metrics pass, then close the chain.
+Single-fix enforced throughout. Each D1 pass generates a versioned Artifact.
+Loop until all three metrics pass.
 
-**CWV Pass Thresholds:**
-| Metric | Target |
-|--------|--------|
-| LCP | ≤ 2.5s |
-| INP | ≤ 200ms |
-| CLS | ≤ 0.1 |
+CWV Pass Thresholds: LCP <=2.5s | INP <=200ms | CLS <=0.1
 
 ---
 
-## D1 — CWV Diagnosis (Loop Entry Point)
+## D1 — CWV Diagnosis (Loop Entry)
 **Skill:** `optimizing-web-performance`
 
-**Single-fix enforced.** One metric. One fix. One verification step.
+If re-routed from chain-a-feature: read Artifact `a5-performance` as input.
+Otherwise, request before executing: PageSpeed Insights URL, Lighthouse JSON,
+or specific metric value + page description.
 
-Input required before D1 executes — request one of:
-- PageSpeed Insights URL, OR
-- Lighthouse JSON output, OR
-- Specific metric value + page description
+Single-fix enforced. One metric. One fix. One verification command.
 
-Produce (K.E.R.N.E.L. format):
-- Worst failing CWV metric identified
-- Current value → target → expected delta
-- Single fix: exact code/config change, no alternatives unless asked
-- `[Verify]`: `lighthouse <url> --output json` or PageSpeed Insights re-run
+Produce (K.E.R.N.E.L.):
+- Worst failing CWV metric
+- Current value -> target -> delta
+- Single exact fix: code or config change
+- `[Verify]`: `lighthouse <url> --output json` or PageSpeed re-run
 
-**After each D1 fix is applied and verified:**
+Generate **Task List Artifact: `d1-cwv-pass[N]`** (increment N each loop).
+
+Post-verify routing:
 ```
-All 3 metrics passing? → Chain complete.
-LCP still failing?     → Call /chain-d-performance#D3-lcp
-INP still failing?     → Call /chain-d-performance#D2-inp
-CLS still failing?     → Loop D1 (layout shift root cause next)
+All 3 pass?        -> Chain complete
+INP still failing? -> Call /chain-d-performance#D2-inp (reads d1-cwv-passN)
+LCP still failing? -> Call /chain-d-performance#D3-lcp (reads d1-cwv-passN)
+CLS still failing? -> Loop D1 (layout shift root cause next)
 ```
 
 ---
 
-## D2 — INP Branch (conditional — INP > 200ms only)
+## D2 — INP Branch (conditional — INP >200ms only)
 **Skill:** `react-core-lead`
 
-Input: D1 diagnosis confirming INP as failing metric.
+Read most recent `d1-cwv-pass[N]` Artifact.
 
 Diagnose re-render cascade causing interaction delay:
-- React Profiler simulation: identify component causing long task
-- Apply Concurrent features: `useTransition` for non-urgent updates,
-  `useDeferredValue` for expensive derived state
-- Check: event handler synchronous work > 50ms, missing `startTransition`
-  on state updates triggered by user input
-- `[Verify]`: interaction trace in React DevTools Profiler — long task
-  reduced below 200ms
+- React Profiler simulation: identify long-task component
+- Apply useTransition for non-urgent updates
+- Apply useDeferredValue for expensive derived state
+- Check: synchronous event handler work >50ms, missing startTransition
+- `[Verify]`: interaction trace in React DevTools Profiler — long task <200ms
 
+Generate **Implementation Plan Artifact: `d2-inp-fix`**.
 Return to D1 loop after fix applied.
 
 ---
 
-## D3 — LCP Branch (conditional — LCP > 2.5s only)
+## D3 — LCP Branch (conditional — LCP >2.5s only)
 **Skill:** `rauchg-tech-lead-architect`
 
-Input: D1 diagnosis confirming LCP as failing metric.
+Read most recent `d1-cwv-pass[N]` Artifact.
 
 Evaluate in priority order:
-1. `fetchpriority="high"` on LCP image — check before ISR
+1. fetchpriority="high" on LCP image
 2. Server Component streaming + Suspense boundary placement
-3. ISR revalidation interval for dynamic but cacheable data
-4. Edge cache strategy: CDN TTL, `Cache-Control` headers, stale-while-revalidate
-5. Edge runtime for the LCP route if currently on Node serverless
+3. ISR revalidation interval tuning
+4. Edge cache: Cache-Control headers, stale-while-revalidate
+5. Edge runtime for LCP route if on Node serverless
 
-Produce K.E.R.N.E.L. architecture output with Mermaid cache-flow diagram.
+Produce K.E.R.N.E.L. with Mermaid cache-flow diagram.
 `[Verify]`: `vercel deploy --prod` + Lighthouse re-run — LCP delta confirmed.
 
+Generate **Implementation Plan Artifact: `d3-lcp-fix`**.
 Return to D1 loop after fix applied.
 
 ---
 
 ## Chain Exit
 
-Chain D closes when D1 confirms all three CWV metrics pass simultaneously.
-Final output: ordered list of fixes applied, before/after metric deltas,
-and final Lighthouse CLI command for regression monitoring.
+All three CWV metrics pass in a single D1 Artifact verify step.
+Final output: ordered fix list from all d1/d2/d3 Artifacts, before/after
+metric deltas, and Lighthouse CLI command for regression monitoring.
