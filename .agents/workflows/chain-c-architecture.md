@@ -17,6 +17,7 @@ that C2 and C3 are bound to. C3 issues the final ship/revise/scrap verdict.
 
 ## C1 — Trade-off Analysis
 **Skill:** `pragmatic-engineer-em`
+**Idempotency:** If Artifact `c1-tradeoffs` exists and Status = Complete → skip, read Artifact, advance to C2.
 
 **Constraint:** Advisory only. Zero code output.
 
@@ -36,6 +37,7 @@ C2 MUST read this Artifact — do not proceed to architecture without it.
 
 ## C2 — Technical Architecture
 **Skill:** `rauchg-tech-lead-architect`
+**Idempotency:** If Artifact `c2-architecture` exists and Status = Complete → skip, read Artifact, advance to C3.
 
 Read Artifact `c1-tradeoffs` — all Constraints Forward are binding.
 
@@ -58,6 +60,7 @@ Generate **Implementation Plan Artifact: `c2-architecture`** before C3.
 
 ## C3 — DX Sanity Check
 **Skill:** `theo-browne-fullstack-advisor`
+**Idempotency:** If Artifact `c3-verdict` exists and Status = Complete → chain already complete, report results.
 
 Read Artifact `c2-architecture` — honor Constraints Forward.
 

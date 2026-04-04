@@ -16,6 +16,7 @@ No theory without a working code anchor.
 
 ## E1 — Build the Working Example
 **Skill:** `wes-bos-fullstack-educator`
+**Idempotency:** If Artifact `e1-example` exists and Status = Complete → skip, read Artifact, advance to E2.
 
 Produce (B1 mandatory format):
 - Working, copy-paste-ready code — no pseudo-code, no unexplained TODOs
@@ -36,6 +37,7 @@ Generate **Task List Artifact: `e1-example`** before E2.
 
 ## E2 — Add Test Coverage
 **Skill:** `kent-dodds-quality-lead`
+**Idempotency:** If Artifact `e2-tests` exists and Status = Complete → skip, read Artifact, advance to E3.
 
 Read Artifact `e1-example` — honor all Constraints Forward.
 
@@ -52,6 +54,7 @@ Generate **Task List Artifact: `e2-tests`** before E3.
 
 ## E3 — Style the Example
 **Skill:** `adam-wathan-design-system`
+**Idempotency:** If Artifact `e3-styled` exists and Status = Complete → chain already complete, report results.
 
 Read Artifacts `e1-example` + `e2-tests` — honor Constraints Forward.
 

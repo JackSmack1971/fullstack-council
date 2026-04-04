@@ -15,6 +15,7 @@ Call the chain directly. No classification step. No ambiguity.
 
 | Command | Chain | When |
 |---------|-------|------|
+| `/resume` or `/resume [a-e]` | `Call /chain-resume` | Returning after a mid-chain session close |
 | `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
 | `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
 | `/chain-c-architecture` | `Call /chain-c-architecture` | Making a stack or architecture decision |

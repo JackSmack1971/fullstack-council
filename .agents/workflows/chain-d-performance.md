@@ -20,6 +20,7 @@ CWV Pass Thresholds: LCP <=2.5s | INP <=200ms | CLS <=0.1
 
 ## D1 — CWV Diagnosis (Loop Entry)
 **Skill:** `optimizing-web-performance`
+**Idempotency:** Check for highest existing `d1-cwv-pass[N]`. If Status = Complete and all CWV pass → chain complete. Otherwise resume at pass N+1.
 
 If re-routed from chain-a-feature: read Artifact `a5-performance` as input.
 Otherwise, request before executing: PageSpeed Insights URL, Lighthouse JSON,
@@ -47,6 +48,7 @@ CLS still failing? -> Loop D1 (layout shift root cause next)
 
 ## D2 — INP Branch (conditional — INP >200ms only)
 **Skill:** `react-core-lead`
+**Idempotency:** If Artifact `d2-inp-fix` exists and Status = Complete → skip, return to D1 loop.
 
 Read most recent `d1-cwv-pass[N]` Artifact.
 
@@ -64,6 +66,7 @@ Return to D1 loop after fix applied.
 
 ## D3 — LCP Branch (conditional — LCP >2.5s only)
 **Skill:** `rauchg-tech-lead-architect`
+**Idempotency:** If Artifact `d3-lcp-fix` exists and Status = Complete → skip, return to D1 loop.
 
 Read most recent `d1-cwv-pass[N]` Artifact.
 

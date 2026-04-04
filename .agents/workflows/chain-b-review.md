@@ -17,6 +17,7 @@ the P1 Verifier (verification.rule.md).
 
 ## B1 — React Pattern Audit
 **Skill:** `react-core-lead`
+**Idempotency:** If Artifact `b1-react-audit` exists and Status = Complete → skip, read Artifact, advance to B2.
 
 Produce:
 - Numbered issue list with rationale
@@ -31,6 +32,7 @@ Generate **Implementation Plan Artifact: `b1-react-audit`** before B2.
 
 ## B2 — TypeScript + DX Critique
 **Skill:** `theo-browne-fullstack-advisor`
+**Idempotency:** If Artifact `b2-ts-audit` exists and Status = Complete → skip, read Artifact, advance to B3.
 
 Read Artifact `b1-react-audit` — honor all Constraints Forward.
 
@@ -54,6 +56,7 @@ Generate **Task List Artifact: `b2-ts-audit`** before B3.
 
 ## B3 — Test + A11y Audit
 **Skill:** `kent-dodds-quality-lead`
+**Idempotency:** If Artifact `b3-quality-audit` exists and Status = Complete → skip, read Artifact, advance to B4.
 
 Read Artifacts `b1-react-audit` + `b2-ts-audit` — honor all Constraints Forward.
 
@@ -70,6 +73,7 @@ Generate **Task List Artifact: `b3-quality-audit`** before B4.
 
 ## B4 — CSS / Tailwind Audit
 **Skill:** `adam-wathan-design-system`
+**Idempotency:** If Artifact `b4-ui-audit` exists and Status = Complete → chain already complete, report results.
 
 Read Artifact `b1-react-audit` (UI code scope) — honor Constraints Forward.
 

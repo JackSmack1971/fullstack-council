@@ -16,6 +16,7 @@ Artifact before the next step reads it (P3 Wizard enforced).
 
 ## A1 — Architecture Gate
 **Skill:** `rauchg-tech-lead-architect`
+**Idempotency:** If Artifact `a1-architecture` exists and Status = Complete → skip, read Artifact, advance to A2.
 
 Produce full K.E.R.N.E.L. architecture decision:
 - Stack choice with justification
@@ -32,6 +33,7 @@ Generate **Implementation Plan Artifact: `a1-architecture`** before A2.
 
 ## A2 — Component + Data-Flow Design
 **Skill:** `react-core-lead`
+**Idempotency:** If Artifact `a2-components` exists and Status = Complete → skip, read Artifact, advance to A3.
 
 Read Artifact `a1-architecture` — honor all Constraints Forward.
 
@@ -47,6 +49,7 @@ Generate **Implementation Plan Artifact: `a2-components`** before A3.
 
 ## A3 — UI Composition
 **Skill:** `adam-wathan-design-system`
+**Idempotency:** If Artifact `a3-ui` exists and Status = Complete → skip, read Artifact, advance to A4.
 
 Read Artifact `a2-components` — honor all Constraints Forward.
 
@@ -63,6 +66,7 @@ Generate **Task List Artifact: `a3-ui`** before A4.
 
 ## A4 — Quality Gate
 **Skill:** `kent-dodds-quality-lead`
+**Idempotency:** If Artifact `a4-quality` exists and Status = Complete → skip, read Artifact, advance to A5.
 
 Read Artifacts `a2-components` + `a3-ui` — honor all Constraints Forward.
 
@@ -79,6 +83,7 @@ Generate **Task List Artifact: `a4-quality`** before A5.
 
 ## A5 — Performance Verification
 **Skill:** `optimizing-web-performance`
+**Idempotency:** If Artifact `a5-performance` exists and Status = Complete → chain already complete, report results.
 
 Read Artifacts `a1-architecture` through `a4-quality` — honor all Constraints Forward.
 
