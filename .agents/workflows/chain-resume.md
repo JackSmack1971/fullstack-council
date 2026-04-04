@@ -58,10 +58,13 @@ An Artifact is **Missing** if it does not appear in the Artifact panel.
 - [ ] `c2-architecture` — Implementation Plan
 - [ ] `c3-verdict` — Task List
 
-**Chain D manifest (variable — N = last pass number):**
-- [ ] `d1-cwv-pass[N]` — Task List (check for highest N)
-- [ ] `d2-inp-fix` — Implementation Plan (if INP branch ran)
-- [ ] `d3-lcp-fix` — Implementation Plan (if LCP branch ran)
+**Chain D manifest:**
+- [ ] `d0-baseline` — Task List (always runs)
+- [ ] `d1-bundle` — Task List (always runs)
+- [ ] `d2-lcp-fix` — Implementation Plan (conditional — LCP >2.5s)
+- [ ] `d3-inp-fix` — Implementation Plan (conditional — INP >200ms)
+- [ ] `d4-cls-fix` — Task List (conditional — CLS >0.1)
+- [ ] `d5-regression-gate` — Task List (always runs, chain exit gate)
 
 **Chain E manifest:**
 - [ ] `e1-example` — Task List
@@ -112,10 +115,11 @@ Artifacts are skipped. The first step without a complete Artifact executes.
 
 ## Edge Cases
 
-**Mid-step interruption in Chain D loop:** Find the highest `d1-cwv-pass[N]`
-Artifact. If it is Complete and all three CWV metrics are passing within it,
-the chain was already finished. If metrics are still failing, resume D1 with
-pass number N+1.
+**Mid-step interruption in Chain D:** Scan d0 through d5 in order.
+Last complete Artifact = resume point. D2/D3/D4 are conditional — if
+the metric they address is already passing, their Artifacts will not exist
+and should not be treated as missing. Use d0-baseline metric values to
+determine which conditional branches were required.
 
 **Partial Artifact from a crashed write:** If an Artifact exists but its
 Constraints Forward or Verify section is empty, treat it as Incomplete.
