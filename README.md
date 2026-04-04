@@ -1,4 +1,4 @@
-# 🏛️ Full-Stack Advisory Council
+# 🏛️ Full-Stack Advisory Council v3.0
 
 - **Welcome!**  
 - Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **28 specialized AI personas** that work together like a real engineering crew.
@@ -59,13 +59,14 @@ The system automatically indexes and updates its own skill manifest using standa
 | `/chain-f-security` | **Harden**: Threat model → Secrets audit → Auth → Data boundary → Security tests → Headers (6 steps) |
 | `/chain-g-payments` | **Bill**: Strategy/Compliance → Technical Integration → Webhooks/Idempotency (3 steps) |
 | `/chain-hot-take` | **Speed**: Theo Review → Rapid Implementation (2 steps) |
+| `/ship` | **Ship**: Atomic Validation → Commit → Telemetry Update (Meta-step) |
 
 ### Utility Commands
 
 | Command | Purpose |
 | --- | --- |
 | `/resume` or `/resume [a-h]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
-| `/observe` | Show a summary of this session: chains run, skills invoked, Artifacts produced, halts, rule fires |
+| `/observe` | Show session summary + **Pulse Dashboard** telemetry |
 | `/doc-audit` | Digital Librarian: Scan project for documentation rot and semantic drift |
 | `/trifecta` | Clover Verification Lead: Functional correctness (Trifecta) audit |
 | `/chain-meta` | Self-Audit: framework health check for skills, router, governance, and blueprint integrity |
@@ -109,7 +110,7 @@ Any layer can be overridden — just specify in your command.
 
 ## 🧠 How It Works (Architecture Overview)
 
-The Full-Stack Advisory Council 2.0 operates on a **Source of Truth** principle — where the "Map" (documentation/artifacts) must always match the "Territory" (code).
+The Full-Stack Advisory Council 3.0 operates on a **Source of Truth** principle — where the "Map" (documentation/artifacts) must always match the "Territory" (code).
 
 ### 1. Dual-Lane Orchestration
 
@@ -120,6 +121,7 @@ graph TD
     User["/user request"] --> Router{"Council Router"}
     Router -- "/hot-take" --> Fast["Fast Path (Lane H)"]
     Router -- "/chain-a-feature" --> Strict["Strict Path (Lane A)"]
+    Router -- "/ship" --> Commit["Ship Path (Validated Commit)"]
     
     Fast --> Theo["Theo Review & Plan"]
     Theo --> Impl["Rapid Implementation"]
@@ -136,33 +138,58 @@ graph TD
     A3 --> A4
     A4 --> A5["Perf Verification (Addy)"]
     A5 --> Final
+    
+    Commit --> Val["Strict Kernel Validation"]
+    Val -- Success --> GC["Git Commit (Conventional)"]
+    GC --> Pulse["Update Pulse Dashboard"]
+    Pulse --> Final
 ```
 
-- **Strict Path (`/chain-a-feature`)**: The 8-node cascaded committee for complex architectural shifts, new features, or stack migrations.
-- **Fast Path (`/hot-take`)**: 2-step pipeline (`Theo Review` -> `Implementation`) for rapid-firing standard T3 stack features.
+- **Strict Path (`/chain-a-feature`)**: The 8-node cascaded committee for complex architectural shifts.
+- **Fast Path (`/hot-take`)**: 2-step pipeline for rapid-firing standard T3 stack features.
+- **Ship Path (`/ship`)**: Atomic meta-workflow for validation and deployment.
 
-### 2. Artifact Protocol 2.0 (Validated State)
+### 2. Artifact Protocol 3.0 (Strictly Typed)
 
-Unlike generic AI assistants that carry "hidden context" in a chat memory, the Council uses **Artifacts as Validated State**. 
-
-Every completed step writes a native Antigravity **Artifact**. The next persona reads the Artifact directly. However, in v2.0, every handoff is now **strictly typed**:
+In v3.0, every handoff is now **strictly typed** to ensure zero tech debt:
 - **`kernel_schema` Enforcement**: Every skill has a YAML contract defining which K.E.R.N.E.L. sections it *must* produce.
-- **Automated Validation**: The framework runs `validate-kernel.js` on every step. If an artifact misses a `Verify` block or a `Constraints Forward` section, the chain halts to prevent "metadata theater" and token waste.
+- **Strict Validation**: The framework runs `validate-kernel.js` on every step. If an artifact misses a `Verify` code block or a `Constraints Forward` section, the chain halts.
+- **Soft Failures**: Experimental skills (no schema) are permitted an observational pass without halting.
 - **Idempotency**: If a step's validated Artifact already exists and is complete, the step is skipped during `/resume`.
 
-### 3. The K.E.R.N.E.L. Schema Protocol
+### 3. Real-Time Observability (The Pulse Dashboard)
 
-All expert outputs follow the **K.E.R.N.E.L.** component model:
-- **[K] Context**: Background/assumptions for the current step.
-- **[E] Task**: The specific, single-goal action being taken.
-- **[R] Constraints**: "Do not" rules and architectural boundaries.
-- **[N] Format**: The exact output shape (diagrams, tables, code).
-- **[E_V] Verify**: Concrete success criteria and CLI validation commands.
-- **[L] Call to Action**: The explicit instruction for the *next* agent or the user.
+Observability in v3.0 uses the **Pulse Dashboard** (`council-pulse.md`) to maintain a rolling history of the last 5 sessions.
 
-### 4. Governance & Tech Debt Halt
+```mermaid
+sequenceDiagram
+    participant S as Skill
+    participant O as Observability Rule (P0.1)
+    participant V as Validation Gate (P1.1)
+    participant P as Pulse Dashboard
+    
+    S->>O: ARTIFACT_WRITE Event
+    O->>V: Trigger Validation
+    V->>V: validate-kernel.js
+    alt Success
+        V-->>O: Pass
+        O->>P: Append Telemetry
+    else Failure
+        V-->>S: Chain Halt (Soft-Fail optional)
+    end
+```
 
-Six priority rules (P0–P5) oversee every turn (see `GEMINI.md`). If a skill detects structural tech debt that blocks clean implementation, it emits a `[TECH DEBT]` block and triggers `/chain-c-architecture` to resolve the blocker before the feature chain continues.
+### 4. Governance: The Authority Stack
+
+Seven priority rules (P0–P5) oversee every turn:
+- **P0**: User Intent (Manual override)
+- **P0.1**: Observability (Pulse/Session Logging)
+- **P1**: Verification (Adversarial)
+- **P1.1**: **Validation Gate (Strict Kernel Enforcement)**
+- **P2**: Context Compression
+- **P3**: Artifact Protocol (Wizard)
+- **P4**: Anchors (Constraints)
+- **P5**: Colleague (Judgment)
 
 * * *
 
