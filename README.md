@@ -1,7 +1,7 @@
 # 🏛️ Full-Stack Advisory Council
 
 - **Welcome!**  
-- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **22 specialized AI personas** that work together like a real engineering crew.
+- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **28 specialized AI personas** that work together like a real engineering crew.
 - 
 - ## What Is This Project?
 - **Project Name:** Full-Stack Advisory Council  
@@ -23,7 +23,7 @@ Here’s how it powers the Council:
 - **🛡️ Secure Sandbox**: Uses kernel-level protection (Seatbelt, nsjail) so even if an AI makes a mistake, your real computer stays 100% safe.
 - **🧠 Custom Brains**: Each persona is taught its exact job using simple Markdown rules and YAML files.
 
-## 🪑 Meet the Council – 20+ Specialized Skills
+## 🪑 Meet the Council – 28 Specialized Skills
 The system automatically indexes and updates its own skill manifest using standard metadata. The council includes:
 
 1. **Guillermo Rauch (Architecture)** — Plans the overall app structure and makes big technical decisions.
@@ -35,8 +35,14 @@ The system automatically indexes and updates its own skill manifest using standa
 7. **Gergely Orosz (Engineering Management)** — Helps with scaling, team decisions, and engineering excellence.
 8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
 9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
-10. **Pragmatic Librarian (Doc Audit)** — Audits code/doc sync and identifies semantic drift.
-11. **Clover Verification Lead (Trifecta)** — Verifies functional correctness via Code vs Docstring vs Spec.
+10. **Lenny Rachitsky (Product)** — Bridges the gap between engineering and growth strategy.
+11. **Troy Hunt (Security Auditing)** — Performs deep threat modeling and zero-trust hardening.
+12. **Kelsey Hightower (Infrastructure/SRE)** — Orchestrates containerized deployments and CI/CD pipelines.
+13. **Martin Kleppmann (Data Systems)** — Ensures consistency and reliability in distributed data architectures.
+14. **Harrison Chase (AI Orchestration)** — Designs LangChain agentic workflows and RAG pipelines.
+15. **Sarah Drasner (Interaction)** — Refines UI/UX with high-fidelity animations and interaction polish.
+16. **Pragmatic Librarian (Doc Audit)** — Audits code/doc sync and identifies semantic drift.
+17. **Clover Verification Lead (Trifecta)** — Verifies functional correctness via Code vs Docstring vs Spec.
 ... and 11+ more specialized personas (Clerk, Stripe, Better Auth, Sentry) integrated into the master registry.
 
 🚀 Slash Commands
@@ -45,7 +51,7 @@ The system automatically indexes and updates its own skill manifest using standa
 
 | Command | What happens |
 | --- | --- |
-| `/chain-a-feature` | **Build**: Architecture → React → Tailwind → Tests → CWV check (5 steps) |
+| `/chain-a-feature` | **Build**: Product → Architecture → AI/Data → React → Tailwind → Polish → Tests → Perf (8 steps) |
 | `/chain-b-review` | **Review**: React audit → TypeScript/DX → Tests/A11y → CSS audit (4 steps) |
 | `/chain-c-architecture` | **Decide**: Trade-off analysis → Technical architecture → DX sanity check (3 steps) |
 | `/chain-d-performance` | **Fix performance**: Baseline → Bundle reduction → LCP/INP/CLS branches → Regression gate (6 steps) |
@@ -72,6 +78,12 @@ The system automatically indexes and updates its own skill manifest using standa
 | `/tailwind` | Adam Wathan — Tailwind/CSS/design system |
 | `/testing` | Kent C. Dodds — Tests and a11y |
 | `/react` | Dan Abramov — React patterns and Hooks |
+| `/sre` | Kelsey Hightower — Kubernetes/Infrastructure/SRE |
+| `/data` | Martin Kleppmann — Data systems/Consistency |
+| `/security` | Troy Hunt — Security audit/Hardening |
+| `/product` | Lenny Rachitsky — Product strategy/Growth |
+| `/ux` | Sarah Drasner — Interaction/Animation |
+| `/ai` | Harrison Chase — AI orchestration/RAG |
 | `/trifecta` | Clover Verification Lead — Functional correctness audit |
 | `/t3-review` | Theo Browne — T3 stack DX critique |
 
@@ -113,15 +125,20 @@ graph TD
     Theo --> Impl["Rapid Implementation"]
     Impl --> Final["Done"]
     
-    Strict --> A1["Architecture Gate (Rauchg)"]
+    Strict --> A0["Product Genesis (Lenny)"]
+    A0 --> A1["Architecture Gate (Rauchg)"]
+    A1 --> AI["AI/Data Nexus (Chase/Kleppmann)"]
+    AI --> A1
     A1 --> A2["Component Design (Dan)"]
     A2 --> A3["UI Composition (Adam)"]
-    A3 --> A4["Quality Gate (Kent)"]
+    A3 --> A35["Interaction Polish (Sarah) [Conditional]"]
+    A35 --> A4["Quality Gate (Kent)"]
+    A3 --> A4
     A4 --> A5["Perf Verification (Addy)"]
     A5 --> Final
 ```
 
-- **Strict Path (`/chain-a-feature`)**: The 5-step committee for complex architectural shifts, new features, or stack migrations.
+- **Strict Path (`/chain-a-feature`)**: The 8-node cascaded committee for complex architectural shifts, new features, or stack migrations.
 - **Fast Path (`/hot-take`)**: 2-step pipeline (`Theo Review` -> `Implementation`) for rapid-firing standard T3 stack features.
 
 ### 2. Artifact Protocol 2.0 (Validated State)
@@ -198,12 +215,17 @@ When **Strict Mode** is enabled, network access is denied by default. The counci
 
     You:    /chain-a-feature Add a dashboard with a data table and export to CSV
     
+    [A0] lenny-rachitsky-product      → Product Discovery + Metric alignment
+                                       → Artifact: a0-product ✓
     [A1] rauchg-tech-lead-architect  → Architecture decision + Mermaid diagram
+                                       (Consulting Harrison Chase for AI/Data)
                                        → Artifact: a1-architecture ✓
     [A2] react-core-lead             → Component tree + Hooks strategy
                                        → Artifact: a2-components ✓
     [A3] adam-wathan-design-system   → Tailwind markup + design audit
                                        → Artifact: a3-ui ✓
+    [A3.5] sarah-drasner-interaction → Interaction polish + micro-animations
+                                       → Artifact: a35-polish ✓
     [A4] kent-dodds-quality-lead     → Integration tests + a11y audit
                                        → Artifact: a4-quality ✓
     [A5] optimizing-web-performance  → CWV projection + Lighthouse command

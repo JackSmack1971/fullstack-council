@@ -32,27 +32,27 @@ Call the chain directly. No classification step. No ambiguity.
 
 Single-skill direct invocations (no chain overhead):
 
-| Command | Skill |
-|---------|-------|
-| `/em-advice` | Execute `pragmatic-engineer-em` directly |
-| `/tailwind` | Execute `adam-wathan-design-system` directly |
-| `/testing` | Execute `kent-dodds-quality-lead` directly |
-| `/react` | Execute `react-core-lead` directly |
-| `/t3-review` | Execute `theo-browne-fullstack-advisor` directly |
-| `/auth` | Execute `better-auth` or `clerk` logic via `rauchg-tech-lead-architect` |
-| `/payments` | Execute `stripe` skill via `chain-g-payments` |
-| `/monitoring` | Execute `sentry-for-ai` directly |
-| `/github` | Execute `github` skill directly |
-| `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) |
-| `/doc-audit` | Execute `doc-rot-audit` directly |
-| `/clover-check` | Execute `clover-trifecta-check` directly |
-| `/trifecta` | Execute `clover-trifecta-check` directly |
-| `/sre` | Execute `kelsey-hightower-sre` directly |
-| `/data` | Execute `martin-kleppmann-data-systems` directly |
-| `/security` | Execute `troy-hunt-security` directly |
-| `/product` | Execute `lenny-rachitsky-product` directly |
-| `/ux` | Execute `sarah-drasner-interaction` directly |
-| `/ai` | Execute `harrison-chase-ai-orchestration` directly |
+| Command | Skill | When |
+|---------|-------|------|
+| `/em-advice` | Execute `pragmatic-engineer-em` directly | Advisory on team/org/trade-offs |
+| `/tailwind` | Execute `adam-wathan-design-system` directly | UI/UX, Tailwind v4, Design tokens |
+| `/testing` | Execute `kent-dodds-quality-lead` directly | Unit/Integration testing, A11y |
+| `/react` | Execute `react-core-lead` directly | React patterns, Hooks, RSC |
+| `/t3-review` | Execute `theo-browne-fullstack-advisor` directly | T3 stack DX/Architecture critique |
+| `/auth` | Execute `better-auth` or `clerk` logic via `rauchg-tech-lead-architect` | Auth-stack decision/impl |
+| `/payments` | Execute `stripe` skill via `chain-g-payments` | Stripe/Billing integration |
+| `/monitoring` | Execute `sentry-for-ai` directly | Error tracking and observability |
+| `/github` | Execute `github` skill directly | Git commits, PRs, Workflow automation |
+| `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) | Rapid feature prototyping |
+| `/doc-audit` | Execute `doc-rot-audit` directly | Digital Librarian: Doc-Code sync |
+| `/clover-check` | Execute `clover-trifecta-check` directly | Functional correctness audit |
+| `/trifecta` | Execute `clover-trifecta-check` directly | Functional correctness audit |
+| `/sre` | Execute `kelsey-hightower-sre` directly | Infrastructure, CI/CD, Kubernetes |
+| `/data` | Execute `martin-kleppmann-data-systems` directly | Distributed systems, Consistency, Schema design |
+| `/security` | Execute `troy-hunt-security` directly | Threat modeling, Zero-trust hardening |
+| `/product` | Execute `lenny-rachitsky-product` directly | Growth strategy, Persona discovery, Roadmaps |
+| `/ux` | Execute `sarah-drasner-interaction` directly | Interaction polish, Animation, SVG engineering |
+| `/ai` | Execute `harrison-chase-ai-orchestration` directly | RAG, LangChain, Agentic workflows |
 
 ---
 
