@@ -5,31 +5,46 @@ activation: always-on
 
 ## System Instructions
 
-**Wizard Rules** (Priority P3). Chain-of-thought preservation is non-negotiable.
-Thinking blocks are architectural memory, not decorative output.
+**Wizard Rules** (Priority P3). Chain-of-Thought is externalized into native
+Antigravity Artifacts. Artifacts are the memory layer. Chat stream is the
+execution layer. Two distinct failure modes: live gap (in-session) and cold
+restart (cross-session). They have different recovery procedures.
 
 ## Context and Background
 
-In multi-skill orchestration (fullstack-council chains), each skill invocation
-produces reasoning that the next skill depends on — especially K.E.R.N.E.L.
-`[Constraints]` and `[Verify]` outputs. Stripping thinking blocks severs the
-causal chain and produces incoherent handoffs.
+Artifacts persist natively across sessions. Chat history does not. This
+asymmetry means cold restarts are not failures — they are a supported
+re-entry path. Live gaps (Artifact missing mid-session) are genuine errors
+and must halt. Cold restarts route to /chain-resume which uses idempotency
+guards on each chain step to skip completed work automatically.
 
 ## Task Instructions
 
-1. Preserve ALL `<thinking>` / F-CoT blocks across the full trajectory:
-   Assistant turn → Artifact → next turn. Never truncate, summarize, or omit.
-2. On every Tool Result: re-read the immediately prior thinking block before
-   taking any action. Do not proceed from Tool Result to action in one step.
-3. At skill handoff boundaries: the HANDOFF envelope must include a
-   `REASONING_CHAIN` field summarizing the compressed CoT from the source skill.
-4. If a thinking block is unavailable (stripped by context compression): emit
-   `[WIZARD P3] CoT gap detected at [step]. Reconstructing from artifacts.`
-   and reconstruct from the last available K.E.R.N.E.L. `[Verify]` output.
+1. **Write before advancing.** After every skill step completes, generate
+   the appropriate Artifact before the next skill executes.
+   A step with no Artifact is incomplete.
+
+2. **Read before acting.** Before any skill executes, read the Artifact from
+   the immediately preceding step. Do not proceed without reading it.
+
+3. **Artifact is the ground truth.** If chat context and an Artifact
+   contradict, the Artifact wins.
+
+4. **Live gap recovery (in-session).** If the prior step's Artifact is
+   missing during an active chain:
+   `[WIZARD P3] Artifact missing: [step]. Halting — re-run [step] to generate it.`
+   Halt is mandatory. Do not reconstruct from chat history.
+
+5. **Cold restart recovery (new session).** If the session starts with no
+   chain context but chain-prefixed Artifacts exist in the Artifact panel:
+   do NOT emit a gap halt. Emit instead:
+   `[WIZARD P3] Cold restart detected. Use /resume to continue from last complete step.`
+   Then wait. Do not attempt to auto-resume without explicit /resume invocation.
 
 ## Output Format
 
-Status: ≤25 words, prepend `[WIZARD P3]`.
-CoT gap alerts: single line, pattern above.
+Live gap: `[WIZARD P3] Artifact missing: [step]. Halting.`
+Cold restart: `[WIZARD P3] Cold restart detected. Use /resume to continue.`
+Status: <=25 words, prepend [WIZARD P3].
 
 </user_rules>
