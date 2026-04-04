@@ -1,10 +1,12 @@
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 source:     https://skills.sh/getsentry/sentry-for-ai/sentry-nextjs-sdk
 github:     https://github.com/getsentry/sentry-for-ai
 install:    npx skills add getsentry/sentry-for-ai --skill sentry-nextjs-sdk
 installs:   
 scraped_at: 2026-04-04T15:09:25Z
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## SKILL.md
 
@@ -26,6 +28,7 @@ Opinionated wizard that scans your Next.js project and guides you through comple
 > Always verify against docs.sentry.io/platforms/javascript/guides/nextjs/ before implementing.
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Phase 1: Detect
 
@@ -72,6 +75,7 @@ cat ../go.mod ../requirements.txt ../Gemfile 2>/dev/null | head -3
 | Backend directory found? | Trigger Phase 4 cross-link suggestion |
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Phase 2: Recommend
 
@@ -107,6 +111,7 @@ Present a concrete recommendation based on what you found. Don't ask open-ended 
 Propose: *"I recommend setting up Error Monitoring + Tracing + Session Replay. Want me to also add Logging or Profiling?"*
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Phase 3: Guide
 
@@ -125,6 +130,7 @@ Propose: *"I recommend setting up Error Monitoring + Tracing + Session Replay. W
 If the user skips the wizard, proceed with Option 2 (Manual Setup) below.
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ### Option 2: Manual Setup
 
@@ -321,6 +327,7 @@ export const config = {
 ```
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ### Source Maps Setup
 
@@ -365,6 +372,7 @@ withSentryConfig(nextConfig, {
 Source maps are uploaded automatically on every `next build`.
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ### For Each Agreed Feature
 
@@ -384,6 +392,7 @@ Load the corresponding reference file and follow its steps:
 For each feature: read the reference file, follow its steps exactly, and verify before moving on.
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Verification
 
@@ -411,6 +420,7 @@ Then check your Sentry Issues dashboard — the error should appear within ~30 s
 | Session Replay working | Check Replays tab in Sentry dashboard |
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Config Reference
 
@@ -454,6 +464,7 @@ Then check your Sentry Issues dashboard — the error should appear within ~30 s
 | `NEXT_RUNTIME` | Server / Edge | `"nodejs"` or `"edge"` (set by Next.js internally) |
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Phase 4: Cross-Link
 
@@ -483,6 +494,7 @@ If a backend is found, suggest the matching SDK skill:
 Connecting frontend and backend with the same DSN or linked projects enables **distributed tracing** — stack traces that span your browser, Next.js server, and backend API in a single trace view.
 
 ---
+description: Integrates Sentry for error tracking, performance monitoring, and alerting in Next.js.
 
 ## Troubleshooting
 
@@ -496,3 +508,4 @@ Connecting frontend and backend with the same DSN or linked projects enables **d
 | `withSentryConfig` tree-shaking breaks build | Turbopack in use | Tree-shaking options only work with webpack; remove `webpack.treeshake` options when using Turbopack |
 | `global-error.tsx` not catching errors | Missing `"use client"` directive | Add `"use client"` as the very first line of `global-error.tsx` |
 | Session Replay not recording | `replayIntegration()` missing from client init | Add `Sentry.replayIntegration()` to `integrations` in `instrumentation-client.ts` |
+

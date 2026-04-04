@@ -1,10 +1,12 @@
 ---
+description: Diagnoses web performance bottlenecks, Core Web Vitals regressions, and Lighthouse score failures.
 source:     https://skills.sh/addyosmani/web-quality-skills/performance
 github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill performance
 installs:   8.9K
 scraped_at: 2026-04-04T15:06:06Z
 ---
+description: Diagnoses web performance bottlenecks, Core Web Vitals regressions, and Lighthouse score failures.
 
 ## Summary
 
@@ -15,6 +17,7 @@ scraped_at: 2026-04-04T15:06:06Z
 - Provides caching strategies (Cache-Control headers, service worker patterns) and third-party script management (async loading, interaction-based delays, facade patterns)
 
 ---
+description: Diagnoses web performance bottlenecks, Core Web Vitals regressions, and Lighthouse score failures.
 
 ## SKILL.md
 
@@ -393,3 +396,4 @@ onCLS(console.log);
 ## References
 
 For Core Web Vitals specific optimizations, see Core Web Vitals.
+

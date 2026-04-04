@@ -1,10 +1,12 @@
 ---
+description: Designs and queries PostgreSQL schemas using Drizzle ORM with type-safe migrations.
 source:     https://skills.sh/bobmatnyc/claude-mpm-skills/drizzle-orm
 github:     https://github.com/bobmatnyc/claude-mpm-skills
 install:    npx skills add bobmatnyc/claude-mpm-skills --skill drizzle-orm
 installs:   3.1K
 scraped_at: 2026-04-04T15:06:48Z
 ---
+description: Designs and queries PostgreSQL schemas using Drizzle ORM with type-safe migrations.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:06:48Z
 - Significantly smaller bundle size (~35KB vs ~230KB) and faster cold starts (~10ms vs ~250ms) compared to Prisma, making it ideal for serverless and edge deployments
 
 ---
+description: Designs and queries PostgreSQL schemas using Drizzle ORM with type-safe migrations.
 
 ## SKILL.md
 
@@ -398,3 +401,4 @@ When using Drizzle, these skills enhance your workflow:
 - **sqlalchemy**: SQLAlchemy patterns for Python developers learning Drizzle
 
 [Full documentation available in these skills if deployed in your bundle]
+

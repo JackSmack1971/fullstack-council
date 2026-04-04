@@ -1,10 +1,12 @@
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 source:     https://skills.sh/bobmatnyc/claude-mpm-skills/trpc-type-safety
 github:     https://github.com/bobmatnyc/claude-mpm-skills
 install:    npx skills add bobmatnyc/claude-mpm-skills --skill trpc-type-safety
 installs:   
 scraped_at: 2026-04-04T15:07:58Z
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Summary
 
@@ -150,12 +152,14 @@ scraped_at: 2026-04-04T15:07:58Z
 - ✅Developer experience: Auto-complete, refactoring, type errors
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## SKILL.md
 
 # tRPC - End-to-End Type Safety
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## progressive\_disclosure: entry\_point: summary sections: - id: summary title: "tRPC Overview" tokens: 70 next: [when\_to\_use, quick\_start] - id: when\_to\_use title: "When to Use tRPC" tokens: 150 next: [quick\_start, core\_concepts] - id: quick\_start title: "Quick Start" tokens: 300 next: [core\_concepts, router\_definition] - id: core\_concepts title: "Core Concepts" tokens: 400 next: [router\_definition, procedures] - id: router\_definition title: "Router Definition" tokens: 350 next: [procedures, context] - id: procedures title: "Procedures (Query & Mutation)" tokens: 400 next: [input\_validation, context] - id: input\_validation title: "Input Validation with Zod" tokens: 350 next: [context, middleware] - id: context title: "Context Management" tokens: 400 next: [middleware, error\_handling] - id: middleware title: "Middleware" tokens: 400 next: [error\_handling, client\_setup] - id: error\_handling title: "Error Handling" tokens: 350 next: [client\_setup, react\_integration] - id: client\_setup title: "Client Setup" tokens: 400 next: [react\_integration, nextjs\_integration] - id: react\_integration title: "React Query Integration" tokens: 450 next: [nextjs\_integration, subscriptions] - id: nextjs\_integration title: "Next.js App Router Integration" tokens: 500 next: [subscriptions, file\_uploads] - id: subscriptions title: "Real-time Subscriptions" tokens: 400 next: [file\_uploads, batching] - id: file\_uploads title: "File Uploads" tokens: 300 next: [batching, typescript\_inference] - id: batching title: "Batch Requests & Data Loaders" tokens: 350 next: [typescript\_inference, testing] - id: typescript\_inference title: "TypeScript Inference Patterns" tokens: 300 next: [testing, production\_patterns] - id: testing title: "Testing Strategies" tokens: 400 next: [production\_patterns, comparison] - id: production\_patterns title: "Production Patterns" tokens: 450 next: [comparison, migration] - id: comparison title: "Comparison with REST & GraphQL" tokens: 250 next: [migration, best\_practices] - id: migration title: "Migration from REST" tokens: 300 next: [best\_practices] - id: best\_practices title: "Best Practices & Performance" tokens: 400
 
@@ -166,6 +170,7 @@ scraped_at: 2026-04-04T15:07:58Z
 **Key Benefits**: Zero codegen, TypeScript inference, React Query integration, minimal boilerplate.
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## When to Use tRPC
 
@@ -191,6 +196,7 @@ scraped_at: 2026-04-04T15:07:58Z
 - **GraphQL**: Complex data graphs, multiple clients, flexible queries
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Quick Start
 
@@ -252,6 +258,7 @@ function MyComponent() {
 **Next**: Learn core concepts or dive into router definition.
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Core Concepts
 
@@ -302,6 +309,7 @@ const user = await trpc.getUser.query('123');
 - Auto-complete for all API methods
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Router Definition
 
@@ -371,6 +379,7 @@ server/
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Procedures (Query & Mutation)
 
@@ -456,6 +465,7 @@ const router = t.router({
 **Note**: Output validation adds runtime overhead—use for critical data only.
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Input Validation with Zod
 
@@ -546,6 +556,7 @@ const router = t.router({
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Context Management
 
@@ -621,6 +632,7 @@ export async function createContext(opts: CreateNextContextOptions) {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Middleware
 
@@ -716,6 +728,7 @@ const enrichContextMiddleware = t.middleware(async ({ ctx, next }) => {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Error Handling
 
@@ -821,6 +834,7 @@ function MyComponent() {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Client Setup
 
@@ -913,6 +927,7 @@ const trpcClient = trpc.createClient({
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## React Query Integration
 
@@ -1049,6 +1064,7 @@ function PostList() {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Next.js App Router Integration
 
@@ -1180,6 +1196,7 @@ export { handler as GET, handler as POST };
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Real-time Subscriptions
 
@@ -1302,6 +1319,7 @@ trpc.onUserStatusChange.useSubscription('user-123', {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## File Uploads
 
@@ -1413,6 +1431,7 @@ async function uploadFile(file: File) {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Batch Requests & Data Loaders
 
@@ -1497,6 +1516,7 @@ const trpcClient = trpc.createClient({
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## TypeScript Inference Patterns
 
@@ -1580,6 +1600,7 @@ const router = t.router({
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Testing Strategies
 
@@ -1699,6 +1720,7 @@ export function createWrapper() {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Production Patterns
 
@@ -1826,6 +1848,7 @@ const tracingMiddleware = t.middleware(async ({ path, type, next }) => {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Comparison with REST & GraphQL
 
@@ -1889,6 +1912,7 @@ app.get('/api/public/users', publicRestHandler);
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Migration from REST
 
@@ -1972,6 +1996,7 @@ export default async function handler(req, res) {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Best Practices & Performance
 
@@ -2159,6 +2184,7 @@ const loggingMiddleware = t.middleware(async ({ path, type, next }) => {
 ```
 
 ---
+description: Builds end-to-end type-safe tRPC routers with Zod input validation.
 
 ## Summary
 
@@ -2175,3 +2201,4 @@ const loggingMiddleware = t.middleware(async ({ path, type, next }) => {
 **Get Started**: Install → Define router → Use in client → Enjoy type safety!
 
 **Related Skills**: Zod (validation), React Query (caching), Next.js (integration)
+

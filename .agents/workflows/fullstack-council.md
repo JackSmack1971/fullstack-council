@@ -28,8 +28,9 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-hot-take` or `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
 | `/doc-audit` or `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
 | `/clover-check` or `/trifecta` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
-| `/chain-meta` | `node .agents/scripts/registry-tool.js --all` | Self-Audit: check for orphaned skills or broken router links |
-| `/ship` | `node .agents/scripts/validate-kernel.js --all` | Atomic Ship: Validate all session artifacts + commit |
+| `/chain-meta` | `node .agents/scripts/registry-tool.js --lint --verify-governance` | Self-Audit: lint all SKILL.md frontmatter + verify governance rules |
+| `/ship` | `node .agents/scripts/validate-kernel.js --artifact <artifact.md> --skill-path <skill-dir>` | Atomic Ship: Validate the active chain artifact, then commit |
+| `/firebase-migration` | `Call /firebase-migration` | Firebase Studio migration — native GUI or CLI pathways |
 
 Single-skill direct invocations (no chain overhead):
 
@@ -79,5 +80,5 @@ route silently on an ambiguous match.
    - `## [Verify]` — The exit condition (CLI or test)
 3. **Single Goal**: Each skill invocation focus on a single, atomic task.
 4. **Advisory Logic**: `pragmatic-engineer-em` is advisory-only; it never writes code.
-5. **Performance Loop**: `optimizing-web-performance` is single-fix enforced.
+5. **Performance Loop**: `optimizing-web-performance` is single-fix enforced; use atomic skills `addyosmani-lcp-optimization`, `addyosmani-inp-optimization`, `addyosmani-cls-optimization` for CWV branches.
 6. **Tech Debt Halt**: `rauchg-tech-lead-architect` detected debt halts the chain → `/chain-c-architecture`.

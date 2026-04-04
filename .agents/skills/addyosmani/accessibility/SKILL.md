@@ -1,10 +1,12 @@
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 source:     https://skills.sh/addyosmani/web-quality-skills/accessibility
 github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill accessibility
 installs:   7.7K
 scraped_at: 2026-04-04T15:06:21Z
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:06:21Z
 - Highlights critical issues (missing labels, alt text, contrast, keyboard traps) and new WCAG 2.2 criteria like target size, focus visibility, dragging alternatives, and accessible authentication
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## SKILL.md
 
@@ -39,6 +42,7 @@ Comprehensive accessibility guidelines based on WCAG 2.2 and Lighthouse accessib
 | **AAA** | Enhanced accessibility | Nice to have |
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Perceivable
 
@@ -166,6 +170,7 @@ Comprehensive accessibility guidelines based on WCAG 2.2 and Lighthouse accessib
 ```
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Operable
 
@@ -294,6 +299,7 @@ function showSessionWarning() {
 ```
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Understandable
 
@@ -369,6 +375,7 @@ Login flows must not rely on cognitive function tests (e.g., remembering a passw
 ```
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Robust
 
@@ -397,6 +404,7 @@ Login flows must not rely on cognitive function tests (e.g., remembering a passw
 Use `aria-live` regions to announce dynamic content changes without moving focus. See the live regions pattern for markup and a `showNotification()` helper.
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Testing checklist
 
@@ -424,6 +432,7 @@ axe https://example.com
 See the screen reader commands reference for VoiceOver and NVDA shortcuts.
 
 ---
+description: Audits and fixes web accessibility (WCAG 2.1), layout stability patterns, and ARIA compliance.
 
 ## Common issues by impact
 
@@ -459,3 +468,4 @@ See the screen reader commands reference for VoiceOver and NVDA shortcuts.
 - Web Quality Audit
 - WCAG criteria reference
 - Accessibility code patterns
+

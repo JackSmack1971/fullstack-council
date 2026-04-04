@@ -1,10 +1,12 @@
 ---
+description: Enforces Next.js App Router best practices, performance, and deployment patterns.
 source:     https://skills.sh/vercel-labs/next-skills/next-best-practices
 github:     https://github.com/vercel-labs/next-skills
 install:    npx skills add vercel-labs/next-skills --skill next-best-practices
 installs:   53.1K
 scraped_at: 2026-04-04T15:05:24Z
 ---
+description: Enforces Next.js App Router best practices, performance, and deployment patterns.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:05:24Z
 - Addresses advanced patterns such as parallel routes, intercepting routes, Suspense boundaries, and self-hosting with Docker
 
 ---
+description: Enforces Next.js App Router best practices, performance, and deployment patterns.
 
 ## SKILL.md
 
@@ -182,3 +185,4 @@ See debug-tricks.md for:
 
 - MCP endpoint for AI-assisted debugging
 - Rebuild specific routes with `--debug-build-paths`
+

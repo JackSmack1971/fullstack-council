@@ -1,10 +1,12 @@
 ---
+description: Implements PostgreSQL best practices, query optimization, and connection pooling.
 source:     https://skills.sh/affaan-m/everything-claude-code/postgres-patterns
 github:     https://github.com/affaan-m/everything-claude-code
 install:    npx skills add affaan-m/everything-claude-code --skill postgres-patterns
 installs:   2.8K
 scraped_at: 2026-04-04T15:06:51Z
 ---
+description: Implements PostgreSQL best practices, query optimization, and connection pooling.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:06:51Z
 - Configuration template covers connection limits, timeouts, monitoring setup, and security defaults
 
 ---
+description: Implements PostgreSQL best practices, query optimization, and connection pooling.
 
 ## SKILL.md
 
@@ -163,5 +166,7 @@ SELECT pg_reload_conf();
 - Skill: `backend-patterns` - API and backend patterns
 
 ---
+description: Implements PostgreSQL best practices, query optimization, and connection pooling.
 
 *Based on Supabase Agent Skills (credit: Supabase team) (MIT License)*
+

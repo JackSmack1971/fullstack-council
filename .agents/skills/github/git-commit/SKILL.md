@@ -1,10 +1,12 @@
 ---
+description: Generates conventional commit messages and formats Git history.
 source:     https://skills.sh/github/awesome-copilot/git-commit
 github:     https://github.com/github/awesome-copilot
 install:    npx skills add github/awesome-copilot --skill git-commit
 installs:   20.7K
 scraped_at: 2026-04-04T15:05:29Z
 ---
+description: Generates conventional commit messages and formats Git history.
 
 ## Summary
 
@@ -15,6 +17,7 @@ scraped_at: 2026-04-04T15:05:29Z
 - Enforces git safety protocols: prevents destructive operations, config changes, and secret commits without explicit user request
 
 ---
+description: Generates conventional commit messages and formats Git history.
 
 ## SKILL.md
 
@@ -135,3 +138,4 @@ EOF
 - NEVER skip hooks (--no-verify) unless user asks
 - NEVER force push to main/master
 - If commit fails due to hooks, fix and create NEW commit (don't amend)
+

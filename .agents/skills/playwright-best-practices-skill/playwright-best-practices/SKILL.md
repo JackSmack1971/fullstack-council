@@ -1,10 +1,12 @@
 ---
+description: Writes Playwright end-to-end tests with best-practice selectors and assertions.
 source:     https://skills.sh/currents-dev/playwright-best-practices-skill/playwright-best-practices
 github:     https://github.com/currents-dev/playwright-best-practices-skill
 install:    npx skills add currents-dev/playwright-best-practices-skill --skill playwright-best-practices
 installs:   20.9K
 scraped_at: 2026-04-04T15:05:30Z
 ---
+description: Writes Playwright end-to-end tests with best-practice selectors and assertions.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:05:30Z
 - Addresses advanced topics: multi-user collaboration, WebSocket/real-time testing, OAuth/SSO mocking, third-party service integration, performance budgeting, and console error monitoring
 
 ---
+description: Writes Playwright end-to-end tests with best-practice selectors and assertions.
 
 ## SKILL.md
 
@@ -311,3 +314,4 @@ After writing or modifying tests:
    - Re-run tests
 3. **Only proceed when all tests pass**
 4. **Run multiple times** for critical tests: `npx playwright test --repeat-each=5`
+

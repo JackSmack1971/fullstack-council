@@ -1,10 +1,12 @@
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 source:     https://skills.sh/better-auth/skills/better-auth-best-practices
 github:     https://github.com/better-auth/skills
 install:    npx skills add better-auth/skills --skill better-auth-best-practices
 installs:   32.2K
 scraped_at: 2026-04-04T15:05:26Z
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Summary
 
@@ -15,6 +17,7 @@ scraped_at: 2026-04-04T15:05:26Z
 - Features before/after hooks at endpoint and database levels, rate limiting configuration, CSRF/origin security controls, and type-safe client methods across vanilla, React, Vue, Svelte, and Solid frameworks
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## SKILL.md
 
@@ -23,6 +26,7 @@ scraped_at: 2026-04-04T15:05:26Z
 **Always consult better-auth.com/docs for code examples and latest API.**
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Setup Workflow
 
@@ -34,6 +38,7 @@ scraped_at: 2026-04-04T15:05:26Z
 6. Verify: call `GET /api/auth/ok` — should return `{ status: "ok" }`
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Quick Reference
 
@@ -57,6 +62,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Re-run after adding/changing plugins.**
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Core Config Options
 
@@ -74,6 +80,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 | `trustedOrigins` | CSRF whitelist |
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Database
 
@@ -84,6 +91,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Critical:** Better Auth uses adapter model names, NOT underlying table names. If Prisma model is `User` mapping to table `users`, use `modelName: "user"` (Prisma reference), not `"users"`.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Session Management
 
@@ -102,6 +110,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Key options:** `session.expiresIn` (default 7 days), `session.updateAge` (refresh interval), `session.cookieCache.maxAge`, `session.cookieCache.version` (change to invalidate all sessions).
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## User & Account Config
 
@@ -112,6 +121,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Required for registration:** `email` and `name` fields.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Email Flows
 
@@ -120,6 +130,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 - `emailAndPassword.sendResetPassword` - Password reset email handler
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Security
 
@@ -135,6 +146,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Rate limiting:** `rateLimit.enabled`, `rateLimit.window`, `rateLimit.max`, `rateLimit.storage` ("memory" | "database" | "secondary-storage").
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Hooks
 
@@ -145,6 +157,7 @@ CLI looks for `auth.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--c
 **Hook context (`ctx.context`):** `session`, `secret`, `authCookies`, `password.hash()`/`verify()`, `adapter`, `internalAdapter`, `generateId()`, `tables`, `baseURL`.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Plugins
 
@@ -161,6 +174,7 @@ NOT `from "better-auth/plugins"`.
 Client plugins go in `createAuthClient({ plugins: [...] })`.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Client
 
@@ -169,6 +183,7 @@ Import from: `better-auth/client` (vanilla), `better-auth/react`, `better-auth/v
 Key methods: `signUp.email()`, `signIn.email()`, `signIn.social()`, `signOut()`, `useSession()`, `getSession()`, `revokeSession()`, `revokeSessions()`.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Type Safety
 
@@ -177,6 +192,7 @@ Infer types: `typeof auth.$Infer.Session`, `typeof auth.$Infer.Session.user`.
 For separate client/server projects: `createAuthClient<typeof auth>()`.
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Common Gotchas
 
@@ -188,6 +204,7 @@ For separate client/server projects: `createAuthClient<typeof auth>()`.
 6. **Change email flow** - Sends to current email first, then new email
 
 ---
+description: Implements Better Auth patterns for Next.js, session handling, and OAuth flows.
 
 ## Resources
 
@@ -196,3 +213,4 @@ For separate client/server projects: `createAuthClient<typeof auth>()`.
 - LLMs.txt
 - GitHub
 - Init Options Source
+

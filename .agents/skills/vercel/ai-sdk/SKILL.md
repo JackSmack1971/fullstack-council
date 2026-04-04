@@ -1,10 +1,12 @@
 ---
+description: Builds AI-powered applications using the Vercel AI SDK with streaming and tool use.
 source:     https://skills.sh/vercel/ai/ai-sdk
 github:     https://github.com/vercel/ai
 install:    npx skills add vercel/ai --skill ai-sdk
 installs:   15.8K
 scraped_at: 2026-04-04T15:05:31Z
 ---
+description: Builds AI-powered applications using the Vercel AI SDK with streaming and tool use.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:05:31Z
 - Provides type-safe agent consumption withInferAgentUIMessagefor end-to-end type safety and local DevTools for debugging
 
 ---
+description: Builds AI-powered applications using the Vercel AI SDK with streaming and tool use.
 
 ## SKILL.md
 
@@ -90,3 +93,4 @@ Before implementing agent consumption:
 - AI Gateway - Gateway setup and usage
 - Type-Safe Agents with useChat - End-to-end type safety with InferAgentUIMessage
 - DevTools - Set up local debugging and observability (development only)
+

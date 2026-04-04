@@ -1,10 +1,12 @@
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 source:     https://skills.sh/addyosmani/web-quality-skills/core-web-vitals
 github:     https://github.com/addyosmani/web-quality-skills
 install:    npx skills add addyosmani/web-quality-skills --skill core-web-vitals
 installs:   4.1K
 scraped_at: 2026-04-04T15:06:25Z
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## Summary
 
@@ -14,6 +16,7 @@ scraped_at: 2026-04-04T15:06:25Z
 - Optimization checklists for each metric help prioritize fixes to meet Google's 75th percentile performance requirements
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## SKILL.md
 
@@ -32,6 +35,7 @@ Targeted optimization for the three Core Web Vitals metrics that affect Google S
 Google measures at the **75th percentile** — 75% of page visits must meet "Good" thresholds.
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## LCP: Largest Contentful Paint
 
@@ -114,6 +118,7 @@ new PerformanceObserver((list) => {
 ```
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## INP: Interaction to Next Paint
 
@@ -256,6 +261,7 @@ new PerformanceObserver((list) => {
 ```
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## CLS: Cumulative Layout Shift
 
@@ -391,6 +397,7 @@ new PerformanceObserver((list) => {
 ```
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## Measurement tools
 
@@ -423,6 +430,7 @@ onCLS(sendToAnalytics);
 ```
 
 ---
+description: Audits and remediates LCP, INP, and CLS using Chrome DevTools, Lighthouse, and PageSpeed Insights.
 
 ## Framework quick fixes
 
@@ -471,3 +479,4 @@ startTransition(() => setExpensiveState(newValue));
 - web.dev INP
 - web.dev CLS
 - Performance skill
+
