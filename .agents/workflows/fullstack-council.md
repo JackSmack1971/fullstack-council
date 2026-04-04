@@ -1,31 +1,49 @@
 ---
 name: fullstack-council
 description: >
-  Master router for the Full-Stack Advisory Council. Classifies intent and
-  dispatches to the correct chain sub-workflow. Triggers on: architecture review,
-  feature build, code review, PR audit, performance remediation, CWV fix,
-  teaching request, stack decision, or any multi-persona advisory task.
+  Master router for the Full-Stack Advisory Council. Primary interface is
+  explicit slash commands. Natural language classification is a fallback only.
+  Invoke directly: /chain-a-feature, /chain-b-review, /chain-c-architecture,
+  /chain-d-performance, /chain-e-teaching.
 ---
 
 # Full-Stack Advisory Council — Router
 
-## Step 0 — Intent Classification (mandatory)
+## Primary Interface — Explicit Invocation (use this)
 
-Classify the request into exactly one primary intent. State it aloud:
-`"Intent: [intent]. Routing to: [chain]."`
+Call the chain directly. No classification step. No ambiguity.
 
-| Intent | Route |
-|--------|-------|
-| Greenfield feature / full implementation | `Call /chain-a-feature` |
-| Code review / PR audit | `Call /chain-b-review` |
-| Architecture / stack decision | `Call /chain-c-architecture` |
-| Performance / CWV remediation | `Call /chain-d-performance` |
-| Teaching / onboarding / explanation | `Call /chain-e-teaching` |
-| EM / team scaling / org advice only | Execute `pragmatic-engineer-em` skill directly |
-| Tailwind / CSS / design system only | Execute `adam-wathan-design-system` skill directly |
-| Testing / a11y only | Execute `kent-dodds-quality-lead` skill directly |
-| React patterns / Hooks / Concurrent only | Execute `react-core-lead` skill directly |
-| T3 / tRPC / TypeScript DX only | Execute `theo-browne-fullstack-advisor` skill directly |
+| Command | Chain | When |
+|---------|-------|------|
+| `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
+| `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
+| `/chain-c-architecture` | `Call /chain-c-architecture` | Making a stack or architecture decision |
+| `/chain-d-performance` | `Call /chain-d-performance` | Fixing CWV or performance regressions |
+| `/chain-e-teaching` | `Call /chain-e-teaching` | Learning, tutorials, or walkthroughs |
+
+Single-skill direct invocations (no chain overhead):
+
+| Command | Skill |
+|---------|-------|
+| `/em-advice` | Execute `pragmatic-engineer-em` directly |
+| `/tailwind` | Execute `adam-wathan-design-system` directly |
+| `/testing` | Execute `kent-dodds-quality-lead` directly |
+| `/react` | Execute `react-core-lead` directly |
+| `/t3-review` | Execute `theo-browne-fullstack-advisor` directly |
+
+---
+
+## Fallback — Natural Language Classification
+
+**Only reached if no explicit command was given.**
+
+If the user's message contains no slash command, attempt classification once.
+Emit: `"No command detected. Classifying intent — use /chain-[x] to skip this."`
+Map to the closest explicit command above and invoke it.
+If classification confidence is low, ask: `"Did you mean /chain-[x]?"` — do not
+route silently on an ambiguous match.
+
+---
 
 ## Global Constraints (apply to all chains)
 
@@ -34,4 +52,4 @@ Classify the request into exactly one primary intent. State it aloud:
 3. Single goal per skill invocation.
 4. `pragmatic-engineer-em` is advisory-only — never route code tasks to it.
 5. `optimizing-web-performance` is single-fix enforced — loop it, never batch.
-6. Tech debt detected by `rauchg-tech-lead-architect` is a chain halt → re-route to `/chain-c-architecture`.
+6. Tech debt detected by `rauchg-tech-lead-architect` halts chain → `Call /chain-c-architecture`.
