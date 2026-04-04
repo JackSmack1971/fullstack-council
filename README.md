@@ -1,7 +1,7 @@
 # 🏛️ Full-Stack Advisory Council
 
 - **Welcome!**  
-- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **20+ specialized AI personas** that work together like a real engineering crew.
+- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **21 specialized AI personas** that work together like a real engineering crew.
 - 
 - ## What Is This Project?
 - **Project Name:** Full-Stack Advisory Council  
@@ -19,8 +19,8 @@ Google Antigravity flips that: **AI agents** do the heavy lifting — they manag
 
 Here’s how it powers the Council:
 
-- **🤖 Agent Manager (Mission Control)**: Spawns and coordinates the 9 expert personas so they can actually edit your code and run commands.
-- **🛡️ Secure Sandbox**: Uses kernel-level protection (WSL2, Seatbelt, nsjail) so even if an AI makes a mistake, your real computer stays 100% safe.
+- **🤖 Agent Manager (Mission Control)**: Spawns and coordinates the expert personas so they can actually edit your code and run commands.
+- **🛡️ Secure Sandbox**: Uses kernel-level protection (Seatbelt, nsjail) so even if an AI makes a mistake, your real computer stays 100% safe.
 - **🧠 Custom Brains**: Each persona is taught its exact job using simple Markdown rules and YAML files.
 
 ## 🪑 Meet the Council – 20+ Specialized Skills
@@ -35,7 +35,8 @@ The system automatically indexes and updates its own skill manifest using standa
 7. **Gergely Orosz (Engineering Management)** — Helps with scaling, team decisions, and engineering excellence.
 8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
 9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
-... and 10+ more specialized personas integrated into the master registry.
+10. **Pragmatic Librarian (Doc Audit)** — Audits code/doc sync and identifies semantic drift.
+... and 10+ more specialized personas (Clerk, Stripe, Better Auth, Sentry) integrated into the master registry.
 
 🚀 Slash Commands
 
@@ -50,13 +51,15 @@ The system automatically indexes and updates its own skill manifest using standa
 | `/chain-e-teaching` | **Learn**: Working example → Tests → Styled UI, explained step-by-step (3 steps) |
 | `/chain-f-security` | **Harden**: Threat model → Secrets audit → Auth → Data boundary → Security tests → Headers (6 steps) |
 | `/chain-g-payments` | **Bill**: Strategy/Compliance → Technical Integration → Webhooks/Idempotency (3 steps) |
+| `/chain-hot-take` | **Speed**: Theo Review → Rapid Implementation (2 steps) |
 
 ### Utility Commands
 
 | Command | Purpose |
 | --- | --- |
-| `/resume` or `/resume [a-g]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
+| `/resume` or `/resume [a-h]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
 | `/observe` | Show a summary of this session: chains run, skills invoked, Artifacts produced, halts, rule fires |
+| `/doc-audit` | Digital Librarian: Scan project for documentation rot and semantic drift |
 | `/chain-meta` | Self-Audit: framework health check for skills, router, governance, and blueprint integrity |
 
 ### Single-Skill Shortcuts (no chain overhead)
@@ -91,30 +94,55 @@ Any layer can be overridden — just specify in your command.
 
 ## 🧠 How It Works (Architecture Overview)
 
-### Artifacts as State
+The Full-Stack Advisory Council 2.0 operates on a **Source of Truth** principle — where the "Map" (documentation/artifacts) must always match the "Territory" (code).
 
-Every completed step writes a native Antigravity **Artifact** — either an Implementation Plan (architecture decisions, Mermaid diagrams) or a Task List (audit results, checklists). The next persona reads the Artifact directly. No state lives in the chat stream.
+### 1. Dual-Lane Orchestration
 
-This is also how `/resume` works: the Artifacts persist across sessions, so closing mid-chain loses nothing. The resume workflow scans existing Artifacts, finds the last complete step, and continues from there. Each step has an **idempotency guard** — if its Artifact already exists and is complete, the step is skipped automatically.
+We support two distinct "Speeds" of development, ensuring high velocity for standard patterns while maintaining strict governance for complex architectural changes.
 
-### Governance Rules (P0–P5)
+```mermaid
+graph TD
+    User["/user request"] --> Router{"Council Router"}
+    Router -- "/hot-take" --> Fast["Fast Path (Lane H)"]
+    Router -- "/chain-a-feature" --> Strict["Strict Path (Lane A)"]
+    
+    Fast --> Theo["Theo Review & Plan"]
+    Theo --> Impl["Rapid Implementation"]
+    Impl --> Final["Done"]
+    
+    Strict --> A1["Architecture Gate (Rauchg)"]
+    A1 --> A2["Component Design (Dan)"]
+    A2 --> A3["UI Composition (Adam)"]
+    A3 --> A4["Quality Gate (Kent)"]
+    A4 --> A5["Perf Verification (Addy)"]
+    A5 --> Final
+```
 
-Six rules are active on every turn, in priority order:
+- **Strict Path (`/chain-a-feature`)**: The 5-step committee for complex architectural shifts, new features, or stack migrations.
+- **Fast Path (`/hot-take`)**: 2-step pipeline (`Theo Review` -> `Implementation`) for rapid-firing standard T3 stack features.
 
-| Rule | Priority | What it does |
-| --- | --- | --- |
-| `intent` | P0  | User Explicit Intent — manual override of governance rules |
-| `observability` | P0.1  | Writes every significant event to a rolling `session-log.md` — never blocks |
-| `verification` | P1  | Adversarial verifier — fires on `files_changed > 3` or any change to auth/schema/env files; produces evidence blocks only, never edits |
-| `context` | P2  | 3-layer context compression; circuit breaker on 3 consecutive failures |
-| `wizard` | P3  | Enforces Artifact write-before-advance and read-before-act; halts on missing Artifacts |
-| `anchors` | P4  | Word count limits (prose ≤100 words); code, diagrams, and Artifacts are exempt |
-| `colleague` | P5  | Judgment over compliance; never gold-plates untouched code; surfaces spec misconceptions first |
-| `routing` | P6  | Predictive Routing — suggests relevant chains based on file activity |
+### 2. Artifact Protocol 2.0 (Validated State)
 
-### Global Config (`~/.gemini/GEMINI.md`)
+Unlike generic AI assistants that carry "hidden context" in a chat memory, the Council uses **Artifacts as Validated State**. 
 
-The `GEMINI.md` file is the apex configuration — applied to every workspace regardless of project. It defines the authority stack, model selection matrix (which of 6 available models to use per chain type), global anti-patterns, Strict Mode network allowlist, and the Artifact protocol templates.
+Every completed step writes a native Antigravity **Artifact**. The next persona reads the Artifact directly. However, in v2.0, every handoff is now **strictly typed**:
+- **`kernel_schema` Enforcement**: Every skill has a YAML contract defining which K.E.R.N.E.L. sections it *must* produce.
+- **Automated Validation**: The framework runs `validate-kernel.js` on every step. If an artifact misses a `Verify` block or a `Constraints Forward` section, the chain halts to prevent "metadata theater" and token waste.
+- **Idempotency**: If a step's validated Artifact already exists and is complete, the step is skipped during `/resume`.
+
+### 3. The K.E.R.N.E.L. Schema Protocol
+
+All expert outputs follow the **K.E.R.N.E.L.** component model:
+- **[K] Context**: Background/assumptions for the current step.
+- **[E] Task**: The specific, single-goal action being taken.
+- **[R] Constraints**: "Do not" rules and architectural boundaries.
+- **[N] Format**: The exact output shape (diagrams, tables, code).
+- **[E_V] Verify**: Concrete success criteria and CLI validation commands.
+- **[L] Call to Action**: The explicit instruction for the *next* agent or the user.
+
+### 4. Governance & Tech Debt Halt
+
+Six priority rules (P0–P5) oversee every turn (see `GEMINI.md`). If a skill detects structural tech debt that blocks clean implementation, it emits a `[TECH DEBT]` block and triggers `/chain-c-architecture` to resolve the blocker before the feature chain continues.
 
 * * *
 
@@ -137,25 +165,16 @@ The `GEMINI.md` file is the apex configuration — applied to every workspace re
         chains.json                ← Machine-readable chain registry
         fullstack-council.md       ← Master router (/fullstack-council)
         chain-a-feature.md         ← /chain-a-feature
-        chain-b-review.md          ← /chain-b-review
-        chain-c-architecture.md    ← /chain-c-architecture
-        chain-d-performance.md     ← /chain-d-performance
-        chain-e-teaching.md        ← /chain-e-teaching
-        chain-f-security.md        ← /chain-f-security
-        chain-g-payments.md        ← /chain-g-payments
-        chain-resume.md            ← /resume
+        ...
+        chain-hot-take.md          ← /hot-take
     
       scripts/
         registry-tool.js           ← Framework Health Check / Skill Registry
+        validate-kernel.js         ← K.E.R.N.E.L. Schema Validator
     
       skills/
-        rauchg-tech-lead-architect/
-        react-core-lead/
-        adam-wathan-design-system/
-        kent-dodds-quality-lead/
-        optimizing-web-performance/
-        theo-browne-fullstack-advisor/
-        wes-bos-fullstack-educator/
+        [skill-name]/
+          SKILL.md                 ← Persona behavior + kernel_schema
     
       session-log.md               ← Multi-turn orchestration log
 

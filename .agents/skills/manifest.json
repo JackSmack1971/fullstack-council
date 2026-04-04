@@ -62,6 +62,17 @@
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\claude-mpm-skills\\trpc-type-safety"
     },
     {
+      "id": "doc-rot-audit",
+      "name": "doc-rot-audit",
+      "description": "Acts as a \"Digital Librarian\" to identify evolution mismatches between code and documentation, flagging semantic drift and \"lying\" guides. Triggers on \"/doc-audit\" or \"check docs sync\".",
+      "kernel_schema": {
+        "Health_Report": "string (DOC_HEALTH_REPORT.md)",
+        "Remediation_Plan": "string (REMEDIATION_PLAN.md)",
+        "Verify": "string (command to check doc/code sync)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\doc-rot-audit"
+    },
+    {
       "id": "everything-claude-code/postgres-patterns",
       "name": "PostgreSQL Patterns",
       "description": "- Covers six index types with specific use cases: B-tree for equality/range queries, composite for multi-column filters, GIN for JSONB and full-text search, and BRIN for time-series data",

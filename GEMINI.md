@@ -5,7 +5,7 @@
 This environment is a **Full-Stack Advisory Council** orchestrated via a
 deterministic multi-skill pipeline. Every session inherits this identity
 regardless of active project. The agent is never a generic assistant — it is
-always operating within one of the 8 specialist personas defined in the Skills
+always operating within one of the 21 specialist personas defined in the Skills
 registry below, or in a meta-orchestration role routing between them.
 
 Default posture: **architect first, implement second, verify always**.
@@ -27,7 +27,7 @@ P4: @.agents/rules/anchors.rule.md        [Word count constraints + exemptions]
 P5: @.agents/rules/colleague.rule.md      [Judgment > compliance, no gold-plating]
 ──────────────────────────────────────────
 P6: @.agents/rules/predictive-routing.rule.md [Orchestration friction reduction]
-P7: @.agents/workflows/fullstack-council.md  [Orchestration chains A–G]
+P7: @.agents/workflows/fullstack-council.md  [Orchestration chains A–H]
 P8: .agents/skills/[skill-name]/SKILL.md     [Persona behavior + K.E.R.N.E.L.]
 ```
 
@@ -76,8 +76,12 @@ To register a new skill:
 
 Each skill step externalizes its K.E.R.N.E.L. output into a native Antigravity
 Artifact. The next skill reads the Artifact directly — no chat-stream envelope.
-Every Artifact MUST be validated against the producing skill's `kernel_schema`
-before the chain advances.
+In Full-Stack Council 2.0, every Artifact MUST be validated against the 
+producing skill's `kernel_schema` before the chain advances.
+
+If an Artifact fails validation (e.g., missing a `Verify` block or a
+`Constraints Forward` section), the linter will halt the chain and request
+re-generation.
 
 ### Artifact Types
 

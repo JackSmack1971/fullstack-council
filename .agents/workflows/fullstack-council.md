@@ -26,6 +26,7 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-f-security` | `Call /chain-f-security` | Security audit, auth review, pre-deploy hardening |
 | `/chain-g-payments` | `Call /chain-g-payments` | Payments, billing, Stripe, subscriptions |
 | `/chain-hot-take` or `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
+| `/doc-audit` or `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
 | `/chain-meta` | `node .agents/scripts/registry-tool.js --all` | Self-Audit: check for orphaned skills or broken router links |
 
 Single-skill direct invocations (no chain overhead):
@@ -42,6 +43,7 @@ Single-skill direct invocations (no chain overhead):
 | `/monitoring` | Execute `sentry-for-ai` directly |
 | `/github` | Execute `github` skill directly |
 | `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) |
+| `/doc-audit` | Execute `doc-rot-audit` directly |
 
 ---
 
