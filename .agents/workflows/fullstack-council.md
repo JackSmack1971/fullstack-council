@@ -27,6 +27,7 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-g-payments` | `Call /chain-g-payments` | Payments, billing, Stripe, subscriptions |
 | `/chain-hot-take` or `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
 | `/doc-audit` or `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
+| `/clover-check` or `/trifecta` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
 | `/chain-meta` | `node .agents/scripts/registry-tool.js --all` | Self-Audit: check for orphaned skills or broken router links |
 
 Single-skill direct invocations (no chain overhead):
@@ -44,6 +45,8 @@ Single-skill direct invocations (no chain overhead):
 | `/github` | Execute `github` skill directly |
 | `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) |
 | `/doc-audit` | Execute `doc-rot-audit` directly |
+| `/clover-check` | Execute `clover-trifecta-check` directly |
+| `/trifecta` | Execute `clover-trifecta-check` directly |
 
 ---
 

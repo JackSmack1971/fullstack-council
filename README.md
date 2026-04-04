@@ -1,7 +1,7 @@
 # 🏛️ Full-Stack Advisory Council
 
 - **Welcome!**  
-- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **21 specialized AI personas** that work together like a real engineering crew.
+- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **22 specialized AI personas** that work together like a real engineering crew.
 - 
 - ## What Is This Project?
 - **Project Name:** Full-Stack Advisory Council  
@@ -36,7 +36,8 @@ The system automatically indexes and updates its own skill manifest using standa
 8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
 9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
 10. **Pragmatic Librarian (Doc Audit)** — Audits code/doc sync and identifies semantic drift.
-... and 10+ more specialized personas (Clerk, Stripe, Better Auth, Sentry) integrated into the master registry.
+11. **Clover Verification Lead (Trifecta)** — Verifies functional correctness via Code vs Docstring vs Spec.
+... and 11+ more specialized personas (Clerk, Stripe, Better Auth, Sentry) integrated into the master registry.
 
 🚀 Slash Commands
 
@@ -60,6 +61,7 @@ The system automatically indexes and updates its own skill manifest using standa
 | `/resume` or `/resume [a-h]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
 | `/observe` | Show a summary of this session: chains run, skills invoked, Artifacts produced, halts, rule fires |
 | `/doc-audit` | Digital Librarian: Scan project for documentation rot and semantic drift |
+| `/trifecta` | Clover Verification Lead: Functional correctness (Trifecta) audit |
 | `/chain-meta` | Self-Audit: framework health check for skills, router, governance, and blueprint integrity |
 
 ### Single-Skill Shortcuts (no chain overhead)
@@ -70,6 +72,7 @@ The system automatically indexes and updates its own skill manifest using standa
 | `/tailwind` | Adam Wathan — Tailwind/CSS/design system |
 | `/testing` | Kent C. Dodds — Tests and a11y |
 | `/react` | Dan Abramov — React patterns and Hooks |
+| `/trifecta` | Clover Verification Lead — Functional correctness audit |
 | `/t3-review` | Theo Browne — T3 stack DX critique |
 
 * * *

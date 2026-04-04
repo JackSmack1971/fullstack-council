@@ -62,6 +62,18 @@
       "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\claude-mpm-skills\\trpc-type-safety"
     },
     {
+      "id": "clover-trifecta-check",
+      "name": "clover-trifecta-check",
+      "description": "Verify functional correctness using the Clover 'Trifecta' check (Code vs Docstring vs Spec).",
+      "kernel_schema": {
+        "Verdict": "string (PASS / FAIL)",
+        "Phantom_Report": "string (Detection of suspicious imports/methods)",
+        "Correction_Plan": "string (Remediation steps for drift)",
+        "Verify": "string (Command to confirm sync)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\clover-trifecta-check"
+    },
+    {
       "id": "doc-rot-audit",
       "name": "doc-rot-audit",
       "description": "Acts as a \"Digital Librarian\" to identify evolution mismatches between code and documentation, flagging semantic drift and \"lying\" guides. Triggers on \"/doc-audit\" or \"check docs sync\".",
