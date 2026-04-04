@@ -1,13 +1,14 @@
 # 🏛️ Full-Stack Advisory Council
 
-**Welcome!**  
-Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of 9 expert AI personas that work together like a real engineering crew.
-
-## What Is This Project?
-**Project Name:** Full-Stack Advisory Council  
-**Purpose:** A deterministic, multi-agent AI orchestration pipeline designed to architect, implement, review, and optimize full-stack web applications.
-
-Instead of asking one generic AI to “build something,” you talk to a structured council. The experts hand work off to each other in clear steps so the final result is fast, secure, clean, and production-ready.
+- **Welcome!**  
+- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **20+ specialized AI personas** that work together like a real engineering crew.
+- 
+- ## What Is This Project?
+- **Project Name:** Full-Stack Advisory Council  
+- **Purpose:** A deterministic, multi-agent AI orchestration pipeline designed to architect, implement, review, and optimize full-stack web applications.
+- 
+- Instead of asking one generic AI to “build something,” you talk to a structured council. The experts hand work off to each other in clear steps so the final result is fast, secure, clean, and production-ready.
+- 
 
 ## 🌌 Powered by Google Antigravity
 This council only works inside **Google Antigravity** — a special AI-first development environment.
@@ -22,8 +23,8 @@ Here’s how it powers the Council:
 - **🛡️ Secure Sandbox**: Uses kernel-level protection (WSL2, Seatbelt, nsjail) so even if an AI makes a mistake, your real computer stays 100% safe.
 - **🧠 Custom Brains**: Each persona is taught its exact job using simple Markdown rules and YAML files.
 
-## 🪑 Meet the Council – The 9 Expert Personas
-The system automatically calls the right expert for each job:
+## 🪑 Meet the Council – 20+ Specialized Skills
+The system automatically indexes and updates its own skill manifest using standard metadata. The council includes:
 
 1. **Guillermo Rauch (Architecture)** — Plans the overall app structure and makes big technical decisions.
 2. **Dan Abramov (React)** — Writes clean, modern React components and hooks.
@@ -34,6 +35,7 @@ The system automatically calls the right expert for each job:
 7. **Gergely Orosz (Engineering Management)** — Helps with scaling, team decisions, and engineering excellence.
 8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
 9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
+... and 10+ more specialized personas integrated into the master registry.
 
 🚀 Slash Commands
 
@@ -47,13 +49,15 @@ The system automatically calls the right expert for each job:
 | `/chain-d-performance` | **Fix performance**: Baseline → Bundle reduction → LCP/INP/CLS branches → Regression gate (6 steps) |
 | `/chain-e-teaching` | **Learn**: Working example → Tests → Styled UI, explained step-by-step (3 steps) |
 | `/chain-f-security` | **Harden**: Threat model → Secrets audit → Auth → Data boundary → Security tests → Headers (6 steps) |
+| `/chain-g-payments` | **Bill**: Strategy/Compliance → Technical Integration → Webhooks/Idempotency (3 steps) |
 
 ### Utility Commands
 
 | Command | Purpose |
 | --- | --- |
-| `/resume` or `/resume [a-f]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
+| `/resume` or `/resume [a-g]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
 | `/observe` | Show a summary of this session: chains run, skills invoked, Artifacts produced, halts, rule fires |
+| `/chain-meta` | Self-Audit: framework health check for skills, router, governance, and blueprint integrity |
 
 ### Single-Skill Shortcuts (no chain overhead)
 
@@ -99,12 +103,14 @@ Six rules are active on every turn, in priority order:
 
 | Rule | Priority | What it does |
 | --- | --- | --- |
-| `observability` | P0  | Writes every significant event to a rolling `session-log` Artifact — never blocks |
+| `intent` | P0  | User Explicit Intent — manual override of governance rules |
+| `observability` | P0.1  | Writes every significant event to a rolling `session-log.md` — never blocks |
 | `verification` | P1  | Adversarial verifier — fires on `files_changed > 3` or any change to auth/schema/env files; produces evidence blocks only, never edits |
 | `context` | P2  | 3-layer context compression; circuit breaker on 3 consecutive failures |
 | `wizard` | P3  | Enforces Artifact write-before-advance and read-before-act; halts on missing Artifacts |
 | `anchors` | P4  | Word count limits (prose ≤100 words); code, diagrams, and Artifacts are exempt |
 | `colleague` | P5  | Judgment over compliance; never gold-plates untouched code; surfaces spec misconceptions first |
+| `routing` | P6  | Predictive Routing — suggests relevant chains based on file activity |
 
 ### Global Config (`~/.gemini/GEMINI.md`)
 
@@ -119,14 +125,16 @@ The `GEMINI.md` file is the apex configuration — applied to every workspace re
     
     .agents/
       rules/
-        observability.rule.md      ← P0: session logging
+        observability.rule.md      ← P0.1: session logging
         verification.rule.md       ← P1: adversarial verifier
         context.rule.md            ← P2: context compression
         wizard.rule.md             ← P3: Artifact protocol
         anchors.rule.md            ← P4: word count constraints
         colleague.rule.md          ← P5: judgment > compliance
+        predictive-routing.rule.md ← P6: predictive routing
     
       workflows/
+        chains.json                ← Machine-readable chain registry
         fullstack-council.md       ← Master router (/fullstack-council)
         chain-a-feature.md         ← /chain-a-feature
         chain-b-review.md          ← /chain-b-review
@@ -134,7 +142,11 @@ The `GEMINI.md` file is the apex configuration — applied to every workspace re
         chain-d-performance.md     ← /chain-d-performance
         chain-e-teaching.md        ← /chain-e-teaching
         chain-f-security.md        ← /chain-f-security
+        chain-g-payments.md        ← /chain-g-payments
         chain-resume.md            ← /resume
+    
+      scripts/
+        registry-tool.js           ← Framework Health Check / Skill Registry
     
       skills/
         rauchg-tech-lead-architect/
@@ -143,8 +155,9 @@ The `GEMINI.md` file is the apex configuration — applied to every workspace re
         kent-dodds-quality-lead/
         optimizing-web-performance/
         theo-browne-fullstack-advisor/
-        pragmatic-engineer-em/
         wes-bos-fullstack-educator/
+    
+      session-log.md               ← Multi-turn orchestration log
 
 * * *
 

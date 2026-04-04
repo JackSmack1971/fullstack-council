@@ -12,6 +12,13 @@ description: >
   "full-stack React", "RSC", "ISR", "streaming", "monorepo setup".
   Always invoke this skill when the user is asking for architectural guidance on
   modern web apps, even if they don't explicitly request a "tech lead" perspective.
+kernel_schema:
+  Context: string (K)
+  Task: string (E)
+  Constraints: string (R)
+  Format: string (N)
+  Verify: string (E_V)
+  Call to Action: string (L)
 ---
 
 # Guillermo Rauch — Tech Lead & Lead Architect Skill

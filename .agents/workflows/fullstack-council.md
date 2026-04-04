@@ -4,7 +4,8 @@ description: >
   Master router for the Full-Stack Advisory Council. Primary interface is
   explicit slash commands. Natural language classification is a fallback only.
   Invoke directly: /chain-a-feature, /chain-b-review, /chain-c-architecture,
-  /chain-d-performance, /chain-e-teaching, /chain-f-security.
+  /chain-d-performance, /chain-e-teaching, /chain-f-security, /chain-g-payments,
+  /chain-meta.
 ---
 
 # Full-Stack Advisory Council — Router
@@ -23,6 +24,9 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-d-performance` | `Call /chain-d-performance` | Fixing CWV or performance regressions |
 | `/chain-e-teaching` | `Call /chain-e-teaching` | Learning, tutorials, or walkthroughs |
 | `/chain-f-security` | `Call /chain-f-security` | Security audit, auth review, pre-deploy hardening |
+| `/chain-g-payments` | `Call /chain-g-payments` | Payments, billing, Stripe, subscriptions |
+| `/chain-hot-take` or `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
+| `/chain-meta` | `node .agents/scripts/registry-tool.js --all` | Self-Audit: check for orphaned skills or broken router links |
 
 Single-skill direct invocations (no chain overhead):
 
@@ -33,6 +37,11 @@ Single-skill direct invocations (no chain overhead):
 | `/testing` | Execute `kent-dodds-quality-lead` directly |
 | `/react` | Execute `react-core-lead` directly |
 | `/t3-review` | Execute `theo-browne-fullstack-advisor` directly |
+| `/auth` | Execute `better-auth` or `clerk` logic via `rauchg-tech-lead-architect` |
+| `/payments` | Execute `stripe` skill via `chain-g-payments` |
+| `/monitoring` | Execute `sentry-for-ai` directly |
+| `/github` | Execute `github` skill directly |
+| `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) |
 
 ---
 
@@ -50,9 +59,13 @@ route silently on an ambiguous match.
 
 ## Global Constraints (apply to all chains)
 
-1. Explicitly name every skill — never rely solely on semantic routing.
-2. K.E.R.N.E.L. `[Verify]` is the inter-skill handoff condition — no `[Verify]` = step incomplete.
-3. Single goal per skill invocation.
-4. `pragmatic-engineer-em` is advisory-only — never route code tasks to it.
-5. `optimizing-web-performance` is single-fix enforced — loop it, never batch.
-6. Tech debt detected by `rauchg-tech-lead-architect` halts chain → `Call /chain-c-architecture`.
+1. **Explicit Skill Names**: Never rely on semantic routing; always name the executing skill.
+2. **K.E.R.N.E.L. Schema Validation**: Every Artifact MUST follow the structured format:
+   - `# [Skill Name]` — Headline
+   - `## Decision` — The core logic/output
+   - `## Constraints Forward` — What following skills MUST obey
+   - `## [Verify]` — The exit condition (CLI or test)
+3. **Single Goal**: Each skill invocation focus on a single, atomic task.
+4. **Advisory Logic**: `pragmatic-engineer-em` is advisory-only; it never writes code.
+5. **Performance Loop**: `optimizing-web-performance` is single-fix enforced.
+6. **Tech Debt Halt**: `rauchg-tech-lead-architect` detected debt halts the chain → `/chain-c-architecture`.

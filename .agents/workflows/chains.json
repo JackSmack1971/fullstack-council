@@ -1,0 +1,46 @@
+{
+  "chains": [
+    {
+      "id": "chain-a-feature",
+      "name": "Greenfield Feature Implementation",
+      "steps": 5,
+      "description": "Architecture -> Component Design -> UI Composition -> Quality Gate -> Performance Verification"
+    },
+    {
+      "id": "chain-b-review",
+      "name": "Code Review & PR Audit",
+      "steps": 4,
+      "description": "React Patterns -> TS/DX Critique -> Test/A11y Audit -> CSS/Tailwind Audit"
+    },
+    {
+      "id": "chain-c-architecture",
+      "name": "Architecture Decision",
+      "steps": 3,
+      "description": "Trade-off Analysis -> Technical Architecture -> DX Sanity Check"
+    },
+    {
+      "id": "chain-d-performance",
+      "name": "Performance Remediation",
+      "steps": 6,
+      "description": "Baseline Audit -> Bundle Reduction -> Branch Optimization -> Regression Gate"
+    },
+    {
+      "id": "chain-e-teaching",
+      "name": "Teaching & Documentation",
+      "steps": 3,
+      "description": "Working Example -> Test Coverage -> Styled UI"
+    },
+    {
+      "id": "chain-f-security",
+      "name": "Security Audit",
+      "steps": 6,
+      "description": "Secrets/Env -> Auth -> Data Boundary -> tRPC/Action Auth -> Testing -> Hardening"
+    },
+    {
+      "id": "chain-g-payments",
+      "name": "Payments & Billing",
+      "steps": 3,
+      "description": "Strategy -> Integration -> Webhooks/Idempotency"
+    }
+  ]
+}

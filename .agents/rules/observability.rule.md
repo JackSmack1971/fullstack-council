@@ -41,6 +41,8 @@ Log exactly one row per event. Use only these event types:
 | `WIZARD_GAP` | P3 Artifact missing (live session) |
 | `COLD_RESTART` | P3 cold restart detected on session open |
 | `CONFLICT` | P5 spec misconception block emitted |
+| `PREDICT_P6` | P6 predictive routing suggestion emitted |
+| `TELEMETRY` | Chain run statistics emitted on CHAIN_COMPLETE |
 
 ## Session Log Artifact Format
 
@@ -95,6 +97,7 @@ Detail field constraints (P4 Anchors apply):
 - CIRCUIT_BREAK: `Reverted to [step] · Failures: [count]`
 - WIZARD_GAP: `Missing: [artifact-name]`
 - CONFLICT: `Assumption: [<=8 words] → Evidence: [<=8 words]`
+- TELEMETRY: `Steps: [N] | Tokens: [~K] | Time: [s] | UI: [Aesthetic score 1-10]`
 
 ## Observe Protocol
 
@@ -110,7 +113,15 @@ Rule fires:    [P1: N, P2: N, P3: N, P4: N, P5: N]
 Incomplete:    [any steps without ARTIFACT_WRITE entry]
 ```
 
-## Output Format
+## Telemetry Protocol
+On `CHAIN_COMPLETE`, append a `[TELEMETRY]` block to the end of `session-log.md`:
+```markdown
+### [TELEMETRY] Chain Performance
+- **Steps Taken**: [N]
+- **Token Efficiency**: [Approximate total input/output]
+- **Orchestration Success**: [Yes/No/Halt]
+- **Design Aesthetic Score**: [User feedback or framework internal check]
+```
 
 Log writes are silent — no user-facing output during the write protocol.
 Status emitted only on SESSION_START: `[OBS P0] Session log initialized.`

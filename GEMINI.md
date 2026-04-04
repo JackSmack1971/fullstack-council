@@ -18,19 +18,23 @@ When rules, workflow steps, or skill instructions conflict, resolve by strict
 priority. Higher P-number = lower authority.
 
 ```
+P0: User Explicit Intent               [Manual override — immediate priority]
+P0.1: @.agents/rules/observability.rule.md [Passive infrastructure — always-on]
 P1: @.agents/rules/verification.rule.md   [Adversarial Verifier — read-only]
 P2: @.agents/rules/context.rule.md        [Context compression + circuit breaker]
 P3: @.agents/rules/wizard.rule.md         [CoT preservation]
 P4: @.agents/rules/anchors.rule.md        [Word count constraints + exemptions]
 P5: @.agents/rules/colleague.rule.md      [Judgment > compliance, no gold-plating]
 ──────────────────────────────────────────
-P6: @.agents/workflows/fullstack-council.md  [Orchestration chains A–E]
-P7: .agents/skills/[skill-name]/SKILL.md     [Persona behavior + K.E.R.N.E.L.]
+P6: @.agents/rules/predictive-routing.rule.md [Orchestration friction reduction]
+P7: @.agents/workflows/fullstack-council.md  [Orchestration chains A–G]
+P8: .agents/skills/[skill-name]/SKILL.md     [Persona behavior + K.E.R.N.E.L.]
 ```
 
-**Resolution rule:** A P1 verifier finding always halts a P7 skill output.
-A P5 conflict block always precedes P7 code generation. No persona overrides
-governance rules regardless of its internal instructions.
+**Resolution rule:** P0 always overrides any governance rule if the user explicitly
+requests a deviation for a specific task. A P1 verifier finding always halts a 
+P7 skill output. A P5 conflict block always precedes P7 code generation. 
+No persona overrides governance rules (P1-P5) without a P0 signal.
 
 ---
 
@@ -54,26 +58,17 @@ without explicit user authorization — cross-vendor consistency unverified.
 
 ---
 
-## Skills Registry
+## Skills Registry (Dynamic)
 
-The following 8 skills are available globally. Invoke by exact `name` — never
-rely solely on semantic routing for multi-skill chains.
+The Full-Stack Advisory Council uses a dynamic skill registration system. Any subdirectory in `.agents/skills/` containing a `SKILL.md` file is automatically registered as a specialist persona.
 
-| Skill `name` | Domain | Primary Chain |
-|---|---|---|
-| `rauchg-tech-lead-architect` | Next.js/Vercel/RSC/Edge architecture | A1, C2, D3 |
-| `react-core-lead` | React Hooks/Concurrent/RSC patterns | A2, B1, D2 |
-| `adam-wathan-design-system` | Tailwind/utility-first CSS/design tokens | A3, B4, E3 |
-| `kent-dodds-quality-lead` | Testing/RTL/a11y/Testing Trophy | A4, B3, E2 |
-| `optimizing-web-performance` | CWV/Lighthouse/bundle optimization | A5, D1 |
-| `theo-browne-fullstack-advisor` | T3/tRPC/TypeScript DX critique | B2, C3 |
-| `pragmatic-engineer-em` | EM/team scaling/org trade-offs | C1 |
-| `wes-bos-fullstack-educator` | JS/TS/React hands-on teaching | E1 |
+**Active Manifest:** [.agents/skills/manifest.json](file:///c:/workspaces/fullstack-council/.agents/skills/manifest.json)
+**Registry Tool:** [.agents/scripts/registry-tool.js](file:///c:/workspaces/fullstack-council/.agents/scripts/registry-tool.js)
 
-All skills share **K.E.R.N.E.L.** as the universal output contract.
-Every skill output MUST include a `[Verify]` section. This is the
-inter-skill handoff condition — a skill with no `[Verify]` output is
-incomplete and must not trigger the next chain step.
+To register a new skill:
+1. Create a folder in `.agents/skills/[skill-slug]`
+2. Add a `SKILL.md` with standard YAML frontmatter (`name`, `description`, and `kernel_schema`)
+3. Run `node .agents/scripts/registry-tool.js`
 
 ---
 
@@ -81,8 +76,8 @@ incomplete and must not trigger the next chain step.
 
 Each skill step externalizes its K.E.R.N.E.L. output into a native Antigravity
 Artifact. The next skill reads the Artifact directly — no chat-stream envelope.
-This eliminates HANDOFF text blocks, REASONING_CHAIN fields, and inline CoT
-preservation entirely.
+Every Artifact MUST be validated against the producing skill's `kernel_schema`
+before the chain advances.
 
 ### Artifact Types
 
@@ -161,6 +156,10 @@ Testing:     RTL + MSW + Vitest (integration-first; Testing Trophy)
 **Deviation protocol:** Any skill that recommends a stack deviation from
 the above must emit a `[STACK DEVIATION]` block with justification before
 proceeding. Deviations are not blocked — they must be documented.
+
+**Tech Debt Halt:** If a skill detects structural tech debt that blocks clean
+implementation, emit a `[TECH DEBT]` block and trigger `/chain-c-architecture`
+to resolve the blocker before continuing with the feature chain.
 
 ---
 

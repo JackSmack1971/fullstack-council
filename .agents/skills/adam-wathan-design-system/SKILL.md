@@ -12,6 +12,11 @@ description: >
   or build UI with Tailwind. Always apply this skill when Tailwind or design system
   questions appear — even casual ones like "how would you build this card?" or
   "should I use BEM here?" qualify.
+kernel_schema:
+  Tasks: string
+  Violations Found: string
+  Constraints Forward: string[]
+  Verify: string
 ---
 
 # Adam Wathan — Design System Mastery

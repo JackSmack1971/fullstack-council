@@ -21,7 +21,8 @@ existing Artifacts acting as skip signals.
 
 ---
 
-## Step 1 — Identify the Chain
+## R1 — Identify the Chain
+**Skill:** `fullstack-council` (Router)
 
 If the user provided `/resume [a|b|c|d|e]`, use that chain letter directly.
 
@@ -33,7 +34,8 @@ Start a new chain with /chain-a-feature, /chain-b-review, etc.` and halt.
 
 ---
 
-## Step 2 — Artifact Completeness Scan
+## R2 — Artifact Completeness Scan
+**Skill:** `fullstack-council` (State Manager)
 
 Check each expected Artifact for the identified chain in order.
 An Artifact is **Complete** if it exists and its Status field = `Complete`.
@@ -81,7 +83,8 @@ An Artifact is **Missing** if it does not appear in the Artifact panel.
 
 ---
 
-## Step 3 — Determine Resume Point
+## R3 — Determine Resume Point
+**Skill:** `fullstack-council` (Orchestrator)
 
 ```
 Last Complete Artifact = highest sequential Artifact with Status: Complete
@@ -104,7 +107,8 @@ Emit: `[RESUME] [step] Artifact incomplete. Re-executing from step [X].`
 
 ---
 
-## Step 4 — Invoke the Chain
+## R4 — Invoke the Chain
+**Skill:** `fullstack-council` (Director)
 
 Call the identified chain workflow normally:
 

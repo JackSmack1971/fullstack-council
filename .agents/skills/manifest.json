@@ -1,0 +1,162 @@
+{
+  "skills": [
+    {
+      "id": "adam-wathan-design-system",
+      "name": "adam-wathan-design-system",
+      "description": "Activates an Adam Wathan persona for utility-first CSS, Tailwind CSS, and design-system mastery. Embodies the philosophy, voice, and practical methodology of Adam Wathan — creator of Tailwind CSS, author of Refactoring UI, CEO of Tailwind Labs. Use whenever the user asks about Tailwind CSS, utility-first CSS, component design systems, Refactoring UI principles, design tokens, responsive design patterns, dark mode, Tailwind v4 features, CSS maintainability, UI prototyping, or building component libraries. Also triggers on requests to \"think like Adam Wathan\", \"Tailwind approach\", \"utility-first design\", \"design system audit\", or any request to review, refactor, or build UI with Tailwind. Always apply this skill when Tailwind or design system questions appear — even casual ones like \"how would you build this card?\" or \"should I use BEM here?\" qualify.",
+      "kernel_schema": {
+        "Tasks": "string",
+        "Violations Found": "string",
+        "Constraints Forward": "string[]",
+        "Verify": "string"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\adam-wathan-design-system"
+    },
+    {
+      "id": "addyosmani/accessibility",
+      "name": "Accessibility (a11y)",
+      "description": "- Covers all four WCAG principles (Perceivable, Operable, Understandable, Robust) with conformance levels A, AA, and AAA",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\addyosmani\\accessibility"
+    },
+    {
+      "id": "addyosmani/core-web-vitals",
+      "name": "Core Web Vitals optimization",
+      "description": "- Covers LCP (Largest Contentful Paint), INP (Interaction to Next Paint), and CLS (Cumulative Layout Shift) with specific thresholds and optimization strategies for each",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\addyosmani\\core-web-vitals"
+    },
+    {
+      "id": "addyosmani/performance",
+      "name": "Performance optimization",
+      "description": "- Defines resource budgets (1.5 MB total, <300 KB JS, <100 KB CSS) and provides server response optimization (TTFB <800ms, HTTP/2, edge caching)",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\addyosmani\\performance"
+    },
+    {
+      "id": "backend-runtime-excellence",
+      "name": "backend-runtime-excellence",
+      "description": "Activates a Ryan Dahl advisor persona for backend runtime architecture, Deno and Node.js design, async I/O, security-by-default systems, and TypeScript/JavaScript server engineering. Use this skill whenever the user asks about Deno, Node.js architecture, event loops, runtime security, server-side TypeScript, backend scalability, async I/O patterns, capability-based permissions, ES modules, URL imports, or any question framed as \"how would Ryan Dahl approach this.\" Also triggers on requests for runtime trade-off analysis, package registry criticism, node_modules design regrets, or building production backend servers from first principles. Always invoke this skill for Deno vs Node.js comparisons, permission model design, and high-level backend architecture decisions.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\backend-runtime-excellence"
+    },
+    {
+      "id": "better-auth/better-auth-best-practices",
+      "name": "Better Auth Integration Guide",
+      "description": "- Covers full workflow from installation through database migration, environment variable setup, and route handler creation across multiple frameworks",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\better-auth\\better-auth-best-practices"
+    },
+    {
+      "id": "claude-mpm-skills/drizzle-orm",
+      "name": "Drizzle ORM",
+      "description": "- Supports PostgreSQL, MySQL, and SQLite with compile-time type inference from schema definitions; no code generation required",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\claude-mpm-skills\\drizzle-orm"
+    },
+    {
+      "id": "claude-mpm-skills/trpc-type-safety",
+      "name": "tRPC - End-to-End Type Safety",
+      "description": "- Shares TypeScript types between client and server automatically—no codegen required, with full type inference across queries, mutations, and subscriptions",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\claude-mpm-skills\\trpc-type-safety"
+    },
+    {
+      "id": "everything-claude-code/postgres-patterns",
+      "name": "PostgreSQL Patterns",
+      "description": "- Covers six index types with specific use cases: B-tree for equality/range queries, composite for multi-column filters, GIN for JSONB and full-text search, and BRIN for time-series data",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\everything-claude-code\\postgres-patterns"
+    },
+    {
+      "id": "github/git-commit",
+      "name": "Git Commit with Conventional Commits",
+      "description": "- Auto-detects commit type (feat, fix, docs, refactor, perf, test, build, ci, chore, revert) and scope from actual code changes",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\github\\git-commit"
+    },
+    {
+      "id": "kent-dodds-quality-lead",
+      "name": "kent-dodds-quality-lead",
+      "description": "Activates Kent C. Dodds as Quality, Testing & Accessibility Lead. Use for any testing review, React Testing Library (RTL) guidance, a11y/accessibility audits, component API design, Testing Trophy strategy, integration test authoring, RTL query selection, confidence-driven test coverage analysis, and DX/UX code quality feedback. Triggers on: \"review my tests\", \"write tests for\", \"a11y audit\", \"accessibility check\", \"RTL\", \"React Testing Library\", \"testing strategy\", \"component API review\", \"test coverage\", \"integration test\", \"unit test\", \"Testing Trophy\", or any request to improve test quality, code confidence, or software quality. Applies K.E.R.N.E.L. framework — one focused goal per response with copy-pasteable examples.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\kent-dodds-quality-lead"
+    },
+    {
+      "id": "optimizing-web-performance",
+      "name": "optimizing-web-performance",
+      "description": "Diagnoses and fixes web performance problems — Core Web Vitals (LCP, INP, CLS), JavaScript bundle bloat, image optimization, render-blocking resources, and edge/mobile delivery. Activates when a user mentions slow pages, bad Lighthouse scores, CWV failures, bundle size issues, Time to Interactive, layout shift, or asks for performance audits, DevTools traces, or speed improvements. Use this skill for any performance review, CWV remediation, Lighthouse analysis, image pipeline work, or AI-assisted optimization workflow. Always produces narrow, single-goal advice with before/after metric targets and exact verification steps.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\optimizing-web-performance"
+    },
+    {
+      "id": "playwright-best-practices-skill/playwright-best-practices",
+      "name": "Playwright Best Practices",
+      "description": "- Covers 50+ testing patterns including E2E, component, API, GraphQL, visual regression, accessibility, security, mobile, and Electron app testing",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\playwright-best-practices-skill\\playwright-best-practices"
+    },
+    {
+      "id": "pragmatic-engineer-em",
+      "name": "pragmatic-engineer-em",
+      "description": "Activates the Gergely Orosz \"Pragmatic Engineer\" persona — an Engineering Manager and Pragmatic Practices Lead grounded in Big Tech and hypergrowth experience (Uber, Skype/Microsoft, Skyscanner). Use when asking about engineering management, tech team scaling, system design trade-offs, career growth for engineers, engineering culture, technical leadership, delivery practices, RFC processes, or pragmatic advice on frameworks and AI hype. Responds in first person as Gergely Orosz. Applies the K.E.R.N.E.L. response framework to every output. Trigger terms: engineering manager, pragmatic engineer, Gergely, team scaling, tech lead, system design review, career advice, engineering culture, trade-offs, Big Tech practices, hypergrowth, delivery, accountability, engineer growth, newsletter, Substack.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\pragmatic-engineer-em"
+    },
+    {
+      "id": "rauchg-tech-lead-architect",
+      "name": "rauchg-tech-lead-architect",
+      "description": "Activates the Guillermo Rauch (rauchg) Tech Lead and Lead Architect persona for full-stack web architecture, Next.js/Vercel edge design, React Server Components, AI-infused app architecture, DX optimization, and eliminating tech debt. Use when designing web app architecture, evaluating tech stacks, planning deployment infrastructure, reviewing production systems, or making full-stack React decisions. Triggers on: \"architect this\", \"tech lead review\", \"stack decision\", \"ship fast\", \"Next.js\", \"Vercel\", \"edge functions\", \"Server Components\", \"v0\", \"AI app stack\", \"frontend architecture\", \"DX review\", \"tech debt\", \"deploy strategy\", \"full-stack React\", \"RSC\", \"ISR\", \"streaming\", \"monorepo setup\". Always invoke this skill when the user is asking for architectural guidance on modern web apps, even if they don't explicitly request a \"tech lead\" perspective.",
+      "kernel_schema": {
+        "Context": "string (K)",
+        "Task": "string (E)",
+        "Constraints": "string (R)",
+        "Format": "string (N)",
+        "Verify": "string (E_V)",
+        "Call to Action": "string (L)"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\rauchg-tech-lead-architect"
+    },
+    {
+      "id": "react-core-lead",
+      "name": "react-core-lead",
+      "description": "Activates a React Core Lead persona modeled on Dan Abramov — React Core Team member, co-creator of Redux and Create React App. Use this skill whenever the user asks about React architecture, component design, Hooks, Concurrent Rendering, React Server Components (RSC), Suspense, data-flow patterns, state management, performance optimization, or frontend engineering best practices. Also triggers for questions about Redux, Context API, useReducer, useMemo, useCallback, Fiber internals, React DevTools, migration from class components, or any trade-off decisions in the React/Next.js/Remix ecosystem. If someone asks \"how should I structure this component\", \"is this a good React pattern\", \"what's wrong with my hooks\", \"should I use RSC here\", or \"explain concurrent features\" — use this skill immediately.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\react-core-lead"
+    },
+    {
+      "id": "sentry-for-ai/sentry-nextjs-sdk",
+      "name": "Sentry Next.js SDK",
+      "description": "Opinionated wizard that scans your Next.js project and guides you through complete Sentry setup across all three runtimes: browser, Node.js server, and Edge.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\sentry-for-ai\\sentry-nextjs-sdk"
+    },
+    {
+      "id": "theo-browne-fullstack-advisor",
+      "name": "theo-browne-fullstack-advisor",
+      "description": "Activates the Theo Browne persona — T3 Stack creator, ex-Twitch engineer, CEO of T3 Chat / Ping.gg (YC W22), TypeScript absolutist, and opinionated full-stack advisor. Use this skill whenever the user asks about Next.js App Router, tRPC, Prisma, Zod, Tailwind, create-t3-app, T3 Stack architecture, end-to-end type safety, TypeScript tooling, rapid prototyping, DX critique, over-engineering problems, cargo-culting, full-stack TypeScript decisions, or wants direct hot-take feedback on tech choices and patterns. Also triggers on \"what would Theo think\", \"T3 style\", \"roast my stack\", or \"is this over-engineered\".",
+      "kernel_schema": {
+        "Context": "string",
+        "Task": "string",
+        "Constraints": "string",
+        "Format": "string",
+        "Verify": "string"
+      },
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\theo-browne-fullstack-advisor"
+    },
+    {
+      "id": "vercel-labs/next-best-practices",
+      "name": "Next.js Best Practices",
+      "description": "- Covers 15+ topic areas including file conventions, route segments, RSC boundaries, async patterns, metadata generation, and image/font optimization",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\vercel-labs\\next-best-practices"
+    },
+    {
+      "id": "wes-bos-fullstack-educator",
+      "name": "wes-bos-fullstack-educator",
+      "description": "Activates a Wes Bos-style hands-on full-stack JavaScript educator persona that ships production-ready code with live-workshop energy. Use whenever the user asks for help with JavaScript, TypeScript, React, Node.js, GraphQL, Tailwind CSS, CSS Grid, Flexbox, Vite, modern web patterns, or any coding tutorial. Always triggers on phrases like \"build this\", \"teach me\", \"how do I\", \"JS help\", \"React patterns\", \"TypeScript tips\", \"Tailwind\", \"full-stack\", or any request for working code examples. Responds code-first with step-by-step explanations, hot tips, and Next Level upgrades. Use this skill whenever the user wants to learn or build anything JavaScript or modern web related, even if they don't explicitly ask for a tutorial or mention Wes Bos.",
+      "kernel_schema": null,
+      "path": "C:\\workspaces\\fullstack-council\\.agents\\skills\\wes-bos-fullstack-educator"
+    }
+  ]
+}

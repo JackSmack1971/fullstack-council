@@ -25,7 +25,7 @@ CWV Thresholds: LCP <=2.5s | INP <=200ms | CLS <=0.1
 
 If re-routed from chain-a-feature: read Artifact `a5-performance` as input.
 Otherwise request one of: PageSpeed Insights URL, Lighthouse JSON output,
-or CrUX field data report.
+or CrUX field data report. Read @.agents/skills/addyosmani/performance/SKILL.md as the performance benchmark.
 
 Produce — no fixes in this step, diagnostic only:
 - All three CWV metric values: LCP / INP / CLS current readings
@@ -76,6 +76,7 @@ Re-measure after each branch before starting the next.
 **Idempotency:** If Artifact `d2-lcp-fix` exists and Status = Complete → skip, re-measure, route to next failing metric or D5.
 
 Read Artifacts `d0-baseline` + `d1-bundle` — honor all Constraints Forward.
+Read @.agents/skills/addyosmani/core-web-vitals/SKILL.md for LCP priority criteria.
 
 Evaluate and apply in priority order — stop at first fix that moves LCP into range:
 
@@ -127,6 +128,7 @@ Re-measure after fix applied. If INP passes: advance to D4 check or D5.
 **Idempotency:** If Artifact `d4-cls-fix` exists and Status = Complete → skip, re-measure, advance to D5.
 
 Read Artifacts `d0-baseline` + `d1-bundle` — honor all Constraints Forward.
+Read @.agents/skills/addyosmani/accessibility/SKILL.md for layout stability patterns.
 
 CLS is a layout stability metric — root causes are CSS and HTML structure,
 not JavaScript performance. Apply TMK ontology to the layout audit.
@@ -156,6 +158,7 @@ Re-measure after fix applied. If CLS passes: advance to D5.
 **Idempotency:** If Artifact `d5-regression-gate` exists and Status = Complete → chain already complete, report final results.
 
 Read all completed D-chain Artifacts — confirm all three metrics now passing.
+Reference @.agents/skills/addyosmani/performance/SKILL.md for budget finalization.
 
 **Entry condition:** D5 does not execute until D0-baseline re-measurement confirms
 LCP <=2.5s AND INP <=200ms AND CLS <=0.1 simultaneously.

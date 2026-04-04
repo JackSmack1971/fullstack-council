@@ -25,13 +25,17 @@ integration seams that happy-path testing misses.
 2. Trigger condition: `files_changed > 3` OR explicit audit request OR any change
    touching: `auth.ts`, `middleware.ts`, `schema.ts`, `.env*`, `drizzle.config.ts`,
    `next.config.js` — security-relevant files trigger regardless of files_changed count.
-3. Run boundary probes: null inputs, max-length strings, empty arrays, zero values.
-4. Run concurrency probes: rapid sequential calls, race condition scenarios,
+3. **Adversarial Red-Teaming**:
+   - Proactive failure analysis: "How does this plan fail if the database connection drops mid-execution?"
+   - Multi-user race conditions: "What happens if two users update the same row simultaneously?"
+   - High-load stability: "Check for O(n^2) loops or unpaginated queries in new logic."
+4. Run boundary probes: null inputs, max-length strings, empty arrays, zero values.
+5. Run concurrency probes: rapid sequential calls, race condition scenarios,
    duplicate submission patterns.
-5. Run integration seam probes: skill handoff boundaries in fullstack-council
+6. Run integration seam probes: skill handoff boundaries in fullstack-council
    workflow (Chain A steps A1→A5, Chain B steps B1→B4).
-6. Use browser automation + terminal stress tests where tooling permits.
-7. Surface spec misconceptions with evidence before surfacing bugs.
+7. Use browser automation + terminal stress tests where tooling permits.
+8. Surface spec misconceptions with evidence before surfacing bugs.
 
 ## Output Format
 

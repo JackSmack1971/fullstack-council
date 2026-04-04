@@ -64,6 +64,7 @@ Read Artifact `f0-threat-model` — honor all Constraints Forward.
 - Check `.gitignore` explicitly excludes: `.env`, `.env.local`, `.env.production`
 - Check for hardcoded secrets in source: API keys, connection strings, tokens
   in `*.ts`, `*.tsx`, config files — run: `git log --all -S "sk-" --oneline`
+- **Github Hardening**: Reference @.agents/skills/github/git-commit/SKILL.md for commit safety and secret scanning.
 
 **Dependency audit:**
 - `pnpm audit` or `npm audit --audit-level=high` — flag Critical and High CVEs
@@ -112,6 +113,7 @@ Read Artifacts `f0-threat-model` + `f1-secrets-audit` — honor all Constraints 
 - Expiry: 24h standard, 1h elevated privilege; rotate on privilege change
 - HttpOnly + Secure + SameSite=Lax minimum — Strict for admin routes
 - Better Auth: `secret` >= 32 chars from env; Clerk: `clerkMiddleware()` outermost
+- Reference @.agents/skills/better-auth/better-auth-best-practices/SKILL.md and @.agents/skills/clerk/clerk-nextjs-patterns/SKILL.md for library-specific hardening.
 
 **CSRF protection:**
 - Server Actions: Next.js 14+ enforces origin checking natively — verify not disabled
@@ -154,10 +156,9 @@ Read Artifacts `f0-threat-model` + `f2-auth-hardening` — honor all Constraints
   rather than `select()` — never serialize entire DB rows to client
 
 **tRPC authorization:**
-- Every `protectedProcedure` must call `ctx.session` — verify no procedure
-  uses `publicProcedure` for operations requiring auth by mistake
 - Every procedure has `.input(z.object({...}))` — no unvalidated procedures
 - Check: admin procedures have explicit role check beyond `session` existence
+- Reference @.agents/skills/claude-mpm-skills/trpc-type-safety/SKILL.md for type inference and validation patterns.
 
 **Server Actions input validation:**
 ```ts
@@ -179,6 +180,7 @@ export async function updateProfile(input: unknown) {
 - Flag all `sql\`...\`` tagged template literals with string interpolation — must use
   parameterized placeholders: `sql\`WHERE id = ${userId}\`` (safe) vs
   `sql\`WHERE id = '${userId}'\`` (injection)
+- Reference @.agents/skills/claude-mpm-skills/drizzle-orm/SKILL.md and @.agents/skills/everything-claude-code/postgres-patterns/SKILL.md for secure data access.
 
 `[Verify]`: grep for `dangerouslySetInnerHTML` returns zero unsanitized instances.
 Every tRPC procedure has `.input()` call. No raw DB row serialized to client.
@@ -283,6 +285,7 @@ const securityHeaders = [
 - [ ] A08 Data Integrity Failures — F1 lockfile integrity, F2 CSRF
 - [ ] A09 Logging — no tokens/passwords logged
 - [ ] A10 SSRF — user-supplied URLs validated against allowlist before fetch
+- [ ] **Sentry Monitoring**: Reference @.agents/skills/sentry-for-ai/sentry-nextjs-sdk/SKILL.md for production error tracking and performance profiling.
 
 `[Verify]`: `curl -I <prod-url>` returns all 7 headers. Lighthouse security >=95. OWASP checklist complete.
 
