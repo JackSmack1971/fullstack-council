@@ -35,55 +35,160 @@ The system automatically calls the right expert for each job:
 8. **Wes Bos (Educator)** — Teaches you step-by-step with friendly explanations.
 9. **Ryan Dahl (Backend Runtime)** — Handles secure server-side code and runtime patterns.
 
-## 🚀 The 6 Workflows (Chains)
-Use these simple slash commands to start a complete, multi-step process:
+🚀 Slash Commands
 
-- `/chain-a-feature [your idea]`  
-  Example: `/chain-a-feature Create a login page with email and password`  
-  → Architecture → React code → Tailwind styling → Tests → Performance check
+### Chain Commands (multi-persona pipelines)
 
-- `/chain-b-review`  
-  Reviews your existing code for bugs, anti-patterns, missing tests, and improvements.
+| Command | What happens |
+| --- | --- |
+| `/chain-a-feature` | **Build**: Architecture → React → Tailwind → Tests → CWV check (5 steps) |
+| `/chain-b-review` | **Review**: React audit → TypeScript/DX → Tests/A11y → CSS audit (4 steps) |
+| `/chain-c-architecture` | **Decide**: Trade-off analysis → Technical architecture → DX sanity check (3 steps) |
+| `/chain-d-performance` | **Fix performance**: Baseline → Bundle reduction → LCP/INP/CLS branches → Regression gate (6 steps) |
+| `/chain-e-teaching` | **Learn**: Working example → Tests → Styled UI, explained step-by-step (3 steps) |
+| `/chain-f-security` | **Harden**: Threat model → Secrets audit → Auth → Data boundary → Security tests → Headers (6 steps) |
 
-- `/chain-c-architecture`  
-  Helps you choose databases, frameworks, or big-picture decisions with clear pros/cons.
+### Utility Commands
 
-- `/chain-d-performance`  
-  Diagnoses and fixes slow pages, large bundles, and layout issues.
+| Command | Purpose |
+| --- | --- |
+| `/resume` or `/resume [a-f]` | Resume a chain after closing mid-session — picks up from last complete Artifact |
+| `/observe` | Show a summary of this session: chains run, skills invoked, Artifacts produced, halts, rule fires |
 
-- `/chain-e-teaching`  
-  Builds a working example + tests + styles while explaining every single step.
+### Single-Skill Shortcuts (no chain overhead)
 
-- `/chain-f-security`  
-  Runs a full security audit (environment variables, auth, database queries, etc.).
+| Command | Persona |
+| --- | --- |
+| `/em-advice` | Gergely Orosz — EM/org/trade-off advice |
+| `/tailwind` | Adam Wathan — Tailwind/CSS/design system |
+| `/testing` | Kent C. Dodds — Tests and a11y |
+| `/react` | Dan Abramov — React patterns and Hooks |
+| `/t3-review` | Theo Browne — T3 stack DX critique |
+
+* * *
 
 ## 🛠️ Default Technology Stack
-Unless you ask for something different, the Council always uses this modern 2026 standard:
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript (strict mode)
-- **Styling**: Tailwind CSS v4
-- **Data fetching**: tRPC or Server Actions
-- **Validation**: Zod
-- **Database**: Drizzle ORM + PostgreSQL
+| Layer | Default |
+| --- | --- |
+| Framework | Next.js 15 (App Router, Server Components) |
+| Language | TypeScript 5.x (strict) |
+| Styling | Tailwind CSS v4 |
+| API | tRPC or Server Actions |
+| Validation | Zod (all runtime boundaries) |
+| Database | Drizzle ORM + PostgreSQL |
+| Auth | Better Auth or Clerk |
+| Runtime | Edge-first; Node serverless for DB-heavy routes |
+| Testing | RTL + MSW + Vitest (integration-first) |
 
-## How to Get Started (Step-by-Step for Beginners)
-1. Open your project inside **Google Antigravity**.
-2. In the chat, type one of the slash commands above.
-3. Describe what you want in plain English.
-4. Watch the expert personas collaborate and build the feature automatically.
-5. Review the changes, run the code, and ask for refinements if needed.
+Any layer can be overridden — just specify in your command.
 
-**Example first command:**
-```
-/chain-a-feature Add a beautiful homepage with a hero section and navigation menu
-```
+* * *
 
-That’s it! No need to remember complex commands or write boilerplate — the Council handles the details while teaching you along the way.
+## 🧠 How It Works (Architecture Overview)
 
----
+### Artifacts as State
 
-Ready to build?  
-Fire up Google Antigravity and type your first `/chain` command now!
+Every completed step writes a native Antigravity **Artifact** — either an Implementation Plan (architecture decisions, Mermaid diagrams) or a Task List (audit results, checklists). The next persona reads the Artifact directly. No state lives in the chat stream.
 
-The Full-Stack Advisory Council turns “I have an idea” into “Here’s production-ready code” — safely, quickly, and with expert guidance every step of the way.
+This is also how `/resume` works: the Artifacts persist across sessions, so closing mid-chain loses nothing. The resume workflow scans existing Artifacts, finds the last complete step, and continues from there. Each step has an **idempotency guard** — if its Artifact already exists and is complete, the step is skipped automatically.
+
+### Governance Rules (P0–P5)
+
+Six rules are active on every turn, in priority order:
+
+| Rule | Priority | What it does |
+| --- | --- | --- |
+| `observability` | P0  | Writes every significant event to a rolling `session-log` Artifact — never blocks |
+| `verification` | P1  | Adversarial verifier — fires on `files_changed > 3` or any change to auth/schema/env files; produces evidence blocks only, never edits |
+| `context` | P2  | 3-layer context compression; circuit breaker on 3 consecutive failures |
+| `wizard` | P3  | Enforces Artifact write-before-advance and read-before-act; halts on missing Artifacts |
+| `anchors` | P4  | Word count limits (prose ≤100 words); code, diagrams, and Artifacts are exempt |
+| `colleague` | P5  | Judgment over compliance; never gold-plates untouched code; surfaces spec misconceptions first |
+
+### Global Config (`~/.gemini/GEMINI.md`)
+
+The `GEMINI.md` file is the apex configuration — applied to every workspace regardless of project. It defines the authority stack, model selection matrix (which of 6 available models to use per chain type), global anti-patterns, Strict Mode network allowlist, and the Artifact protocol templates.
+
+* * *
+
+## 📁 Workspace File Structure
+
+    ~/.gemini/
+      GEMINI.md                    ← Global config (cross-workspace)
+    
+    .agents/
+      rules/
+        observability.rule.md      ← P0: session logging
+        verification.rule.md       ← P1: adversarial verifier
+        context.rule.md            ← P2: context compression
+        wizard.rule.md             ← P3: Artifact protocol
+        anchors.rule.md            ← P4: word count constraints
+        colleague.rule.md          ← P5: judgment > compliance
+    
+      workflows/
+        fullstack-council.md       ← Master router (/fullstack-council)
+        chain-a-feature.md         ← /chain-a-feature
+        chain-b-review.md          ← /chain-b-review
+        chain-c-architecture.md    ← /chain-c-architecture
+        chain-d-performance.md     ← /chain-d-performance
+        chain-e-teaching.md        ← /chain-e-teaching
+        chain-f-security.md        ← /chain-f-security
+        chain-resume.md            ← /resume
+    
+      skills/
+        rauchg-tech-lead-architect/
+        react-core-lead/
+        adam-wathan-design-system/
+        kent-dodds-quality-lead/
+        optimizing-web-performance/
+        theo-browne-fullstack-advisor/
+        pragmatic-engineer-em/
+        wes-bos-fullstack-educator/
+
+* * *
+
+## 🛡️ Security & Sandboxing
+
+Google Antigravity uses OS-native kernel-level sandboxing — **not WSL2**:
+
+* **macOS**: Seatbelt (`sandbox-exec`) kernel mechanism
+* **Linux**: nsjail process isolation
+
+When **Strict Mode** is enabled, network access is denied by default. The council's Strict Mode allowlist includes `pagespeed.web.dev` (performance chain), `vercel.com` (deploy verification), and `npmjs.com` (dependency resolution). The Browser subagent operates within the same allowlist.
+
+* * *
+
+## 🔁 Example Session
+
+    You:    /chain-a-feature Add a dashboard with a data table and export to CSV
+    
+    [A1] rauchg-tech-lead-architect  → Architecture decision + Mermaid diagram
+                                       → Artifact: a1-architecture ✓
+    [A2] react-core-lead             → Component tree + Hooks strategy
+                                       → Artifact: a2-components ✓
+    [A3] adam-wathan-design-system   → Tailwind markup + design audit
+                                       → Artifact: a3-ui ✓
+    [A4] kent-dodds-quality-lead     → Integration tests + a11y audit
+                                       → Artifact: a4-quality ✓
+    [A5] optimizing-web-performance  → CWV projection + Lighthouse command
+                                       → Artifact: a5-performance ✓
+    
+    You:    /observe
+    
+    [OBS P0] Session summary:
+    Chains run:     chain-a-feature
+    Steps complete: 5 / 5
+    Artifacts:      a1-architecture·Complete, a2-components·Complete,
+                    a3-ui·Complete, a4-quality·Complete, a5-performance·Complete
+    Halts:          0
+    Rule fires:     P1:0 P2:1 P3:0 P4:4 P5:0
+
+* * *
+
+## ⚠️ Known Limitations
+
+* Requires **Google Antigravity** — does not run in VS Code, Cursor, or standard terminals
+* The `wes-bos-fullstack-educator` persona (`/chain-e-teaching`) will not activate for implementation tasks — it is scoped to Chain E only by the router
+* `pragmatic-engineer-em` (`/em-advice`) produces advisory output only — it will not write code under any circumstances
+* Under Strict Mode, `/chain-d-performance` requires `pagespeed.web.dev` in the network allowlist to run D0 baseline audit
