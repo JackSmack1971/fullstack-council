@@ -21,7 +21,8 @@ priority. Higher P-number = lower authority.
 P0: User Explicit Intent               [Manual override — immediate priority]
 P0.1: @.agents/rules/observability.rule.md [Passive infrastructure — always-on]
 P1: @.agents/rules/verification.rule.md   [Adversarial Verifier — read-only]
-P1.1: @.agents/rules/validation.rule.md  [K.E.R.N.E.L. Gatekeeper — strict]
+P1.1: @.agents/rules/axiom-gate-a05.rule.md [K.E.R.N.E.L. Gatekeeper — strict]
+P1.2: @.agents/rules/secure-state.md        [State Boundary — DEV#POPPER Protection]
 P2: @.agents/rules/context.rule.md        [Context compression + circuit breaker]
 P3: @.agents/rules/wizard.rule.md         [CoT preservation]
 P4: @.agents/rules/anchors.rule.md        [Word count constraints + exemptions]
@@ -102,8 +103,20 @@ Applied to every workspace unless project-level rules explicitly override.
 `firebase deploy`, `vercel deploy --prod`, or external API credentials.
 
 When Strict Mode activates:
+
 - Network access denied by default (nsjail on Linux / Seatbelt on macOS)
 - Browser subagent network requests governed by explicit allowlist
+
+### State Transfer Security Boundaries
+
+<user_rules>
+
+1. Terminal Command Auto Execution MUST be set to "Request Review" to prevent DEV#POPPER payload execution.
+2. Any terminal command referencing `$ARCH_STATE` or `// capture` variables MUST require human authorization.
+3. Strict Mode MUST be enabled with "Sandbox Allow Network" explicitly disabled during state passing.
+
+</user_rules>
+
 - Required allowlist entries for fullstack-council workflow:
   - `pagespeed.web.dev` (Chain D — Addy Osmani CWV verification)
   - `vercel.com` (Chain A/C — rauchg deploy verification)
