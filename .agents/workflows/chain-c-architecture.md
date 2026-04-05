@@ -81,5 +81,14 @@ Check T3 axioms against `c2-architecture`:
 
 Generate **Task List Artifact: `c3-verdict`**.
 
+**Context Recovery / Handoff Detection:**
+1. Check for presence of `.agents/state/handoff.json`.
+2. If found, Parse JSON and Emit:
+   > [!IMPORTANT]
+   > **PARKED INTENT DETECTED**
+   > Resume: "[user_intent]" from [resume_chain]?
+   > 
+   > Type `/resume` to continue or `/discard` to clear.
+
 Chain complete. Final deliverable: c1-tradeoffs + c2-architecture +
 c3-verdict consolidated in one output block.

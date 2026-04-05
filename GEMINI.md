@@ -17,7 +17,7 @@ Default posture: **architect first, implement second, verify always**.
 When rules, workflow steps, or skill instructions conflict, resolve by strict
 priority. Higher P-number = lower authority.
 
-```
+```text
 P0: User Explicit Intent               [Manual override — immediate priority]
 P0.1: @.agents/rules/observability.rule.md [Passive infrastructure — always-on]
 P1: @.agents/rules/verification.rule.md   [Adversarial Verifier — read-only]
@@ -33,8 +33,6 @@ P8: .agents/skills/[skill-name]/SKILL.md     [Persona behavior + K.E.R.N.E.L.]
 ```
 
 **Resolution rule:** P0 always overrides any governance rule if the user explicitly
-requests a deviation for a specific task. A P1 verifier finding always halts a 
-P7 skill output. A P5 conflict block always precedes P7 code generation. 
 No persona overrides governance rules (P1-P5) without a P0 signal.
 
 ---
@@ -45,7 +43,7 @@ Select the reasoning model explicitly before invoking any chain. Default
 assignments — override only with documented justification.
 
 | Task Type | Model | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Architecture decisions (Chain C) | `Claude Opus 4.6 (thinking)` | Deep multi-step trade-off reasoning |
 | Code generation / full implementation (Chain A) | `Claude Sonnet 4.6 (thinking)` | Speed + quality balance |
 | Code review / PR audit (Chain B) | `Claude Sonnet 4.6 (thinking)` | Pattern matching at depth |
@@ -61,128 +59,39 @@ without explicit user authorization — cross-vendor consistency unverified.
 
 ## Skills Registry (Native)
 
-The Full-Stack Advisory Council relies on the native Antigravity routing engine. Any subdirectory in `.agents/skills/` containing a `SKILL.md` file with a valid YAML frontmatter is automatically discoverable.
+The Full-Stack Advisory Council relies on the native Antigravity routing engine and an **Authoritative Skill Index**.
 
-**Discovery Rules:**
-- **YAML Frontmatter**: Every `SKILL.md` must have a `description` in YAML.
-- **Keyword Density**: Descriptions must be third-person, capability-focused, and keyword-dense (e.g., "Designs LangChain workflows") to ensure deterministic activation.
-- **Atomic Focus**: Prefer granular, single-task skills over monolithic personas.
-
----
-
-## Artifact Protocol (canonical definition)
-
-Each skill step externalizes its output into a native Antigravity Artifact (Rich Markdown). The v3.2 validation engine parses these artifacts using the `validate-kernel.js` script to ensure systemic integrity.
-
-**Artifact Validation:**
-- **Markdown Headers**: Validation is performed against strictly hierarchical Markdown headers (e.g., `## [K] — Context`).
-- **Dynamic Schema**: Schemas are derived directly from the `SKILL.md` frontmatter of the active agent.
-- **Soft Failure**: Experimental skills without an explicit `kernel_schema` are granted soft-fail status to maintain velocity.
-
-### Artifact Types
-
-**Implementation Plan Artifact** — for architecture, design, and decision steps.
-Used by: `rauchg-tech-lead-architect`, `react-core-lead`, `pragmatic-engineer-em`.
-
-```markdown
-# [Skill Name] — Implementation Plan
-Chain Step: [e.g., A1]  |  Status: Complete / Blocked
-
-## Decision
-[K.E.R.N.E.L. output — architecture choice, component design, or trade-off verdict]
-
-## Diagram
-[Mermaid architecture or component tree]
-
-## Constraints Forward
-[What every subsequent skill in this chain MUST honor]
-
-## Verify
-[Exact CLI command or test criteria — must be runnable in <5 min]
-
-## Open Questions
-[Unresolved items for the next skill to address]
-```
-
-**Task List Artifact** — for audit, checklist, and iterative-fix steps.
-Used by: `kent-dodds-quality-lead`, `adam-wathan-design-system`,
-`optimizing-web-performance`, `theo-browne-fullstack-advisor`, `wes-bos-fullstack-educator`.
-
-```markdown
-# [Skill Name] — Task List
-Chain Step: [e.g., A4]  |  Status: In Progress / Complete
-
-## Tasks
-- [x] [Task] — [result or evidence]
-- [ ] [Task] — pending
-
-## Violations Found
-[Evidence blocks: input → actual → expected]
-
-## Constraints Forward
-[What subsequent skills must honor]
-
-## Verify
-[Confirmation method — command or manual check]
-```
-
-### Artifact Naming Convention
-
-`[chain-letter][step-number]-[skill-slug]`
-Examples: `a1-architecture`, `a4-quality`, `c1-tradeoffs`, `d1-cwv-pass1`
-
-P3 Wizard rule enforces write-before-advance and read-before-act.
-P5 Colleague rule's CONFLICT block fires when `Constraints Forward` is violated.
+- **Authoritative Index**: @.agents/registry.md (Single source of truth)
+- **Discovery Rules**: YAML frontmatter mandatory in all `SKILL.md` files.
+- **Drift Logic**: Registry must stay in sync with filesystem. Run `/chain-meta` to verify.
 
 ---
 
-## Global Stack Defaults
+## Standard Operating Procedures (SOPs)
+
+All skills MUST honor the canonical protocols defined in:
+
+- **Artifact Protocol**: @.agents/rules/standards.rule.md (Implementation Plan vs Task List)
+- **Global Constraints**: @.agents/rules/standards.rule.md (Anti-patterns, T3 Axioms)
+- **Handoff Logic**: @.agents/rules/standards.rule.md (Context persistence)
+
+---
+
+## Global Stack Defaults (Preconditions)
 
 Applied to every workspace unless project-level rules explicitly override.
 
-```
-Language:    TypeScript 5.x (never plain JS for new files)
-Framework:   Next.js 15 App Router (Server Components default)
-Styling:     Tailwind CSS v4 (utility-first; no BEM, no custom CSS first)
-API layer:   tRPC or Server Actions (no untyped REST for internal routes)
-Validation:  Zod (all runtime boundaries — no `any`, no raw `unknown`)
-DB/ORM:      Drizzle ORM + Postgres
-Auth:        Better Auth or Clerk
-Runtime:     Edge-first; Node serverless for DB-heavy operations
-Bundler:     Next.js (Turbopack); Vite for non-Next projects
-Testing:     RTL + MSW + Vitest (integration-first; Testing Trophy)
-```
+| Component | Default | Rule |
+| --- | --- | --- |
+| Language | TypeScript 5.x | No plain JS for new files |
+| Framework | Next.js 15 App Router | Server Components by default |
+| Styling | Tailwind CSS v4 | Utility-first; theme variables only |
+| Data Layer | T3 Axiom (Type-Safe) | Enforce Drizzle + Transport (tRPC/Actions) |
+| Validation | Zod | All runtime boundaries |
+| Auth | NextAuth/Better Auth | Edge-first preferred |
 
-**Deviation protocol:** Any skill that recommends a stack deviation from
-the above must emit a `[STACK DEVIATION]` block with justification before
-proceeding. Deviations are not blocked — they must be documented.
-
-**Tech Debt Halt:** If a skill detects structural tech debt that blocks clean
-implementation, emit a `[TECH DEBT]` block and trigger `/chain-c-architecture`
-to resolve the blocker before continuing with the feature chain.
-
----
-
-## Global Anti-Patterns (enforced across all personas)
-
-These violations are blocked regardless of which skill is active or what
-persona instructions permit:
-
-- `getServerSideProps` / `getStaticProps` in App Router — use async RSC
-- `useEffect` for data fetching — use RSC or TanStack Query
-- `any` TypeScript type without a documented suppression reason
-- Barrel files (`index.ts` re-exporting everything) — TS performance regression
-- Installing a custom server (Express/Koa) instead of Next.js Route Handlers
-- `NEXT_PUBLIC_` prefix on sensitive environment variables
-- Test assertions on internal component state (implementation detail testing)
-- `getByTestId` as primary RTL query strategy
-- Arbitrary Tailwind values (`p-[17px]`) without documented constraint reason
-- Gold-plating out-of-scope files (P5 Colleague enforcement)
-- `dangerouslySetInnerHTML` without `DOMPurify.sanitize()`
-- Raw DB rows serialized to Client Components (hashedPassword, totpSecret exposure)
-- tRPC procedures without `.input()` Zod schema
-- Server Actions accepting unvalidated `FormData` without Zod parsing
-- Auth middleware scoped to pages but not API routes
+**Deviation Protocol**: Documented suppression via `[STACK DEVIATION]` block required.
+**Tech Debt Halt**: detected debt halts chain → `/chain-c-architecture`.
 
 ---
 

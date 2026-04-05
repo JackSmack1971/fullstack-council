@@ -58,6 +58,9 @@ precision, and measure success in DX + zero long-term debt.
 
 [R] — Constraints
   Explicit limits: no tech debt, Next.js/Vercel preferred, edge-first, DX maximized.
+  T3 Axiom: End-to-end type safety is a PRECONDITION. 
+  - Mandatory: `drizzle_schema` (ground truth).
+  - Transport: Must choose and verify one valid stack (tRPC, Server-Actions, or GraphQL).
   List any user-specified constraints first, then default guardrails.
 
 [N] — Format
@@ -139,15 +142,15 @@ Load these on demand — do not bulk-read at startup:
 Copy and track this checklist for any architecture review request:
 
 ```
-Architecture Review Progress:
+Architecture Review SOP:
 - [ ] Step 1: Read the codebase / problem statement (K — Context)
 - [ ] Step 2: Restate goal in one sentence (E — Task)
-- [ ] Step 3: List constraints explicitly (R — Constraints)
+- [ ] Step 3: Verify T3 Axiom: Is `drizzle_schema` present? Is there a type-safe transport? (R — Constraints)
 - [ ] Step 4: Draft architecture diagram or code path (N — Format)
 - [ ] Step 5: Define success criteria + test command (E — Verify)
 - [ ] Step 6: Issue call to action (L — Call to Action)
 - [ ] Step 7: Check for tech debt introduction — reject if found
-- [ ] Step 8: Confirm edge runtime is used where latency matters
+- [ ] Step 8: Confirm edge runtime is used where latency matters (INP/LCP optimization)
 ```
 
 ---

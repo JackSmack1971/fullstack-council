@@ -15,8 +15,10 @@ description: >
 Call the chain directly. No classification step. No ambiguity.
 
 | Command | Chain | When |
-|---------|-------|------|
-| `/resume` or `/resume [a-f]` | `Call /chain-resume` | Returning after a mid-chain session close |
+| --- | --- | --- |
+| `/resume` | `Call /resume` | Load `handoff.json` and resume parked intent |
+| `/discard` | `Call /discard` | Delete `handoff.json` and clear state |
+| `/resume-last` | `Call /chain-resume` | Cold restart recovery for interrupted sessions |
 | `/observe` | Read `session-log` Artifact + emit summary | Inspect what ran, what fired, what halted |
 | `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
 | `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
@@ -25,9 +27,12 @@ Call the chain directly. No classification step. No ambiguity.
 | `/chain-e-teaching` | `Call /chain-e-teaching` | Learning, tutorials, or walkthroughs |
 | `/chain-f-security` | `Call /chain-f-security` | Security audit, auth review, pre-deploy hardening |
 | `/chain-g-payments` | `Call /chain-g-payments` | Payments, billing, Stripe, subscriptions |
-| `/chain-hot-take` or `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
-| `/doc-audit` or `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
-| `/clover-check` or `/trifecta` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
+| `/chain-hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
+| `/hot-take` | `Call /chain-hot-take` | Fast-track implementation for standard T3 patterns |
+| `/doc-audit` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
+| `/doc-rot` | `Execute doc-rot-audit` | Digital Librarian: Audit code/doc semantic drift |
+| `/clover-check` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
+| `/trifecta` | `Execute clover-trifecta-check` | Clover Verification Lead: Functional correctness (Trifecta) audit |
 | `/chain-meta` | `node .agents/scripts/registry-tool.js --lint --verify-governance` | Self-Audit: lint all SKILL.md frontmatter + verify governance rules |
 | `/ship` | `node .agents/scripts/validate-kernel.js --artifact <artifact.md> --skill-path <skill-dir>` | Atomic Ship: Validate the active chain artifact, then commit |
 | `/firebase-migration` | `Call /firebase-migration` | Firebase Studio migration — native GUI or CLI pathways |
@@ -35,7 +40,7 @@ Call the chain directly. No classification step. No ambiguity.
 Single-skill direct invocations (no chain overhead):
 
 | Command | Skill | When |
-|---------|-------|------|
+| --- | --- | --- |
 | `/em-advice` | Execute `pragmatic-engineer-em` directly | Advisory on team/org/trade-offs |
 | `/tailwind` | Execute `adam-wathan-design-system` directly | UI/UX, Tailwind v4, Design tokens |
 | `/testing` | Execute `kent-dodds-quality-lead` directly | Unit/Integration testing, A11y |
@@ -45,10 +50,6 @@ Single-skill direct invocations (no chain overhead):
 | `/payments` | Execute `stripe` skill via `chain-g-payments` | Stripe/Billing integration |
 | `/monitoring` | Execute `sentry-for-ai` directly | Error tracking and observability |
 | `/github` | Execute `github` skill directly | Git commits, PRs, Workflow automation |
-| `/hot-take` | Execute `theo-browne-fullstack-advisor` (Chain H entry) | Rapid feature prototyping |
-| `/doc-audit` | Execute `doc-rot-audit` directly | Digital Librarian: Doc-Code sync |
-| `/clover-check` | Execute `clover-trifecta-check` directly | Functional correctness audit |
-| `/trifecta` | Execute `clover-trifecta-check` directly | Functional correctness audit |
 | `/sre` | Execute `kelsey-hightower-sre` directly | Infrastructure, CI/CD, Kubernetes |
 | `/data` | Execute `martin-kleppmann-data-systems` directly | Distributed systems, Consistency, Schema design |
 | `/security` | Execute `troy-hunt-security` directly | Threat modeling, Zero-trust hardening |
@@ -58,15 +59,18 @@ Single-skill direct invocations (no chain overhead):
 
 ---
 
-## Fallback — Natural Language Classification
+## Mandatory Command Enforcement
 
-**Only reached if no explicit command was given.**
+**No Natural Language Fallback.**
 
-If the user's message contains no slash command, attempt classification once.
-Emit: `"No command detected. Classifying intent — use /chain-[x] to skip this."`
-Map to the closest explicit command above and invoke it.
-If classification confidence is low, ask: `"Did you mean /chain-[x]?"` — do not
-route silently on an ambiguous match.
+If the user's message contains no slash command, DO NOT attempt classification.
+EMIT the following hard stop and wait for input:
+
+> [!CAUTION]
+> **No explicit command detected.**
+> To ensure deterministic execution and prevent silent failures, you MUST use a slash command (e.g., `/chain-a-feature`).
+> 
+> If you were in the middle of a redirected flow, use `/resume` to continue.
 
 ---
 

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SKILLS_DIR = path.join(__dirname, '..', 'skills');
+const REGISTRY_PATH = path.join(__dirname, '..', 'registry.md');
 
 /**
  * Parses a SKILL.md file for YAML frontmatter and status.
@@ -62,42 +63,97 @@ function findSkillFiles(dir, files = []) {
 }
 
 /**
+ * Parses the Markdown table in registry.md.
+ * @returns {Array<object>} List of skill entries { slug, keywords, status, lastUpdated }
+ */
+function parseRegistry() {
+  if (!fs.existsSync(REGISTRY_PATH)) {
+    console.error(`[Fatal] Registry not found at ${REGISTRY_PATH}`);
+    process.exit(1);
+  }
+
+  const content = fs.readFileSync(REGISTRY_PATH, 'utf8');
+  const lines = content.split('\n');
+  const skills = [];
+
+  let inTable = false;
+  lines.forEach(line => {
+    if (line.includes('| skill-slug |')) {
+      inTable = true;
+      return;
+    }
+    if (inTable && line.includes('|') && !line.includes('---')) {
+      const parts = line.split('|').map(p => p.trim()).filter(p => p.length > 0);
+      if (parts.length >= 4) {
+        skills.push({
+          slug: parts[0].replace(/`/g, ''),
+          keywords: parts[1],
+          status: parts[2],
+          lastUpdated: parts[3]
+        });
+      }
+    }
+  });
+
+  return skills;
+}
+
+/**
  * Lints all SKILL.md files for Antigravity-native compliance.
  */
 function lintSkills(fix = false) {
+  const registeredSkills = parseRegistry();
   const skillFiles = findSkillFiles(SKILLS_DIR);
   let errors = 0;
-  let fixed = 0;
+  let warnings = 0;
 
-  console.log(`[Linting] Scanning ${skillFiles.length} skills in ${SKILLS_DIR}...`);
+  console.log(`[Linting] Authority: ${REGISTRY_PATH}`);
+  console.log(`[Linting] Found ${registeredSkills.length} registered skills index entries.`);
 
+  // 1. Check for orphaned files (filesystem has it, registry doesn't)
   skillFiles.forEach(skillMdPath => {
-    const content = fs.readFileSync(skillMdPath, 'utf8');
-    const meta = parseSkillFile(content);
+    const slug = path.basename(path.dirname(skillMdPath));
+    const isRegistered = registeredSkills.some(s => s.slug === slug);
     const relPath = path.relative(SKILLS_DIR, skillMdPath);
 
+    if (!isRegistered) {
+      console.warn(`[Warning] Orphaned skill: ${relPath} is not in registry.md`);
+      warnings++;
+    }
+
+    // 2. Standard YAML lint
+    const content = fs.readFileSync(skillMdPath, 'utf8');
+    const meta = parseSkillFile(content);
     if (!meta.hasYAML) {
       console.error(`[Error] ${relPath}: Missing YAML frontmatter.`);
       errors++;
-    } else if (!meta.description) {
-      console.error(`[Error] ${relPath}: Missing mandatory 'description' in YAML.`);
-      errors++;
     }
 
-    if (fix && (!meta.hasYAML || !meta.description)) {
-      // Simple fix: Add placeholder frontmatter if missing
-      const dirName = path.basename(path.dirname(skillMdPath));
-      const placeholder = `---\nname: ${dirName}\ndescription: TBD - Please provide a keyword-dense capability description.\n---\n\n`;
-      const newContent = meta.hasYAML ? content : placeholder + content;
-      fs.writeFileSync(skillMdPath, newContent);
-      fixed++;
+    // 3. Drift detection (file newer than registry entry)
+    const stats = fs.statSync(skillMdPath);
+    const regEntry = registeredSkills.find(s => s.slug === slug);
+    if (regEntry) {
+      const lastUpdated = new Date(regEntry.lastUpdated);
+      if (stats.mtime > lastUpdated) {
+        console.warn(`[Drift] ${slug}: SKILL.md modified (${stats.mtime.toISOString().split('T')[0]}) since registry update (${regEntry.lastUpdated}).`);
+        warnings++;
+      }
+    }
+  });
+
+  // 4. Check for missing files (registry has it, filesystem doesn't)
+  registeredSkills.forEach(reg => {
+    const skillPath = path.join(SKILLS_DIR, reg.slug, 'SKILL.md');
+    if (!fs.existsSync(skillPath)) {
+      console.error(`[Error] Registry entry '${reg.slug}' points to non-existent file: ${skillPath}`);
+      errors++;
     }
   });
 
   if (errors === 0) {
-    console.log('[Success] All SKILL.md files are compliant with native metaprogramming schemas.');
+    console.log(`[Success] Framework integrity verified. (${warnings} warnings remaining)`);
   } else {
-    console.log(`[Summary] Found ${errors} issues. ${fixed} files fixed.`);
+    console.log(`[Summary] Found ${errors} errors and ${warnings} warnings.`);
   }
   return errors;
 }
@@ -114,12 +170,6 @@ function checkGovernance() {
     if (!content.includes(rule)) {
       console.warn(`[Warning] Rule file ${rule} is present but not mentioned in GEMINI.md`);
     }
-    
-    // Check for hallucinated YAML headers in rules
-    const ruleContent = fs.readFileSync(path.join(rulesDir, rule), 'utf8');
-    if (ruleContent.startsWith('---')) {
-      console.warn(`[Refinement] Rule ${rule} contains YAML frontmatter. Rules should be pure Markdown.`);
-    }
   });
 }
 
@@ -131,12 +181,4 @@ if (args.includes('--lint') || args.includes('--all')) {
 
 if (args.includes('--verify-governance') || args.includes('--all')) {
   checkGovernance();
-}
-
-if (args.includes('--clean')) {
-  const manifestPath = path.join(SKILLS_DIR, 'manifest.json');
-  if (fs.existsSync(manifestPath)) {
-    fs.unlinkSync(manifestPath);
-    console.log('[Clean] Deleted legacy manifest.json dependency.');
-  }
 }

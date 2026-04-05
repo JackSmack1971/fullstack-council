@@ -14,17 +14,36 @@ Artifact before the next step reads it (P3 Wizard enforced).
 
 ---
 
-## A0 — Product Discovery
-**Skill:** `lenny-rachitsky-product`
-**Idempotency:** If Artifact `a0-product` exists and Status = Complete → skip, read Artifact, advance to A1.
+Generate **Implementation Plan Artifact: `a0-product`** before A0.5.
 
-Produce:
-- User-centric objective and North Star metric
-- MVP scope boundaries (Critical Path)
-- Growth loop hypothesis
-- `[Verify]`: Product Market Fit (PMF) alignment statement
+---
 
-Generate **Implementation Plan Artifact: `a0-product`** before A1.
+## A0.5 — T3 Axiom Gate
+**Skill:** `rauchg-tech-lead-architect`
+**Idempotency:** If Artifact `a0-5-axiom` exists and Status = Complete → skip, read Artifact, advance to A1.
+
+**Axiom Check:**
+1. Verify presence of `@/server/db/schema.ts` (mandatory).
+2. Verify ONE type-safe transport layer:
+   - **tRPC**: `@/server/api/root.ts` + Zod validators.
+   - **Server Actions**: `@/lib/actions/*.ts` + Zod schemas.
+   - **GraphQL**: `codegen.ts` + typed documents.
+
+**Redirection + Handoff Logic:**
+If axioms are NOT satisfied:
+1. **Park Context**: Write to `.agents/state/handoff.json`:
+   ```json
+   {
+     "resume_chain": "chain-a-feature",
+     "user_intent": "[original intent from A0]",
+     "missing": ["drizzle_schema", "transport_layer"],
+     "parked_at": "TIMESTAMP"
+   }
+   ```
+2. **Halt**: Emit: `[A0.5 REDIRECT] T3 Axioms not met. Redirecting to /chain-c-architecture. Intent parked.`
+3. `Call /chain-c-architecture`.
+
+Generate **Implementation Plan Artifact: `a0-5-axiom`** before A1.
 
 ---
 
