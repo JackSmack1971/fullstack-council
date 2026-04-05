@@ -90,6 +90,25 @@ Applied to every workspace unless project-level rules explicitly override.
 
 ---
 
+## 🛡️ Telemetry & Data Governance (Zero-Trust)
+
+To prevent proprietary source code ingestion into public training pipelines:
+
+1. **Telemetry Lockdown**: User MUST navigate to `Ctrl + ,` -> Account -> Toggle off **Enable Telemetry**.
+2. **Enterprise Bridge**: For sensitive IP, transition from consumer-tier AI to authenticated GCP Vertex AI endpoints.
+
+---
+
+## 🚦 Multi-Agent Concurrency (Mission Control)
+
+The Council operates natively in **Parallel Mode** via the Antigravity Agent Manager (`Ctrl + E`):
+
+- **Parallel Spawning**: Multiple independent agent threads (e.g., Security audit vs. UI implementation) may operate concurrently on the same workspace.
+- **Inbox Governance**: All "Request Review" halts across parallel agents are pooled into the centralized **Inbox** tab for unified human-in-the-loop approval.
+- **Token Tax Awareness**: Concurrency increases the rolling 5-hour token burn rate. Monitor limits via the Status Bar.
+
+---
+
 ## Execution Isolation (Strict Mode Defaults)
 
 **Default:** Strict Mode OFF for development workspaces.
