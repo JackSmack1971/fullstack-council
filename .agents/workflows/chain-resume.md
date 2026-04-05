@@ -45,9 +45,9 @@ An Artifact is **Missing** if it does not appear in the Artifact panel.
 **Chain A manifest:**
 - [ ] `a1-architecture` — Implementation Plan
 - [ ] `a2-components` — Implementation Plan
-- [ ] `a3-ui` — Task List
-- [ ] `a4-quality` — Task List
-- [ ] `a5-performance` — Task List
+- [ ] `a3-ui` — Design Audit
+- [ ] `a4-quality` — Integration Tests
+- [ ] `a5-performance` — CWV Projection
 
 **Chain B manifest:**
 - [ ] `b1-react-audit` — Implementation Plan

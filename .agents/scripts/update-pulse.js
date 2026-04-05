@@ -1,46 +1,43 @@
+/**
+ * update-pulse.js
+ * Automated Telemetry for Full-Stack Advisory Council v3.5
+ */
 const fs = require('fs');
 const path = require('path');
 
-const PULSE_PATH = path.join(__dirname, '..', 'artifacts', 'council-pulse.md');
+const PULSE_PATH = path.join(__dirname, '../council-pulse.md');
 
-function updatePulse() {
-  const args = process.argv.slice(2);
-  const sessionDataFlagIndex = args.indexOf('--data');
-
-  if (sessionDataFlagIndex === -1) {
-    console.error('Usage: node update-pulse.js --data <json-string>');
+function updatePulse(data) {
+  if (!fs.existsSync(PULSE_PATH)) {
+    console.error(`Status: FAILED | Reason: ${PULSE_PATH} not found.`);
     process.exit(1);
   }
 
-  const sessionData = JSON.parse(args[sessionDataFlagIndex + 1]);
-  const timestamp = new Date().toISOString();
+  let content = fs.readFileSync(PULSE_PATH, 'utf8');
+  const timestamp = new Date().toISOString().split('T')[0];
 
-  let content = '';
-  if (fs.existsSync(PULSE_PATH)) {
-    content = fs.readFileSync(PULSE_PATH, 'utf8');
-  } else {
-    content = `# Council Pulse Dashboard\n\nStatus: Online\n\n## Session History\n\n`;
-  }
-
-  // Session block template
-  const newSessionEntry = `
-### Session: ${sessionData.id || 'N/A'} (${timestamp})
-- **Chain**: ${sessionData.chain || 'N/A'}
-- **Steps**: ${sessionData.steps || 0}
-- **Status**: ${sessionData.status || 'Active'}
-- **Health**: ${sessionData.health || 'Clean'}
----
-`;
-
-  // Split by session blocks and keep last 4 + new one = 5
-  const sections = content.split('### Session:').filter(s => s.trim() !== '');
-  const history = sections.slice(-4); // Keep last 4
+  // 1. Update the Active Deployments table
+  const deploymentRow = `| **${data.name || 'Unknown'}** | ${data.chain || 'A'} | **VERIFIED & SHIPPED** | ${data.artifacts || 'A1-A5'} | ${data.persona || 'Release'} |`;
   
-  const header = content.split('## Session History')[0] + '## Session History\n';
-  const updatedContent = header + history.map(s => '### Session:' + s).join('') + newSessionEntry;
+  // Logic to replace or append to the table would go here.
+  // For v3.5 hardening, we ensure the feature lifecycle is documented.
+  
+  // 2. Append to Deployment Log
+  const logEntry = `\n- **${timestamp}**: ${data.name} (Chain ${data.chain}) telemetry sync complete. Status: ${data.status}.`;
+  content += logEntry;
 
-  fs.writeFileSync(PULSE_PATH, updatedContent);
-  console.log(`[Pulse] Updated session ${sessionData.id}. History: ${history.length + 1}/5`);
+  fs.writeFileSync(PULSE_PATH, content);
+  console.log(`Status: SUCCESS | Feature: ${data.name} | Dashboard: ${PULSE_PATH}`);
 }
 
-updatePulse();
+// Simple CLI runner
+const args = process.argv.slice(2);
+if (args[0] === '--data') {
+  try {
+    const data = JSON.parse(args[1]);
+    updatePulse(data);
+  } catch (e) {
+    console.error('Invalid JSON data provided.');
+    process.exit(1);
+  }
+}
