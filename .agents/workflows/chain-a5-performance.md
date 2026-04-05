@@ -2,7 +2,7 @@
 description: [DETERMINISTIC] User Profile A5 Performance Optimization Chain
 ---
 // turbo-all
-// capture
+- Persist phase state to `task.md` Artifact.
 
 # [A5] User Profile — Hardened Performance Optimization Chain
 

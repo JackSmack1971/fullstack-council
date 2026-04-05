@@ -2,7 +2,7 @@
 description: [DETERMINISTIC] User Profile A2 Component Design Chain
 ---
 // turbo-all
-// capture
+- Persist phase state to `task.md` Artifact.
 
 # [A2] User Profile — Hardened Component Design Chain
 

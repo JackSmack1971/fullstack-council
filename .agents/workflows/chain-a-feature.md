@@ -21,7 +21,7 @@ Activate skill: `rauchg-tech-lead-architect`
 - Produce a K.E.R.N.E.L. Implementation Plan artifact with a Mermaid component tree.
 - Identify any tech debt that would block implementation. If found, halt → `/chain-c-architecture`.
 
-// capture ARCH_STATE
+- Evaluate `ARCH_STATE` and persist state to `task.md` Artifact.
 
 ## Phase 2 — Component Design & React Boundaries
 
@@ -31,7 +31,7 @@ Activate skill: `react-core-lead`
 - Specify Server vs. Client Components, data-fetching strategy (RSC async or TanStack), and state management scope.
 - Enforce: no `useEffect` for data fetching, no raw DB rows to Client Components.
 
-// capture COMPONENT_STATE
+- Evaluate `COMPONENT_STATE` and persist state to `task.md` Artifact.
 
 ## Phase 3 — UI Composition & Design Tokens
 
@@ -41,7 +41,7 @@ Activate skill: `adam-wathan-design-system`
 - Extract repeated utility patterns into semantic component classes where usage repeats 3+ times.
 - Verify typographic scale, spacing, and color token usage against the active design system.
 
-// capture UI_STATE
+- Evaluate `UI_STATE` and persist state to `task.md` Artifact.
 
 ## Phase 4 — Quality Gate & Performance Baseline
 

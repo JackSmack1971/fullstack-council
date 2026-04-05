@@ -2,7 +2,7 @@
 description: [DETERMINISTIC] User Profile A3 UI Composition Chain
 ---
 // turbo-all
-// capture
+- Persist phase state to `task.md` Artifact.
 
 # [A3] User Profile — Hardened UI Composition Chain
 

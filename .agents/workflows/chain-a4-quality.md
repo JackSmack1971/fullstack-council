@@ -2,7 +2,7 @@
 description: [DETERMINISTIC] User Profile A4 Quality Verification Chain
 ---
 // turbo-all
-// capture
+- Persist phase state to `task.md` Artifact.
 
 # [A4] User Profile — Hardened Quality Verification Chain
 

@@ -49,7 +49,7 @@
 | :--- | :--- | :--- | :--- |
 | **Rules** | Passive Constraints | Markdown files (≤12,000 chars) defining global (`GEMINI.md`) or workspace (`.agents/rules/`) behaviors. | |
 | **Skills** | Specialized Capabilities | Directory-based packages (`SKILL.md`) utilizing **Deterministic Routing** via native workflows. | |
-| **Workflows** | Deterministic Sequences| Explicit execution paths (`.agents/workflows/*.md`) using **@mentions** and **// capture**. | |
+| **Workflows** | Deterministic Sequences| Explicit execution paths (`.agents/workflows/*.md`) updating native Artifacts natively. | |
 | **Artifacts** | Communication Output | Markdown, diffs, and recordings generated during Planning Mode. | |
 | **Strict Mode** | Security Setting | Forces sandboxing (network denied by default), restricts file access to workspace. | |
 | **Knowledge Items (KIs)** | Memory System | Stateless context recovery mechanism replacing persistent JSON like `handoff.json`. | |
@@ -84,7 +84,7 @@
 
 #### Metaprogramming & Deterministic Orchestration
 * **Workflows** → deterministic execution via → **@mentions** Persona Invocation
-* **Handoffs** → secure state passing via → **// capture** directive
+* **Handoffs** → secure state passing via → **Artifact/KI updates** natively
 * **A0.5 Gate** → validates → **T3 Schema / Transport Integrity**
 * **Knowledge Items** → enables → **Stateless Session Recovery**
 

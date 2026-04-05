@@ -37,7 +37,7 @@
 | :--- | :--- | :--- | :--- |
 | **Linux Host** | Utilizes `nsjail` for process sandboxing, cgroups, and namespaces. | Process isolation mechanism for Linux terminal execution. | |
 | **macOS Host** | Employs `Seatbelt` (`sandbox-exec`) for kernel-level sandboxing (Legacy/Deprecated). | Forward-compatibility risks against future OS updates. | |
-| **Strict Mode** | Automatic security enforcement mechanism. | Forces sandboxing activation (Network Denied Default); Request Review for state capture. | |
+| **Strict Mode** | Automatic security enforcement mechanism. | Forces sandboxing activation (Network Denied Default). | |
 
 #### 3. Data Governance, Telemetry, & Automated Threat Vectors
 
@@ -52,7 +52,7 @@
 | Extensibility Type | Technical Implementation & Schema | Capabilities / Constraints | Citations |
 | :--- | :--- | :--- | :--- |
 | **Rules** | Stored in `.agents/rules/`. Limit: 12,000 characters. | Passive, immutable constraints. Activation: Always On, Glob patterns. | |
-| **Workflows** | Explicit execution paths (`.agents/workflows/*.md`). | Invoked via `/slash` commands. Directives: `// turbo`, `// turbo-all`, `// parallel`, `// capture`. | |
+| **Workflows** | Explicit execution paths (`.agents/workflows/*.md`). | Invoked via `/slash` commands. Directives: `// turbo`, `// turbo-all`, `// parallel`. | |
 | **Skills** | Directory-based packages (`SKILL.md`). | **Deterministic Routing** via native workflows and @mentions. | |
 
 #### 8. Implementation Case Study: Full-Stack Advisory Council v3.5
@@ -65,7 +65,7 @@ An open-source, 100% deterministic, axiom-enforced AI orchestration pipeline.
     *   **Parallel Perf**: Chain D utilizes `// parallel` for concurrent CWV optimizations.
     *   **Atomic Ship**: `/ship` uses `// turbo-all` for non-probabilistic atomic validation.
 *   **A0.5 Axiom Gate:** Mandatory pre-check for `drizzle_schema` and type-safe transport integrity.
-*   **Secure State Capture:** Uses `// capture` and $STATE variables under Request Review policy.
+*   **Secure State Persistence:** Relies on native Artifact writes under Strict rules.
 *   **Knowledge Persistence:** Replaces `handoff.json` with stateless Knowledge Item reconstruction.
 *   **Council Core Lock:** Final governance rule (`council-lock.md`) preventing regression to probabilistic routing.
 
@@ -75,7 +75,7 @@ An open-source, 100% deterministic, axiom-enforced AI orchestration pipeline.
 
 #### Process Step: Knowledge-Based Context Recovery
 1.  **KI Query:** Search Antigravity Knowledge Items for task intent.
-2.  **Intent Capture:** Injects context into VM Task Memory via `// capture`.
+2.  **Intent Update:** Embeds context dynamically into task Artifacts.
 3.  **A0.5 Validate:** Evaluates state against K.E.R.N.E.L. schema.
 4.  **Deterministic Resume:** Re-invokes identified workflow checkpoint.
 

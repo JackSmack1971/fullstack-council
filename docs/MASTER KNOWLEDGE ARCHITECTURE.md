@@ -47,7 +47,7 @@ Directory-based packages (`SKILL.md`) utilizing **Deterministic Routing** via na
 
 #### 5.3 Workflows (Deterministic Automation)
 Sequential markdown files stored in `.agents/workflows/` invoked via `/slash` commands.
-*   **Directives**: `// turbo`, `// turbo-all` (auto-run without local human interrupts), `// parallel` (concurrent execution), `// capture` (stores stdout as env variables).
+*   **Directives**: `// turbo`, `// turbo-all` (auto-run without local human interrupts), `// parallel` (concurrent execution).
 
 ### 9. IMPLEMENTATION CASE STUDY: FULL-STACK ADVISORY COUNCIL V3.5
 A premier example of programmatic agent orchestration is the open-source `fullstack-council` v3.5.
@@ -55,7 +55,7 @@ A premier example of programmatic agent orchestration is the open-source `fullst
 #### 9.1 Deterministic Infrastructure
 *   **Workflow-First Orchestration**: Eradicates probabilistic semantic routing. All handoffs are explicit sequences.
 *   **A0.5 Axiom Gate**: Native pre-check for schema/transport integrity.
-*   **Secure State Capture**: All sequential handoffs utilize `// capture` and $STATE variables under Request Review policy.
+*   **Secure State Persistence**: All sequential handoffs rely on native Artifact writes and KI generation.
 *   **Pulse Dashboard**: P0.1 telemetry system (`council-pulse.md`).
 *   **Knowledge Persistence**: Replaces `handoff.json` with stateless Knowledge Item reconstruction logic.
 

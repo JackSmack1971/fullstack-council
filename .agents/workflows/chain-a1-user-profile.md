@@ -2,7 +2,7 @@
 description: [DETERMINISTIC] User Profile A1 Architecture Chain
 ---
 // turbo-all
-// capture
+- Persist phase state to `task.md` Artifact.
 
 # [A1] User Profile — Hardened Architecture Chain
 

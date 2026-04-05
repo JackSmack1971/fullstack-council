@@ -12,8 +12,8 @@ The recovery process is now deterministic and stateless reaching beyond the loca
 |---------------|-----------------------------------------------------------------------|----------------------|
 | **1. Verify** | Ensures Antigravity Strict Mode is active and environment is secure. | Global Rule Baseline |
 | **2. Query**  | Scans Antigravity Knowledge Items for recent task context and intent. | Knowledge Repository |
-| **3. Capture** | Injects context into `$KNOWLEDGE_STATE` via the `// capture` directive. | VM Task Memory       |
-| **4. Validate** | Evaluates the captured state against the K.E.R.N.E.L. schema.        | A0.5 Axiom Gate      |
+| **3. Update** | Persists context directly into the project's native Artifact state metrics. | Artifact Memory       |
+| **4. Validate** | Evaluates the persisted state against the K.E.R.N.E.L. schema.        | A0.5 Axiom Gate      |
 | **5. Resume** | Re-invokes the last active workflow at the identified checkpoint.     | Native Workflows     |
 
 ## How It Works

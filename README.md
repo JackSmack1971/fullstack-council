@@ -19,7 +19,7 @@ This council is deeply integrated with the **Google Antigravity** native metapro
 Unlike generic wrappers or probabilistic semantic routers, the Council leverages Antigravity's native workflow engine:
 
 - **Explicit Routing**: No manifest or probabilistic keyword matching. Routing is driven by deterministic `.agents/workflows/*.md` files resolved via slash commands.
-- **Secure State Capture**: Sequential phases use the **`// capture`** directive to pass structured state variables forward, narrowing each phase's solution space without external orchestrators.
+- **Secure State Persistence**: Sequential phases rely on native Knowledge Items and Artifact updates to pass structured state variables forward, narrowing each phase's solution space without external orchestrators.
 - **OS-Level Isolation**: Zero-trust execution via **Antigravity Strict Mode** (Seatbelt on macOS, nsjail on Linux, WSL2 on Windows), enforced by the `strict-mode-enforcer` skill.
 
 ## 🪑 The Council — Sequential Expertise & Native Parallelism
@@ -120,7 +120,7 @@ The **[A0.5 Axiom Gate](file:///.agents/rules/axiom-gate-a05.rule.md)** is a nat
 
 ### 3. State Security (DEV#POPPER Protection)
 
-Observability and state passing are protected by the **[Secure State](file:///.agents/rules/secure-state.md)** rule. All terminal commands referencing captured state variables ($STATE) require human authorization via the "Request Review" policy.
+Observability and state passing are governed by native KIs and local Artifact references.
 
 ### 4. Context Recovery (Resilient)
 
@@ -152,8 +152,8 @@ The recovery process is now deterministic and stateless reaching beyond the loca
 |---------------|-----------------------------------------------------------------------|----------------------|
 | **1. Verify** | Ensures Antigravity Strict Mode is active and environment is secure. | Global Rule Baseline |
 | **2. Query**  | Scans Antigravity Knowledge Items for recent task context and intent. | Knowledge Repository |
-| **3. Capture** | Injects context into `$KNOWLEDGE_STATE` via the `// capture` directive. | VM Task Memory       |
-| **4. Validate** | Evaluates the captured state against the K.E.R.N.E.L. schema.        | A0.5 Axiom Gate      |
+| **3. Update** | Persists context directly into the project's native Artifact state metrics. | Artifact Memory       |
+| **4. Validate** | Evaluates the persisted state against the K.E.R.N.E.L. schema.        | A0.5 Axiom Gate      |
 | **5. Resume** | Re-invokes the last active workflow at the identified checkpoint.     | Native Workflows     |
 
 ### How It Works
