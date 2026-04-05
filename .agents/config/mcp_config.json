@@ -1,0 +1,45 @@
+{
+  "mcpServers": {
+    "local-db-tool": {
+      "command": "npx",
+      "args": ["-y", "@local/db-tool"],
+      "env": {
+        "DB_PASSWORD": "<PLACEHOLDER_INJECT_AT_RUNTIME>"
+      }
+    },
+    "remote-supabase-tool": {
+      "serverUrl": "https://mcp.supabase.com/mcp",
+      "oauth": {
+        "clientId": "<PLACEHOLDER_CLIENT_ID>",
+        "clientSecret": "<PLACEHOLDER_CLIENT_SECRET>"
+      }
+    },
+    "remote-github-tool": {
+      "serverUrl": "https://api.githubcopilot.com/mcp/",
+      "oauth": {
+        "clientId": "<PLACEHOLDER_CLIENT_ID>",
+        "clientSecret": "<PLACEHOLDER_CLIENT_SECRET>"
+      }
+    },
+    "remote-vercel-tool": {
+      "serverUrl": "https://mcp.vercel.com",
+      "oauth": {
+        "clientId": "<PLACEHOLDER_CLIENT_ID>",
+        "clientSecret": "<PLACEHOLDER_CLIENT_SECRET>"
+      }
+    },
+    "remote-sentry-tool": {
+      "serverUrl": "https://mcp.sentry.dev",
+      "oauth": {
+        "clientId": "<PLACEHOLDER_CLIENT_ID>",
+        "clientSecret": "<PLACEHOLDER_CLIENT_SECRET>"
+      }
+    },
+    "remote-context7-tool": {
+      "serverUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "Authorization": "Bearer <PLACEHOLDER_API_KEY>"
+      }
+    }
+  }
+}

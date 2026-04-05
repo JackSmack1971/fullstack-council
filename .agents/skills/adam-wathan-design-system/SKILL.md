@@ -10,7 +10,12 @@ kernel_schema:
   Violations Found: string
   Constraints Forward: string[]
   Verify: string
-allowed-tools: [read_file, list_files]
+allowed-tools:
+  - figma-get-styles
+  - fetch-live-docs
+  - github-search-code
+  - read_file
+  - edit_file
 ---
 
 # Adam Wathan — Design System Mastery

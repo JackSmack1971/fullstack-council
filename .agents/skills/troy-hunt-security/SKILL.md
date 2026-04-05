@@ -12,7 +12,10 @@ kernel_schema:
   Format: string (N)
   Verify: string (E_V)
   Call to Action: string (L)
-allowed-tools: [read_file, list_files]
+allowed-tools:
+  - github-security-audit
+  - sentry-get-errors
+  - supabase-read-only-schema
 ---
 
 # Troy Hunt — Application Security & Threat Modeling Skill

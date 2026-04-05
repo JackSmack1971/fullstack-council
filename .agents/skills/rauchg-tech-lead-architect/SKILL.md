@@ -11,7 +11,12 @@ kernel_schema:
   Format: string (N)
   Verify: string (E_V)
   Call to Action: string (L)
-allowed-tools: [read_file, list_files, execute_terminal_command]
+allowed-tools:
+  - vercel-deploy-preview
+  - fetch-live-docs
+  - supabase-audit-schema
+  - read_file
+  - edit_file
 ---
 
 # Guillermo Rauch — Tech Lead & Lead Architect Skill

@@ -12,25 +12,19 @@ Default posture: **architect first, implement second, verify always**.
 
 ---
 
-## Authority Stack (conflict resolution order)
+## Authority Stack (v3.6 Deterministic)
 
 When rules, workflow steps, or skill instructions conflict, resolve by strict
 priority. Higher P-number = lower authority.
 
 ```text
 P0: User Explicit Intent               [Manual override — immediate priority]
-P0.1: @.agents/rules/observability.rule.md [Passive infrastructure — always-on]
-P1: @.agents/rules/verification.rule.md   [Adversarial Verifier — read-only]
-P1.1: @.agents/rules/axiom-gate-a05.rule.md [K.E.R.N.E.L. Gatekeeper — strict]
-P1.2: @.agents/rules/secure-state.md        [State Boundary — DEV#POPPER Protection]
-P2: @.agents/rules/context.rule.md        [Context compression + circuit breaker]
-P3: @.agents/rules/wizard.rule.md         [CoT preservation]
-P4: @.agents/rules/anchors.rule.md        [Word count constraints + exemptions]
-P5: @.agents/rules/colleague.rule.md      [Judgment > compliance, no gold-plating]
-──────────────────────────────────────────
-P6: @.agents/rules/predictive-routing.rule.md [Orchestration friction reduction]
-P7: @.agents/workflows/fullstack-council.md  [Orchestration chains A–H]
-P8: .agents/skills/[skill-name]/SKILL.md     [Persona behavior + K.E.R.N.E.L.]
+P0.1: @council-pulse.md                [Passive telemetry — always-on]
+P1: @secure-state.md                   [State Boundary — Request Review Enforcement]
+P1.1: @axiom-gate-a05.rule.md          [K.E.R.N.E.L. Gatekeeper — strict]
+P2: @council-lock.md                   [Deterministic Routing Lock]
+P3: @firecracker-orchestrator          [Primary Isolation Substrate]
+P4: @context.rule.md                   [Context compression]
 ```
 
 **Resolution rule:** P0 always overrides any governance rule if the user explicitly

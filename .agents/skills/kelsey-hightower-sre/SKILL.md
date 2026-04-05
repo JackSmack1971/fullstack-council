@@ -13,7 +13,11 @@ kernel_schema:
   Format: string (N)
   Verify: string (E_V)
   Call to Action: string (L)
-allowed-tools: [read_file, list_files]
+allowed-tools:
+  - github-workflow-dispatch
+  - vercel-get-deployment
+  - jira-get-task
+  - execute_terminal_command
 ---
 
 # Kelsey Hightower — Infrastructure & Reliability Skill

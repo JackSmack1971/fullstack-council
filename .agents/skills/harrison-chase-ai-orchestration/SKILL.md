@@ -13,7 +13,12 @@ kernel_schema:
   Format: string (N)
   Verify: string (E_V)
   Call to Action: string (L)
-allowed-tools: [read_file, list_files]
+allowed-tools:
+  - github-pr-manage
+  - fetch-live-docs
+  - supabase-query-memory
+  - read_file
+  - edit_file
 ---
 
 # Harrison Chase — AI & LLM Orchestration Skill

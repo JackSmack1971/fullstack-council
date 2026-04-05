@@ -4,7 +4,7 @@ description: >
   Architects React applications using Server Components (RSC), Concurrent Rendering,
   and modern Hooks patterns. Specialized in data-flow, state management (Redux/Context),
   and performance optimization. Triggers on React, Hooks, RSC, or frontend architecture queries.
-allowed-tools: [read_file, list_files, write_file, execute_terminal_command]
+allowed-tools: [fetch-live-docs, github-read-repository, read_file, write_file, execute_terminal_command]
 ---
 
 # React Core Lead

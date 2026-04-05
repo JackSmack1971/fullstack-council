@@ -1,4 +1,4 @@
-# 🏛️ Full-Stack Advisory Council v3.5 — Deterministic & Axiom-Enforced
+# 🏛️ Full-Stack Advisory Council v3.6 — Zero-Trust & MCP-Enforced
 
 - **Welcome!**
 - Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **specialized AI personas** that work together like a real engineering crew.
@@ -20,7 +20,7 @@ Unlike generic wrappers or probabilistic semantic routers, the Council leverages
 
 - **Explicit Routing**: No central manifest or probabilistic keyword matching. Routing is driven by deterministic `.agents/workflows/*.md` files using **@mentions**.
 - **Secure State Capture**: All sequential handoffs utilize the **// capture** directive, maintaining stateless environment isolation.
-- **Micro-VM Sandboxing**: Strict kernel-level isolation via OS-native mechanisms (Seatbelt/nsjail).
+- **Hardware-Level Isolation**: Zero-trust execution via **Firecracker Micro-VMs** (Hardware Virtualization), shielding the host from rogue agent execution.
 
 ## 🪑 The Council – Atomic & Specialized Skills
 
@@ -109,20 +109,19 @@ The **[A0.5 Axiom Gate](file:///.agents/rules/axiom-gate-a05.rule.md)** is a nat
 
 Observability and state passing are protected by the **[Secure State](file:///.agents/rules/secure-state.md)** rule. All terminal commands referencing captured state variables ($STATE) require human authorization via the "Request Review" policy.
 
-### 4. Context Recovery (Stateless)
+### 4. Context Recovery (Resilient)
 
-Interrupted sessions are resumed via `/resume`. Intent is reconstructed dynamically from **Antigravity Knowledge Items**, eliminating persistent JSON vulnerabilities like `handoff.json`.
+Interrupted sessions are resumed via `/resume`. Intent is reconstructed dynamically from **Antigravity Knowledge Items** and bridged by a local **`/tmp/session-snapshot.json`** buffer to mitigate indexing latency.
 
 * * *
 
-## 🛡️ Security & Sandboxing
+## 🛡️ Zero-Trust Sandboxing (v3.6)
 
-Google Antigravity uses OS-native kernel-level sandboxing:
+The Council utilizes **Firecracker Micro-VMs** for hardware-level process isolation:
 
-- **macOS**: Seatbelt (`sandbox-exec`) kernel mechanism.
-- **Linux**: nsjail process isolation.
-
-When **Strict Mode** is enabled, network access is denied by default. The Council's Strict Mode allowlist includes `pagespeed.web.dev` (performance chain).
+- **Primary Substrate**: Firecracker (KVM on Linux, WSL2/Hyper-V on Windows).
+- **Fallback**: Google Antigravity Native Strict Mode (Seatbelt/nsjail kernel-level sandboxing).
+- **Execution Policy**: Network access is denied by default unless explicitly whitelisted via MCP metadata.
 
 * * *
 
@@ -172,8 +171,8 @@ The council includes a first-class workflow for migrating from legacy Firebase S
 
 * * *
 
-## ⚠️ Known Limitations
+## ⚠️ Known Limitations & Governance
 
 - Requires **Google Antigravity**.
-- Persistent state files like `handoff.json` are deprecated in favor of native Knowledge Item recovery.
-- Rules are pure Markdown; YAML frontmatter is explicitly prohibited by the v3.5 design system.
+- **YAML Frontmatter**: Mandatory only for **Skills** (`SKILL.md`) to define `allowed-tools` boundaries. Global Rules (`*.rule.md`) remain pure Markdown.
+- **MCP Registry**: Managed at the global path `~/.gemini/antigravity/mcp_config.json`.
