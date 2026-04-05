@@ -108,6 +108,8 @@ When Strict Mode activates:
   - `pagespeed.web.dev` (Chain D — Addy Osmani CWV verification)
   - `vercel.com` (Chain A/C — rauchg deploy verification)
   - `npmjs.com` (dependency resolution)
+  - `uploadthing.com` (User Profile Avatar Storage)
+  - `fqdn.neon.tech` (User Profile Edge-HTTP Database)
 
 ---
 

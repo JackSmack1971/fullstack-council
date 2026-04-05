@@ -1,0 +1,21 @@
+{
+  "$schema": "KERNEL_STATE_v3.5",
+  "active_chain": "ship",
+  "current_step": "SHIP",
+  "workflow_state": "INITIAL_HANDOFF",
+  "persona_lock": "release-orchestrator",
+  "axiom_payload": {
+    "drizzle_schema": "verified",
+    "transport": "Edge-HTTP-Verified",
+    "test_coverage": "RTL-MSW-Verified",
+    "react_boundaries": "RSC-Isolated",
+    "ui_tokens": "Tailwind-v4-System",
+    "cwv_status": "LCP-INP-CLS-Optimized",
+    "strict_endpoints": [
+      "uploadthing.com",
+      "fqdn.neon.tech"
+    ]
+  },
+  "strict_mode_status": "enforced_with_fqdn_allowlist",
+  "sandbox_protocol": "active"
+}

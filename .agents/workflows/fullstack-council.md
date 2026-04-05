@@ -21,7 +21,13 @@ Call the chain directly. No classification step. No ambiguity.
 | `/resume [a-f]` | `Call /chain-resume` | Explicitly resume a specific chain (A-F) |
 | `/discard` | `Call /discard` | Delete `handoff.json` and clear state |
 | `/observe` | Read `session-log` Artifact + emit summary | Inspect what ran, what fired, what halted |
-| `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
+| `/chain-a-feature` | **Build**: Product → **T3 Axioms** → Architecture → AI/Data → React → Tailwind → Tests → Perf (8 steps) | Building a new feature |
+| `/chain-a1-user-profile` | **Build**: User Profile Hardened A1 Architecture (Strict Mode + Turbo) | User Profile specific implementation |
+| `/chain-a2-components` | **Build**: User Profile Hardened A2 Component Design (Dan Abramov + FQDN) | User Profile specific implementation |
+| `/chain-a3-ui` | **Build**: User Profile Hardened A3 UI Composition (Adam Wathan + v4) | User Profile specific implementation |
+| `/chain-a4-quality` | **Build**: User Profile Hardened A4 Quality Verification (Kent C. Dodds + MSW) | User Profile specific implementation |
+| `/chain-a5-performance` | **Build**: User Profile Hardened A5 Performance Optimization (Lead + CWV) | User Profile specific implementation |
+| `/ship` | **Release**: Atomic Build → Commit → **Telemetry** → **Push (Origin Main)** | Feature release and dashboard update |
 | `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
 | `/chain-c-architecture` | `Call /chain-c-architecture` | Making a stack or architecture decision |
 | `/chain-d-performance` | `Call /chain-d-performance` | Fixing CWV or performance regressions |
