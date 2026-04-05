@@ -24,11 +24,14 @@ Unlike generic wrappers or probabilistic semantic routers, the Council leverages
 
 ## 🪑 The Council — Sequential Expertise & Native Parallelism
 
-### Architecture Reality Check
+### Architecture Reality Check: The Sub-Agent Boundary
 
-The Full-Stack Advisory Council operates via **Progressive Disclosure Phases** within the primary reasoning thread. It does *not* utilize custom programmatic sub-agents.
+The Full-Stack Advisory Council framework relies on **Progressive Disclosure Phases** to mathematically steer a single reasoning model. To understand why, you must understand the underlying Antigravity orchestration boundaries:
 
-By feeding specific skill constraints sequentially (e.g., Next.js Architecture → React Hooks → Testing), the workflow mathematically steers the single reasoning model without requiring external Model Context Protocol (MCP) orchestrators.
+1. **Native Antigravity Sub-agents (Auto-delegated)**: You cannot disable native sub-agents. The main reasoning agent operates as a high-level planner and transparently delegates tasks to specialized internal models (e.g., the Browser Subagent for DOM traversal or the Terminal Subagent).
+2. **The UI Limitation**: Google Antigravity's consumer UI does not currently allow developers to manually author, register, or spawn custom programmatic sub-agents.
+3. **The Council's Workaround**: To bypass the UI limitation, this framework simulates sub-agents by sequentially injecting `SKILL.md` constraints into the primary reasoning thread.
+4. **Google Agent Dev Kit (Enterprise Path)**: To build a true hierarchical swarm where an Orchestrator spawns isolated, customized sub-agents that run parallel tasks, you must abandon the IDE's UI layer and utilize the underlying Google Agent Dev Kit APIs.
 
 > [!NOTE]
 > **Token Optimization:** Antigravity evaluates planning inside verbose reasoning passes. Chaining too many persona switches in a single prompt incurs a hidden token tax against your 5-hour rolling sprint capacity. `/chain-a-feature` has been consolidated to **4 phases** (down from 8) and uses `// turbo` directives to bypass unnecessary human-in-the-loop bottlenecks during sequential context shifts.
