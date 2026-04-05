@@ -22,6 +22,7 @@ This is the **authoritative index** for all skills in the `.agents/skills/` dire
 | `react-core-lead` | React, Hooks, RSC, Concurrent Rendering | stable | 2026-04-04 |
 | `sarah-drasner-interaction` | UI animations, SVG, Framer Motion | stable | 2026-04-04 |
 | `skill-optimizer` | Skill audit, YAML validation, SKILL.md lint | stable | 2026-04-04 |
+| `strict-mode-enforcer` | zero-trust, Strict Mode, sandboxing, Seatbelt, nsjail, WSL2, security-critical, terminal review | stable | 2026-04-05 |
 | `theo-browne-fullstack-advisor` | T3 stack, tRPC, Prisma, DX critique | stable | 2026-04-04 |
 | `troy-hunt-security` | Security audit, threat modeling, OWASP | stable | 2026-04-04 |
 | `wes-bos-fullstack-educator` | JS tutorial, CSS Grid, Flexbox, React patterns | stable | 2026-04-04 |

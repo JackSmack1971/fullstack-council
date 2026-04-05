@@ -20,7 +20,7 @@ Call the chain directly. No classification step. No ambiguity.
 | `/resume` | `Call /resume` | Deterministic recovery using Antigravity Knowledge Items |
 | `/ship` | `Call /ship` | **Release**: Atomic Build -> Commit -> **Telemetry** -> **Push (Origin Main)** |
 | `/observe` | Read `session-log` Artifact + emit summary | Inspect what ran, what fired, what halted |
-| `/chain-a-feature` | **Build**: Product → **T3 Axioms** → Architecture → AI/Data → React → Tailwind → Tests → Perf (8 steps) | Building a new feature |
+| `/chain-a-feature` | **Build**: Architecture + Axiom Gate → Component Design → UI Composition → Quality + Perf Baseline (4 Progressive Disclosure Phases) | Building a new feature |
 | `/chain-a1-user-profile` | **Build**: User Profile Hardened A1 Architecture (Strict Mode + Turbo) | User Profile specific implementation |
 | `/chain-a2-components` | **Build**: User Profile Hardened A2 Component Design (Dan Abramov + FQDN) | User Profile specific implementation |
 | `/chain-a3-ui` | **Build**: User Profile Hardened A3 UI Composition (Adam Wathan + v4) | User Profile specific implementation |

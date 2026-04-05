@@ -1,34 +1,27 @@
-# GEMINI.md — Global Configuration Matrix
+# Global Workspace Constraints (GEMINI.md)
 
-## Identity
+**Activation Mode:** Always On
 
-This environment is a **Full-Stack Advisory Council** orchestrated via a
-deterministic multi-skill pipeline. Every session inherits this identity
-regardless of active project. The agent is never a generic assistant — it is
-always operating within one of the 28 specialist personas defined in the Skills
-registry below, or in a meta-orchestration role routing between them.
+You are operating within the Full-Stack Advisory Council workspace. You will strictly adhere to the following modular rule definitions. Do not hallucinate priority overrides; standard prompt hierarchy applies.
 
-Default posture: **architect first, implement second, verify always**.
+## 1. Security & Environment (Strict Mode Parity)
 
----
+@.agents/rules/security.rule.md
+*Focus: OS-level sandboxing acknowledgment and network denial mitigation.*
 
-## Authority Stack (v3.6 Deterministic)
+## 2. Architecture & T3 Boundaries (Formerly Axiom Gate)
 
-When rules, workflow steps, or skill instructions conflict, resolve by strict
-priority. Higher P-number = lower authority.
+@.agents/rules/architecture.rule.md
+*Focus: Next.js App Router constraints, React Server Components (RSC), and data validation.*
 
-```text
-P0: User Explicit Intent               [Manual override — immediate priority]
-P0.1: @council-pulse.md                [Passive telemetry — always-on]
-P1: @secure-state.md                   [State Boundary — Request Review Enforcement]
-P1.1: @axiom-gate-a05.rule.md          [K.E.R.N.E.L. Gatekeeper — strict]
-P2: @council-lock.md                   [Deterministic Routing Lock]
-P3: @firecracker-orchestrator          [Primary Isolation Substrate]
-P4: @context.rule.md                   [Context compression]
-```
+## 3. UI & Design System
 
-**Resolution rule:** P0 always overrides any governance rule if the user explicitly
-No persona overrides governance rules (P1-P5) without a P0 signal.
+@.agents/rules/design.rule.md
+*Focus: Tailwind v4 utility token hierarchy and accessibility mandates.*
+
+## Execution Directive
+
+Before generating any implementation plan, you must silently parse the included `@` rule files. Ensure your proposed code aligns with the definitions established in these modular constraints.
 
 ---
 
@@ -88,16 +81,6 @@ Applied to every workspace unless project-level rules explicitly override.
 **Deviation Protocol**: Documented suppression via `[STACK DEVIATION]` block required.
 **Tech Debt Halt**: detected debt halts chain → `/chain-c-architecture`.
 
----
-
-## 🛡️ Telemetry & Data Governance (Zero-Trust)
-
-To prevent proprietary source code ingestion into public training pipelines:
-
-1. **Telemetry Lockdown**: User MUST navigate to `Ctrl + ,` -> Account -> Toggle off **Enable Telemetry**.
-2. **Enterprise Bridge**: For sensitive IP, transition from consumer-tier AI to authenticated GCP Vertex AI endpoints.
-
----
 
 ## 🚦 Multi-Agent Concurrency (Mission Control)
 

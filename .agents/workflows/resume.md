@@ -1,11 +1,15 @@
-# Session Recovery (v3.6 Resilient)
+# Workflow: /resume
 
-description: Deterministic state recovery using Knowledge Items + Local Snapshot Fallback.
+**Description**: Deterministic context recovery utilizing native Antigravity Knowledge Items. Initiates a stateless reconstitution of the active engineering task.
 
-// capture
-1. Write current $STATE to /tmp/session-snapshot.json (Bridge KI Latency).
-2. Query Antigravity Knowledge Items for latest session intent.
-3. If KI latency detected: Recover from /tmp/session-snapshot.json.
-4. Call target chain at identified checkpoint.
-5. Evaluate $KNOWLEDGE_STATE against the K.E.R.N.E.L. schema.
-6. Auto-detect last active chain and explicitly resume execution using $KNOWLEDGE_STATE.
+## Phase 1: Intent Reconstitution
+1. **Query Memory**: Do not look for local JSON state buffers. Immediately access and review the summaries of all natively generated Antigravity Knowledge Items available in your context.
+2. **Identify Checkpoint**: Locate the Knowledge Item containing the most recent architectural decisions, task progress, or generated artifacts.
+3. **Extract State**: Read the associated artifacts within the target Knowledge Item to determine the exact Progressive Disclosure Phase where the previous session was interrupted.
+
+## Phase 2: Environment Verification
+1. Verify that Antigravity Strict Mode is active, ensuring OS-level terminal sandboxing (Seatbelt/nsjail/WSL2) is enforced and network access is denied prior to code execution.
+
+## Phase 3: Stateless Resumption
+1. Output a concise summary of the recovered intent to the user: `[🔄 RECOVERY SUCCESSFUL] — Resuming at Phase [X]. Target: [Objective].`
+2. Automatically inject the recovered parameters into the appropriate workflow (e.g., `/chain-a-feature`) and proceed to the next logical execution step.

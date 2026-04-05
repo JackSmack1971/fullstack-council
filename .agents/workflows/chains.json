@@ -3,8 +3,8 @@
     {
       "id": "chain-a-feature",
       "name": "Greenfield Feature Implementation",
-      "steps": 5,
-      "description": "Architecture -> Component Design -> UI Composition -> Quality Gate -> Performance Verification"
+      "steps": 4,
+      "description": "Architecture -> Component Design -> UI Composition -> Quality & Perf Baseline"
     },
     {
       "id": "chain-b-review",

@@ -1,14 +1,14 @@
-# 🏛️ Full-Stack Advisory Council v3.6 — Zero-Trust & MCP-Enforced
+# 🏛️ Full-Stack Advisory Council v3.6 — Zero-Trust & Progressive Disclosure
 
-- **Welcome!**
-- Imagine walking into a boardroom where the world's best web developers, architects, and engineers are waiting to help you build your app. That’s exactly what the Full-Stack Advisory Council is — a team of **specialized AI personas** that work together like a real engineering crew.
+**Welcome!** The Full-Stack Advisory Council is a **sequential constraint-injection framework** built natively on Google Antigravity. Rather than asking one generic AI to "build something," you invoke structured skill phases that mathematically narrow the reasoning model's solution space — delivering architecture decisions, component design, UI systems, and quality gates in deterministic sequence.
 
 ## What Is This Project?
 
 - **Project Name:** Full-Stack Advisory Council
-- **Purpose:** A deterministic, multi-agent AI orchestration pipeline designed to architect, implement, review, and optimize full-stack web applications.
+- **Purpose:** A deterministic workflow orchestration framework that applies progressive skill constraints within a single Antigravity reasoning thread to architect, implement, review, and optimize full-stack web applications.
 
-Instead of asking one generic AI to “build something,” you talk to a structured council. The experts hand work off to each other in clear steps so the final result is fast, secure, clean, and production-ready.
+> [!IMPORTANT]
+> **Architecture Reality:** The Council does *not* spawn multiple AI agents or custom sub-agents. Skills are system-prompt constraints applied sequentially in one reasoning thread. For true parallel execution, use the **Agent Manager** (`Ctrl+E` / `Cmd+E`) to spawn independent top-level agents — one per concurrent task.
 
 ## 🌌 Powered by Google Antigravity
 
@@ -18,24 +18,34 @@ This council is deeply integrated with the **Google Antigravity** native metapro
 
 Unlike generic wrappers or probabilistic semantic routers, the Council leverages Antigravity's native workflow engine:
 
-- **Explicit Routing**: No central manifest or probabilistic keyword matching. Routing is driven by deterministic `.agents/workflows/*.md` files using **@mentions**.
-- **Secure State Capture**: All sequential handoffs utilize the **// capture** directive, maintaining stateless environment isolation.
-- **Hardware-Level Isolation**: Zero-trust execution via **Firecracker Micro-VMs** (Hardware Virtualization), shielding the host from rogue agent execution.
+- **Explicit Routing**: No manifest or probabilistic keyword matching. Routing is driven by deterministic `.agents/workflows/*.md` files resolved via slash commands.
+- **Secure State Capture**: Sequential phases use the **`// capture`** directive to pass structured state variables forward, narrowing each phase's solution space without external orchestrators.
+- **OS-Level Isolation**: Zero-trust execution via **Antigravity Strict Mode** (Seatbelt on macOS, nsjail on Linux, WSL2 on Windows), enforced by the `strict-mode-enforcer` skill.
 
-## 🪑 The Council – Atomic & Specialized Skills
+## 🪑 The Council — Sequential Expertise & Native Parallelism
 
-The system uses **Atomic Splitting** to ensure each skill does one thing perfectly. Monolithic domains are broken into granular capabilities:
+### Architecture Reality Check
 
-### Core Personnel
+The Full-Stack Advisory Council operates via **Progressive Disclosure Phases** within the primary reasoning thread. It does *not* utilize custom programmatic sub-agents.
 
-- **Guillermo Rauch (Architecture)** — Next.js/Vercel edge architecture and AI patterns.
-- **Dan Abramov (React)** — RSC, Concurrent rendering, and modern Hooks.
-- **Adam Wathan (Design Systems)** — Utility-first CSS and Tailwind v4 token hierarchy.
-- **Kent C. Dodds (Quality)** — Integration testing and A11y verification.
+By feeding specific skill constraints sequentially (e.g., Next.js Architecture → React Hooks → Testing), the workflow mathematically steers the single reasoning model without requiring external Model Context Protocol (MCP) orchestrators.
+
+> [!NOTE]
+> **Token Optimization:** Antigravity evaluates planning inside verbose reasoning passes. Chaining too many persona switches in a single prompt incurs a hidden token tax against your 5-hour rolling sprint capacity. `/chain-a-feature` has been consolidated to **4 phases** (down from 8) and uses `// turbo` directives to bypass unnecessary human-in-the-loop bottlenecks during sequential context shifts.
+>
+> [!TIP]
+> **True Parallel Execution:** Open **Agent Manager** (`Ctrl+E` / `Cmd+E`) → click `+` to spawn a new top-level agent → assign it to this workspace. Each top-level agent is an independent reasoning thread. This is the *only* native path to concurrent execution — not `@persona` tags within a single chain.
+
+### Skill Roster (Persona-Scoped Constraints)
+
+- **`rauchg-tech-lead-architect`** — Next.js/Vercel edge architecture and AI patterns.
+- **`react-core-lead`** — RSC, Concurrent rendering, and modern Hooks.
+- **`adam-wathan-design-system`** — Utility-first CSS and Tailwind v4 token hierarchy.
+- **`optimizing-web-performance`** — CWV remediation and Lighthouse analysis.
 
 ### Atomic Optimization (Addy Osmani Series)
 
-- **Parallel Performance** — Chain D utilizes the **// parallel** directive to execute LCP, INP, and CLS optimizations concurrently.
+- **Focused Performance** — Chain D applies LCP, INP, and CLS skills sequentially with single-fix enforcement per skill.
 
 ### Meta & Security
 
@@ -47,7 +57,7 @@ The system uses **Atomic Splitting** to ensure each skill does one thing perfect
 
 | Command | What happens |
 | --- | --- |
-| `/chain-a-feature` | **Build**: Product → T3 Axioms → Architecture → AI/Data → React → UI → Quality → Perf (8-step Pilot) |
+| `/chain-a-feature` | **Build**: Architecture + Axiom Gate → Component Design → UI Composition → Quality + Perf Baseline (**4 Progressive Disclosure Phases**) |
 | `/chain-b-review` | **Review**: React audit → Tech audit → DX Check → Tests (4 steps) |
 | `/chain-c-architecture` | **Decide**: Trade-off analysis → Technical architecture → DX sanity check (3 steps) |
 | `/chain-d-performance` | **Fix performance**: Baseline → **[Parallel]** LCP/INP/CLS branches → Regression gate (6 steps) |
@@ -111,17 +121,17 @@ Observability and state passing are protected by the **[Secure State](file:///.a
 
 ### 4. Context Recovery (Resilient)
 
-Interrupted sessions are resumed via `/resume`. Intent is reconstructed dynamically from **Antigravity Knowledge Items** and bridged by a local **`/tmp/session-snapshot.json`** buffer to mitigate indexing latency.
+Interrupted sessions are resumed via `/resume`. Intent is reconstructed from **Antigravity Knowledge Items** (persistent across sessions) and the `.agents/state/kernel-state.json` handoff file written by the active chain.
 
 * * *
 
 ## 🛡️ Zero-Trust Sandboxing (v3.6)
 
-The Council utilizes **Firecracker Micro-VMs** for hardware-level process isolation:
+The Council utilizes Antigravity's native terminal isolation for process security:
 
-- **Primary Substrate**: Firecracker (KVM on Linux, WSL2/Hyper-V on Windows).
-- **Fallback**: Google Antigravity Native Strict Mode (Seatbelt/nsjail kernel-level sandboxing).
-- **Execution Policy**: Network access is denied by default unless explicitly whitelisted via MCP metadata.
+- **Primary Substrate**: Google Antigravity Native Strict Mode (Seatbelt on macOS, nsjail on Linux, WSL2 on Windows).
+- **Execution Policy**: Network access is denied by default in the terminal sandbox.
+- **Network Exceptions**: There is no automated "whitelist." If a workflow requires downloading dependencies (e.g., `npm install`), the agent will halt and trigger a "Request Review." The developer must manually click **"Bypass Sandbox"** for that single command to permit temporary network traversal.
 
 * * *
 
@@ -171,8 +181,12 @@ The council includes a first-class workflow for migrating from legacy Firebase S
 
 * * *
 
-## ⚠️ Known Limitations & Governance
+## 📡 Telemetry & Data Governance Reality Check
 
-- Requires **Google Antigravity**.
-- **YAML Frontmatter**: Mandatory only for **Skills** (`SKILL.md`) to define `allowed-tools` boundaries. Global Rules (`*.rule.md`) remain pure Markdown.
-- **MCP Registry**: Managed at the global path `~/.gemini/antigravity/mcp_config.json`.
+**CRITICAL WARNING FOR ENTERPRISE USERS:** This framework enforces local OS sandboxing (Strict Mode) to prevent *execution* vulnerabilities, but **it cannot prevent cloud telemetry ingestion.**
+
+- **The "Enable Telemetry" Toggle:** Disabling `Settings > Account > Enable Telemetry` only stops diagnostic crash reporting. **It does not opt you out of model training data collection.**
+- **Consumer Tiers (Free / AI Pro / AI Ultra):** By default, your prompts, codebase context, and generated artifacts are logged and may be reviewed by human evaluators to train future Gemini models.
+- **True Zero-Retention:** To achieve actual, legally binding data privacy (Zero-Data Retention), you must bypass the consumer tier by connecting Antigravity through an authenticated **Google Workspace** or **Google Cloud Platform (Vertex AI)** enterprise account.
+
+Do not paste production API keys or proprietary algorithmic logic into the IDE unless operating under a Workspace/GCP SLA. For managing keys, rely exclusively on `mcp_config.json` environmental injection.
