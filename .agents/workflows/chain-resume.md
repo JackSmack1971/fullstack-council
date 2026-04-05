@@ -3,7 +3,7 @@ name: chain-resume
 description: >
   Cold restart recovery for interrupted chains. Scans existing Artifacts to
   determine the last complete step and resumes the chain from the next step.
-  Invoke: /resume or /resume [a|b|c|d|e]. Use when returning to a session
+  Invoke: /resume or /resume [a|b|c|d|e|f]. Use when returning to a session
   after closing mid-chain. Works because Artifacts persist across sessions;
   chat history does not need to.
 ---
@@ -24,7 +24,7 @@ existing Artifacts acting as skip signals.
 ## R1 — Identify the Chain
 **Skill:** `fullstack-council` (Router)
 
-If the user provided `/resume [a|b|c|d|e]`, use that chain letter directly.
+If the user provided `/resume [a|b|c|d|e|f]`, use that chain letter directly.
 
 If invoked as bare `/resume`: scan the Artifact panel for the most recent
 chain-prefixed Artifact (naming convention: `[chain-letter][step]-[slug]`).

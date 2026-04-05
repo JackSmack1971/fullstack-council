@@ -17,8 +17,9 @@ Call the chain directly. No classification step. No ambiguity.
 | Command | Chain | When |
 | --- | --- | --- |
 | `/resume` | `Call /resume` | Load `handoff.json` and resume parked intent |
+| `/resume-last` | `Call /chain-resume` | Auto-detect last active chain and resume at last incomplete step |
+| `/resume [a-f]` | `Call /chain-resume` | Explicitly resume a specific chain (A-F) |
 | `/discard` | `Call /discard` | Delete `handoff.json` and clear state |
-| `/resume-last` | `Call /chain-resume` | Cold restart recovery for interrupted sessions |
 | `/observe` | Read `session-log` Artifact + emit summary | Inspect what ran, what fired, what halted |
 | `/chain-a-feature` | `Call /chain-a-feature` | Building a new feature |
 | `/chain-b-review` | `Call /chain-b-review` | Reviewing code or a PR |
